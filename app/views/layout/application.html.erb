@@ -1,11 +1,45 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
   <head>
-    <title>merb_mart</title>
+    <title><%= @title unless @title.nil? %></title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8">
+  
+    <!-- TODO: add CSS -->
+    <!-- TODO: add JS  -->
+  
   </head>
   <body>
-    <%= catch_content :for_layout %>
+      <div id="container">
+        <div id="header">
+            
+            <!-- top links -->
+            <ul class="navigation" id="toplinks">
+                <li style="margin-right:0px;">
+                    <a href="/store/show_cart" class="submodal-600-400">Cart</a>
+                </li>
+                <li><a href="/customers/wishlist">Wishlist</a></li>
+                <li><a href="/questions/ask">Contact Us</a></li>
+                <li><a href="/customers/orders">Track an Order</a></li>
+            </ul>
+            
+            
+        </div>
+        
+        <div id="content">
+            <%= catch_content :for_layout %>
+        </div>
+    
+        <div id="footer">
+            <ul class="navigation">
+                <li><a href="/">Home</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/customers/wishlist">Wishlist</a></li>
+                <li><a href="/store/show_cart" class="submodal-600-400">Cart</a></li>
+            </ul>
+        </div>
+    
+      </div>
   </body>
 </html>
