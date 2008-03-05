@@ -22,6 +22,6 @@ Merb::Router.prepare do |r|
   r.match("/users/activate/:activation_code").to(:controller => "Users", :action => "activate").name(:user_activation)
   
   # Change this for your home page to be available at /
-  r.match('/').to(:controller => '', :action =>'index')
+  #r.match('/').to(:controller => '', :action =>'index')
 
 end

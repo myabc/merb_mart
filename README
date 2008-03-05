@@ -1,0 +1,7 @@
+= merb_mart
+
+merb_mart is an open-source e-commerce engine based on the Merb MVC framework.
+
+merb_mart is a loose port of the Substruct RoR e-commerce application.
+http://code.google.com/p/substruct/
+http://substruct.subimage.com/
