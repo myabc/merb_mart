@@ -1,0 +1,13 @@
+.DS_Store
+*.log
+*.pid
+*.db
+log/*.log
+log/*.pid
+cache/*
+config/database.yml
+coverage
+gems
+pkg
+pkg/*
+tmp
