@@ -5,8 +5,6 @@ class Image < UserUpload
   has_many :product_images
   has_many :products, :through => :product_images
 
-  #MAX_SIZE = 10.megabyte
-
 #  has_attachment :content_type => :image,
 #                 :storage => :file_system,
 #                 :max_size => MAX_SIZE,

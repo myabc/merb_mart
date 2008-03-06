@@ -18,24 +18,19 @@ class Section < DataMapper::Base
     
   #validates_presence_of :name
   #validates_uniqueness_of :name
-  is_a_tree
-  #acts_as_tree :order => '-rank DESC'
+  is_a_tree :order => 'rank' # '-rank DESC'
   
   # Most used finder function for tags.
   # Selects by alpha sort.
-  #def self.find_alpha
-  #  find(:all, :order => 'name ASC')
-  #end
+  def self.find_alpha
+    all  #:order => 'name ASC')
+  end
   
   # Finds ordered parent tags.
-  #
-  #def self.find_ordered_parents
-  #  find(
-  #    :all,
-  #    :conditions => "parent_id IS NULL OR parent_id = 0",
-  #    :order => "-rank DESC"
-  #  )
-  #end
+  def self.find_ordered_parents
+    all(:conditions => "parent_id IS NULL OR parent_id = 0")
+      #:order => "-rank DESC"
+  end
   
   # Returns the number of products tagged with this item
   def content_count

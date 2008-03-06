@@ -77,7 +77,7 @@ class Cart
     for oli in @items do
       # Find the item in the db, because oli.item
       # is cached.
-      db_item = Item.find(oli.item_id)
+      db_item = Item[oli.item_id]
 
       if oli.quantity > db_item.quantity
         removed_items << oli.name.clone

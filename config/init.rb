@@ -11,33 +11,36 @@ Merb::Config.use do |c|
   c[:session_store] = 'datamapper'
 end  
 
-### Merb doesn't come with database support by default.  You need
-### an ORM plugin.  Install one, and uncomment one of the following lines,
-### if you need a database.
+### Globals
+ERROR_EMPTY  = 'Please fill in this field.'
+ERROR_NUMBER = 'Please enter only numbers (0-9) in this field.'
+MEGABYTE = 1024.0 * 1024.0
+MAX_SIZE = 10 * MEGABYTE
 
-### Uncomment for DataMapper ORM
+### Specify the ORM: DataMapper
 use_orm :datamapper
 
-### This defines which test framework the generators will use
-### rspec is turned on by default
-# use_test :test_unit
+### Specify the Test Framework: RSpec
 use_test :rspec
 
-### Add your other dependencies here
-dependencies "merb_helpers", "merb-mailer", "merbful_authentication"
-
-dependency 'merb_paginate'
-
-MerbPaginate.activate! :finder => :datamapper # require the custom finder for datamapper
-MerbPaginate.activate! :view_helpers # require the will_paginate view helper
+### Specify Other Dependencies
 
 # These are some examples of how you might specify dependencies.
-# 
+#
 # dependencies "RedCloth", "merb_helpers"
 # OR
 # dependency "RedCloth", "> 3.0"
 # OR
 # dependencies "RedCloth" => "> 3.0", "ruby-aes-cext" => "= 1.0"
+
+dependency "merb-assets"
+dependency "merb-mailer"
+dependency "merb_helpers"
+dependency "merb_paginate"
+dependency "ezcrypto"
+
+MerbPaginate.activate! :finder => :datamapper # require the custom finder for datamapper
+MerbPaginate.activate! :view_helpers # require the will_paginate view helper
 
 Merb::BootLoader.after_app_loads do
   ### Add dependencies here that must load after the application loads:

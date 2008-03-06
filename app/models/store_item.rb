@@ -20,6 +20,11 @@ class StoreItem < DataMapper::Base
   #t.string   "type",              :string, :limit => 40  -- handled by DM
   #t.integer  "product_id",                        :default => 0,     :null => false
 
+  #add_index ["quantity", "is_discontinued", "variation_quantity"], :name => "published"
+  #add_index ["product_id", "type"], :name => "variation"
+  #add_index ["date_available", "is_discontinued", "quantity", "variation_quantity", "type"], :name => "tag_view"
+  #add_index ["name", "code", "is_discontinued", "date_available", "quantity", "variation_quantity", "type"], :name => "search"
+
   #validates_presence_of :name, :code
   validates_uniqueness_of :code
   
@@ -31,6 +36,10 @@ class StoreItem < DataMapper::Base
   #############################################################################
   # CLASS METHODS
   #############################################################################
+  
+  def find_by_code(code)
+    first(:code => code)
+  end
   
   # Name output for product suggestion JS
   # 

@@ -18,6 +18,11 @@ class Preference < DataMapper::Base
   #validates_presence_of :name, :type
   #validates_uniqueness_of :name
   
+  
+  def self.find_by_name(name)
+    first(:name => name)
+  end
+  
   # Can throw an error if these items aren't set.
   # Make sure to wrap any block that calls this
   def self.init_mail_settings

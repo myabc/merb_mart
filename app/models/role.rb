@@ -13,7 +13,7 @@ class Role < DataMapper::Base
     self.rights.clear
     for id in id_list
       next if id.empty?
-      right = Right.find(id)
+      right = Right[id]
       self.rights << right if right
     end
   end

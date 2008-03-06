@@ -6,11 +6,14 @@ class ContentNode < DataMapper::Base
 
   TYPES = ['Blog', 'Page', 'Snippet']
   
-  property :name,       :string,  :length => 200, :default => "", :nullable => false
+  property :name,       :string,  :length => 200, :default => "", :nullable => false, :index => true
   property :title,      :string,  :length => 100, :default => "", :nullable => false
   property :content,    :text
   property :display_on, :datetime
-  property :created_on, :datetime  
+  property :created_on, :datetime
+  
+  # TODO: get composite index working
+  index [:id, :type]
   
   #############################################################################
   # VALIDATION
@@ -46,7 +49,7 @@ class ContentNode < DataMapper::Base
   def sections=(list)
     sections.clear
     for id in list
-      sections << Section.find(id) if !id.empty?
+      sections << Section[id] if !id.empty?
     end
   end
 

@@ -60,7 +60,7 @@ class Promotion < DataMapper::Base
       end
       # find any affiliates with this same code string
       # if none are found the while loop exits
-      record = find(:first, :conditions => ["code = ?", test_code])
+      record = first(:code => test_code)
     end
     # return our random code
     return test_code
@@ -84,7 +84,7 @@ class Promotion < DataMapper::Base
   # We only really use the first item, which is the ID to look
   # up the product.
   def product_name=(name)
-    item = Item.find_by_code(name.split(':')[0])
+    item = StoreItem.find_by_code(name.split(':')[0])
     if !item
       self.item_id = nil
     else
