@@ -11,7 +11,6 @@ class UserUpload < DataMapper::Base
   property :filename,  :string
   property :width,     :integer, :default => 0, :nullable => false
   property :height,    :integer, :default => 0, :nullable => false
-  #property :type -- datamapper should handle this?
   property :created_on, :datetime
   #property :parent_id
   property :content_type, :string
@@ -27,6 +26,7 @@ class UserUpload < DataMapper::Base
   #
 
   before_save :downcase_extension
+  
   def downcase_extension
     self.filename = "#{self.filename[0, self.filename.rindex('.')]}.#{self.extension.downcase}"
   end

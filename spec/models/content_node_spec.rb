@@ -4,4 +4,6 @@ describe ContentNode do
 
   it "should have specs"
 
+  # ContentNode acts as an abstract class
+
 end

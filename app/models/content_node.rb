@@ -2,7 +2,6 @@
 #
 class ContentNode < DataMapper::Base
   
-  #belongs_to :content_node_type
   has_and_belongs_to_many :sections
 
   TYPES = ['Blog', 'Page', 'Snippet']
@@ -11,9 +10,7 @@ class ContentNode < DataMapper::Base
   property :title,      :string,  :length => 100, :default => "", :nullable => false
   property :content,    :text
   property :display_on, :datetime
-  property :created_on, :datetime
-  #property :type -- datamapper should handle this for us
-  
+  property :created_on, :datetime  
   
   #############################################################################
   # VALIDATION

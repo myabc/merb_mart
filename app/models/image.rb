@@ -1,6 +1,6 @@
 # Represents an image
 #
-class Image < DataMapper::Base
+class Image < UserUpload
 
   has_many :product_images
   has_many :products, :through => :product_images
