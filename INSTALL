@@ -1,0 +1,16 @@
+= Installation
+
+Current Dependencies:
+ * merb 0.9.1 or above
+    * merb-core
+    * merb-more
+    * merb-plugins
+        * merb_datamapper   
+                -- currently requires patching, because of these code
+                organizational changes: 
+                http://wiki.datamapper.org/doku.php?id=organizationalchanges
+                 (see http://www.pastie.org/162636,
+                    or http://github.com/heimidal/merb-plugins/tree/master/merb_datamapper )
+        * merb_helpers
+        * merb_rspec
+    * datamapper: latest git version
