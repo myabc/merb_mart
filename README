@@ -2,6 +2,18 @@
 
 merb_mart is an open-source e-commerce engine based on the Merb MVC framework.
 
+Current Dependencies:
+ * merb 0.9.1 or above
+    * merb-core
+    * merb-more
+    * merb-plugins
+        * merb_datamapper
+        * merb_helpers
+        * merb_rspec
+    * datamapper: currently requires last SVN version of 0.3.0.
+                  latest git version seems to be broken with merb_datamapper
+                  
+
 merb_mart is a loose port of the Substruct RoR e-commerce application.
 http://code.google.com/p/substruct/
 http://substruct.subimage.com/
