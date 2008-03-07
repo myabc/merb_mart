@@ -64,5 +64,4 @@ class UserUpload < DataMapper::Base
     upload
   end
   
-  
 end

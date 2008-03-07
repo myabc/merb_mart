@@ -39,8 +39,8 @@ dependency "merb_helpers"
 dependency "merb_paginate"
 dependency "ezcrypto"
 
-MerbPaginate.activate! :finder => :datamapper # require the custom finder for datamapper
-MerbPaginate.activate! :view_helpers # require the will_paginate view helper
+#MerbPaginate.activate! :finder => :datamapper # require the custom finder for datamapper
+#MerbPaginate.activate! :view_helpers # require the will_paginate view helper
 
 Merb::BootLoader.after_app_loads do
   ### Add dependencies here that must load after the application loads:
