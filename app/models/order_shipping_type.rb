@@ -1,4 +1,6 @@
-class OrderShippingType < DataMapper::Base
+class OrderShippingType
+  
+  include DataMapper::Persistable
   
   has_many :orders
   has_many :weights, :class => 'OrderShippingWeight', :dependent => :destroy

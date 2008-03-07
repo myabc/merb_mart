@@ -1,4 +1,6 @@
-class Order < DataMapper::Base
+class Order
+  
+  include DataMapper::Persistable
   
   has_many :order_line_items, :dependent => :destroy
   

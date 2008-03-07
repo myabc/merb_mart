@@ -1,6 +1,8 @@
 # A role is a collection of rights.
 #
-class Role < DataMapper::Base
+class Role
+  
+  include DataMapper::Persistable
   
   has_and_belongs_to_many :users 
   has_and_belongs_to_many :rights, :order => 'name ASC'

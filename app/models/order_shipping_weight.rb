@@ -3,7 +3,9 @@
 # They allow an admin to specify weight ranges and prices
 # for an OrderShippingType.
 #
-class OrderShippingWeight < DataMapper::Base
+class OrderShippingWeight
+  
+  include DataMapper::Persistable
   
   belongs_to :order_shipping_type
   

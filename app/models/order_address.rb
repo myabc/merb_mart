@@ -1,4 +1,6 @@
-class OrderAddress < DataMapper::Base
+class OrderAddress
+  
+  include DataMapper::Persistable
   
   #has_one :order
   belongs_to :order_user

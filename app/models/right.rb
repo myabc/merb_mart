@@ -7,7 +7,9 @@
 # This action list can be either '*' for access to all actions
 # or a CSV list of actions.
 #
-class Right < DataMapper::Base
+class Right
+  
+  include DataMapper::Persistable
   
   has_and_belongs_to_many :roles 
 

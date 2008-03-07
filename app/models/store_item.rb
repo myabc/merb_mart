@@ -1,6 +1,8 @@
 # This is the base model for Product and ProductVariation.
 #
-class StoreItem < DataMapper::Base
+class StoreItem
+
+  include DataMapper::Persistable
 
   has_many :order_line_items
   has_many :wishlist_items, :dependent => :destroy

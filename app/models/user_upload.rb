@@ -4,7 +4,9 @@
 #
 # Before a save, checks to set the type, based on file extension.
 #
-class UserUpload < DataMapper::Base
+class UserUpload
+  
+  include DataMapper::Persistable
   
   IMAGE_EXTENSIONS = ['gif', 'jpg', 'jpeg', 'png', 'bmp']
 

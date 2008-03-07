@@ -2,7 +2,9 @@
 # have the ability to add items to an order as well.
 #
 #
-class Promotion < DataMapper::Base
+class Promotion
+  
+  include DataMapper::Persistable
 
   TYPES = {
     'Dollars' => 0,

@@ -4,7 +4,9 @@
 # together for a customer. Lets them login, etc.
 #
 #
-class OrderUser < DataMapper::Base
+class OrderUser
+  
+  include DataMapper::Persistable
   
   has_many :orders,
     :dependent => :nullify,

@@ -1,4 +1,6 @@
-class OrderStatusCode < DataMapper::Base
+class OrderStatusCode
+  
+  include DataMapper::Persistable
   
   has_many :orders
   

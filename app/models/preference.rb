@@ -6,7 +6,10 @@
 # Prefs are used all over to handle decisions that we'd rather
 # not use config files for.
 #
-class Preference < DataMapper::Base
+class Preference
+  
+  include DataMapper::Persistable
+  
   # Types can hold strings, booleans, or pointers to
   # other records (like country)
   CC_PROCESSORS = ['Authorize.net', 'PayPal IPN']

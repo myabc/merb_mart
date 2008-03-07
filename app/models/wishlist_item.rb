@@ -1,6 +1,8 @@
 # Items that make up a customer's wishlist.
 #
-class WishlistItem < DataMapper::Base
+class WishlistItem
+  
+  include DataMapper::Persistable
   
   belongs_to :order_user
   belongs_to :item

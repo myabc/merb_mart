@@ -1,7 +1,9 @@
 # Represents a connection from an image to a product.
 #
 #
-class ProductImage < DataMapper::Base
+class ProductImage
+  
+  include DataMapper::Persistable
   
   belongs_to :product
   belongs_to :image

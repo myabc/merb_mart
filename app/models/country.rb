@@ -1,4 +1,6 @@
-class Country < DataMapper::Base
+class Country
+  
+  include DataMapper::Persistable
   
   property :name,       :string, :length => 100, :nullable => false
   property :fedex_code, :string, :length => 50

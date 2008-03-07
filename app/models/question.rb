@@ -1,4 +1,6 @@
-class Question < DataMapper::Base
+class Question
+  
+  include DataMapper::Persistable
   
   property :short_question, :string
   property :long_question,  :text

@@ -1,6 +1,8 @@
 # ContentNode is the base class for all of our content.
 #
-class ContentNode < DataMapper::Base
+class ContentNode
+  
+  include DataMapper::Persistable
   
   has_and_belongs_to_many :sections
 

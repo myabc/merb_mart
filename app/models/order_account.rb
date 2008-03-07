@@ -1,4 +1,6 @@
-class OrderAccount < DataMapper::Base
+class OrderAccount
+  
+  include DataMapper::Persistable
   require 'ezcrypto'
   
   has_one :order_account_type

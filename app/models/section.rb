@@ -3,7 +3,10 @@
 # Sections can be applied to pages or snippets, but really are
 # only meant for blogs.
 #
-class Section < DataMapper::Base
+class Section
+  
+  include DataMapper::Persistable
+  include DataMapper::Is::Tree
   
   has_and_belongs_to_many :content_nodes
   has_and_belongs_to_many :blogs,

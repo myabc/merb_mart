@@ -1,4 +1,6 @@
-class OrderLineItem < DataMapper::Base
+class OrderLineItem
+  
+  include DataMapper::Persistable
   
   belongs_to :product
   belongs_to :store_item

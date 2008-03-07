@@ -4,7 +4,9 @@ begin
 rescue 
   nil
 end
-class User < DataMapper::Base
+class User
+  
+  include DataMapper::Persistable
   include AuthenticatedSystem::Model
   
   attr_accessor :password, :password_confirmation

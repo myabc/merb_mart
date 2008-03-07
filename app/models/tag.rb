@@ -4,7 +4,10 @@
 # they can act like old-school "categories", or new-school tagging
 # systems.
 #
-class Tag < DataMapper::Base
+class Tag
+  
+  include DataMapper::Persistable
+  include DataMapper::Is::Tree
   
   has_and_belongs_to_many :products,
     :join_table => 'products_tags'
