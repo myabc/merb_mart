@@ -1,8 +1,20 @@
 require File.join(File.dirname(__FILE__), "..", 'spec_helper.rb')
 
-describe Questions, "index action" do
-  before(:each) do
-    @controller = Questions.build(fake_request)
-    @controller.dispatch('index')
+describe Questions do
+
+  describe "#index" do
+    before(:each) do
+      dispatch_to(Questions, :index)
+    end
+    
   end
+
+  describe "#show" do
+    
+  end
+  
+  describe "#new" do
+    
+  end
+
 end

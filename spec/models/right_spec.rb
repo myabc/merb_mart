@@ -2,6 +2,8 @@ require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
 describe Right do
 
-  it "should have specs"
+  describe "associations" do
+    it "should have and belong to many roles"
+  end
 
 end

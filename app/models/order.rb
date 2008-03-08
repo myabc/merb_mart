@@ -102,6 +102,195 @@ class Order
     self.order_line_items << oli
   end
   
+  # CLASS METHODS =============================================================  
+
+  # Searches an order
+  # Uses order number, first name, last name
+  def self.search(search_term, count=false, limit_sql=nil)
+    if (count == true) then
+      sql = "SELECT COUNT(*) "
+    else
+      sql = "SELECT DISTINCT orders.* "
+		end
+		sql << "FROM orders "
+		sql << "JOIN order_addresses ON orders.order_user_id = order_addresses.order_user_id "
+		sql << "WHERE orders.order_number = ? "
+		sql << "OR order_addresses.first_name LIKE ? "
+		sql << "OR order_addresses.last_name LIKE ? "
+		sql << "OR CONCAT(order_addresses.first_name, ' ', order_addresses.last_name) LIKE ? "
+		sql << "ORDER BY orders.created_on DESC "
+		sql << "LIMIT #{limit_sql}" if limit_sql
+		arg_arr = [sql, search_term, "%#{search_term}%", "%#{search_term}%", "%#{search_term}%"]
+		if (count == true) then
+		  count_by_sql(arg_arr)
+	  else
+		  find_by_sql(arg_arr)
+	  end
+  end
+  
+  # Finds orders by country
+  #
+  def self.find_by_country(country_id, count=false, limit_sql=nil)
+    if (count == true) then
+      sql = "SELECT COUNT(*) "
+    else
+      sql = "SELECT DISTINCT orders.* "
+    end
+    sql << "FROM orders "
+    sql << "INNER JOIN order_users ON order_users.id = orders.order_user_id "
+    sql << "INNER JOIN order_addresses ON ( "
+    sql << "  order_addresses.country_id = ? AND order_addresses.order_user_id = order_users.id "
+    sql << ")"
+    arg_arr = [sql, country_id]
+		if (count == true) then
+		  count_by_sql(arg_arr)
+	  else
+		  find_by_sql(arg_arr)
+	  end
+  end
+
+  # Generates a unique order number.
+  # This number isn't ID because we want to mask that from the customers.
+  def self.generate_order_number
+    record = Object.new
+    while record
+      random = rand(999999999)
+      record = find(:first, :conditions => ["order_number = ?", random])
+    end
+    return random
+  end
+
+  # Returns array of sales totals (hash) for a given year.
+  # Hash contains
+  #   * :number_of_sales
+  #   * :sales_total
+  #   * :tax
+  #   * :shipping
+  def self.get_totals_for_year(year)
+    months = Array.new
+    0.upto(12) { |i|
+      sql = "SELECT COUNT(*) AS number_of_sales, SUM(product_cost) AS sales_total, "
+      sql << "SUM(tax) AS tax, SUM(shipping_cost) AS shipping "
+      sql << "FROM orders "
+      sql << "WHERE YEAR(created_on) = ? "
+      if i != 0 then
+        sql << "AND MONTH(created_on) = ? "
+      end
+      sql << "AND (order_status_code_id = 5 OR order_status_code_id = 6 OR order_status_code_id = 7) "
+      sql << "LIMIT 0,1"
+      if i != 0 then
+        months[i] = self.find_by_sql([sql, year, i])[0]
+      else
+        months[i] = self.find_by_sql([sql, year])[0]
+      end
+    }
+    return months
+  end
+
+	# Gets a CSV string that represents an order list.
+	def self.get_csv_for_orders(order_list)
+    require 'fastercsv'
+    csv_string = FasterCSV.generate do |csv|
+      # Do header generation 1st
+      csv << [
+        "OrderNumber", "Company", "ShippingType", "Date", 
+        "BillLastName", "BillFirstName", "BillAddress", "BillCity", 
+        "BillState", "BillZip", "BillCountry", "BillTelephone", 
+        "ShipLastName", "ShipFirstName", "ShipAddress", "ShipCity", 
+        "ShipState", "ShipZip", "ShipCountry", "ShipTelephone",
+        "Item1",
+        "Quantity1", "Item2", "Quantity2", "Item3", "Quantity3", "Item4",
+        "Quantity4", "Item5", "Quantity5", "Item6", "Quantity6", "Item7",
+        "Quantity7", "Item8", "Quantity8", "Item9", "Quantity9", "Item10",
+        "Quantity10", "Item11", "Quantity11", "Item12", "Quantity12", "Item13",
+        "Quantity13", "Item14", "Quantity14", "Item15", "Quantity15", "Item16",
+        "Quantity16"
+      ]
+      for order in order_list
+        bill = order.billing_address
+        ship = order.shipping_address
+        pretty_date = order.created_on.strftime("%m/%d/%y")
+        if !order.order_shipping_type.nil?
+          ship_code = order.order_shipping_type.code
+        else
+          ship_code = ''
+        end
+        order_arr = [
+          order.order_number, '', ship_code, pretty_date,
+          bill.last_name, bill.first_name, bill.address, bill.city,
+          bill.state, bill.zip, bill.country.name, bill.telephone,
+          ship.last_name, ship.first_name, ship.address, ship.city,
+          ship.state, ship.zip, ship.country.name, ship.telephone 
+        ]
+        item_arr = []
+        # Generate spaces for items up to 16 deep
+        0.upto(15) do |i|
+          item = order.order_line_items[i]
+          if !item.nil? && !item.product.nil?  then
+            item_arr << item.product.code
+            item_arr << item.quantity
+          else
+            item_arr << ''
+            item_arr << ''
+          end
+        end
+        # Add csv string by joining arrays
+        csv << order_arr.concat(item_arr)
+      end
+    end
+    return csv_string
+  end
+
+	# Returns an XML string for each order in the order list.
+	# This format is for sending orders to Tony's Fine Foods
+	def self.get_xml_for_orders(order_list)
+		xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
+		xml << "<orders>\n"
+		for order in order_list
+		  if order.order_shipping_type
+		    shipping_type = order.order_shipping_type.code
+		  else
+		    shipping_type = ''
+	    end
+		  #pretty_date = order.created_on.strftime("%m/%d/%y")
+		  pretty_date = order.created_on
+		  xml << "	<order>\n"
+  		xml << "		<date>#{pretty_date}</date>\n"
+  		xml << "		<shippingCode>#{shipping_type}</shippingCode>\n"
+  		xml << "		<invoiceNumber>#{order.order_number}</invoiceNumber>\n"
+  		xml << "		<emailAddress>#{order.order_user.email_address}</emailAddress>\n"
+      # Shipping address
+      address = order.shipping_address
+      xml << "		<shippingAddress>\n"
+  		xml << "			<firstName>#{address.first_name}</firstName>\n"
+  		xml << "			<lastName>#{address.last_name}</lastName>\n"
+  		xml << "			<address1>#{address.address}</address1>\n"
+  		xml << "			<address2></address2>\n"
+  		xml << "			<city>#{address.city}</city>\n"
+  		xml << "			<state>#{address.state}</state>\n"
+  		xml << "			<zip>#{address.zip}</zip>\n"
+  		xml << "			<countryCode>#{address.country.fedex_code}</countryCode>\n"
+  		xml << "			<telephone>#{address.telephone}</telephone>\n"
+  		xml << "		</shippingAddress>\n"
+  		# Items
+  		xml << "		<items>\n"
+  		for item in order.order_line_items
+  		  xml << "			<item>\n"
+    		xml << "				<name>#{item.product.name}</name>\n"
+    		xml << "				<id>#{item.product.code}</id>\n"
+    		xml << "				<quantity>#{item.quantity}</quantity>\n"
+    		xml << "			</item>\n"
+		  end
+  		xml << "		</items>\n"
+  		# End
+      xml << "	</order>\n"
+    end
+	  # End orders
+	  xml << "</orders>\n"
+	  return xml
+	end
+  
+  
   # INSTANCE METHODS ==========================================================
 
   # Shortcut to find order_line_item for a promotion that has been applied.

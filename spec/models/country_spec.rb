@@ -11,8 +11,9 @@ describe Country do
     @country.should be_valid
   end
   
-  it do
-    #@country.should have(1).errors.on(:name)
+  it "should have a name field" do
+    @country.valid?
+    @country.errors.on(:name).should_not be_nil
   end
   
 end

@@ -32,11 +32,11 @@ class OrderUser
 
   #validates_presence_of :email_address, :message => ERROR_EMPTY
   #validates_length_of :email_address, :maximum => 255
-  #validates_uniqueness_of :email_address, 
-  #  :message => %q/
-  #    This email address has already been taken in our system.<br\/>
-  #    If you have already ordered with us, please login.
-  #  /
+  validates_uniqueness_of :email_address, 
+    :message => %q/
+      This email address has already been taken in our system.<br\/>
+      If you have already ordered with us, please login.
+    /
   #validates_format_of :email_address,
   #                    :with => /^([^@\s]+)@((?:[-a-zA-Z0-9]+\.)+[a-zA-Z]{2,})$/,
   #                    :message => "Please enter a valid email address."
