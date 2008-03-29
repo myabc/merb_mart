@@ -1,9 +1,13 @@
 # Put the correct routes in place
-Merb::BootLoader.after_app_loads do
-  Merb::Router.prepend do |r|
-    r.match("/login").to(:controller => "Sessions", :action => "create").name(:login)
-    r.match("/logout").to(:controller => "Sessions", :action => "destroy").name(:logout)
-    r.match("/users/activate/:activation_code").to(:controller => "Users", :action => "activate").name(:user_activation)
-    r.resources :users
+module AuthenticatedSystem
+  def self.add_routes
+    Merb::BootLoader.after_app_loads do
+      Merb::Router.prepend do |r|
+        r.match("/login").to(:controller => "Session", :action => "create").name(:login)
+        r.match("/logout").to(:controller => "Session", :action => "destroy").name(:logout)
+        r.resources :users
+        r.resources :session
+      end
+    end
   end
 end

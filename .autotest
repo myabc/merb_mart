@@ -1,3 +1,5 @@
+require 'autotest/redgreen'
+
 Autotest.add_hook :initialize do |at|
   ignore = %w{.git www public log CHANGELOG INSTALL LICENSE README TODO}
   unless ENV['AUTOTEST'] == 'integration'

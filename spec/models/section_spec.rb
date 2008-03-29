@@ -11,9 +11,23 @@ describe Section do
   it "should require a name"
   it "should require a name to be unique"
   
-  it "should return find_all"
-  it "should return find_ordered_parents"
+  describe "finders" do
   
-  it "should provide a content_count"
+    it "should return find_alpha" do
+      Section.find_alpha.should_not be_nil
+    end
+    
+    it "should return find_ordered_parents" do
+      Section.find_ordered_parents.should_not be_nil
+    end
+
+  end
+  
+  ## instance methods
+  it "should provide a content_count" do
+    section = Section.new
+    ## TODO: do whatever to build a valid instance
+    content_count.should_not be_nil
+  end
 
 end

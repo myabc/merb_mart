@@ -19,7 +19,8 @@ class StoreItem
   property :weight,         :float,                   :default => 0.0,   :nullable => false
   property :is_discontinued,:boolean,                 :default => false, :nullable => false
   
-  #t.string   "type",              :string, :limit => 40  -- handled by DM
+  property :type,           :class    # enable single-table inheritence
+  
   #t.integer  "product_id",                        :default => 0,     :null => false
 
   #add_index ["quantity", "is_discontinued", "variation_quantity"], :name => "published"

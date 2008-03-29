@@ -14,7 +14,7 @@ class OrderAddress
   property :address,    :string,                :default => "", :nullable => false
   property :city,       :string, :length => 50
   property :state,      :string, :length => 30
-  property :zip,        :string, :length => 10  
+  property :zip,        :string, :length => 10 
   
   # Validation
   #validates_presence_of :order_user_id, :country_id

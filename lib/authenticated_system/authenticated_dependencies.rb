@@ -1,4 +1,4 @@
-dependency 'merb_helpers', '>= 0.9' rescue NoMethodError
+require 'merb_helpers'
 
 base = File.dirname(__FILE__)
 

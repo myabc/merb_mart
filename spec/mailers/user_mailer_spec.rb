@@ -63,7 +63,7 @@ describe UserMailer do
     @delivery.text.should include(@u.login)
   end
 
-  it "should mention the suers login in the html activation mail" do
+  it "should mention the users login in the html activation mail" do
     deliver(:activation_notification, @mailer_params, :user => @u)
     @delivery.html.should include(@u.login)    
   end

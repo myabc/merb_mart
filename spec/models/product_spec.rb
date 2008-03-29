@@ -10,6 +10,7 @@ describe Product do
     @product.title = "mousemat"
     @product.slug = "mousemat"
     @product.should be_valid
+    
   end
 
   describe "associations" do

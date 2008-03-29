@@ -1,9 +1,9 @@
 = Installation
 
 Current Dependencies:
- * merb 0.9.1 or above
-    * merb-core
-    * merb-more
+ * merb 0.9.2
+    * merb-core : sudo gem install merb-core
+    * merb-more : sudo gem install merb-more
     * merb-plugins
         * merb_datamapper   
                 -- currently requires patching, because of these code

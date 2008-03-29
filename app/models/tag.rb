@@ -14,7 +14,7 @@ class Tag
     
   property :name, :string, :length => 100, :default => "", :nullable => false, :key => :unique
   property :rank, :integer
- # property :parent_id
+  property :parent_id, :integer
     
   #validates_presence_of :name
   #validates_uniqueness_of :name
@@ -25,14 +25,13 @@ class Tag
   # Most used finder function for tags.
   # Selects by alpha sort.
   def self.find_alpha
-    all # :order => 'name ASC') 
+    all(:order => 'name ASC') 
   end
   
   # Finds ordered parent tags.
   #
   def self.find_ordered_parents
-    all(:conditions => "parent_id IS NULL OR parent_id = 0")
-      #:order => "-rank DESC"
+    all(:conditions => {:parent_id => nil, :parent_id => 0}, :order => "-rank DESC")
   end
   
   # Finds a list of related tags for the tag id's passed in
