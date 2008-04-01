@@ -28,4 +28,10 @@ describe Country do
     @country.should be_valid
   end
   
+  describe "finders" do
+    
+    
+    
+  end
+  
 end

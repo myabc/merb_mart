@@ -6,4 +6,8 @@ describe OrderShippingWeight do
     it "should belong to an order shipping type"
   end
 
+  it "should have a min weight"
+  it "should have a max weight"
+  it "should have a price"
+
 end

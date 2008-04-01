@@ -7,9 +7,9 @@ class OrderAccount
   has_one :order
   belongs_to :order_user, :accessor => :protected
   
-  #@@salt = 'salt_$alt_salt'
+  @@salt = 'salt_$alt_salt'
   #cattr_accessor :salt
-  #@@password = '$ub$truct_change_me'
+  @@password = '$ub$truct_change_me'
   #cattr_accessor :password
   
   #attr_protected :order_user_id

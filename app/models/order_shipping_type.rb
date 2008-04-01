@@ -13,13 +13,11 @@ class OrderShippingType
   property :price,       :float,   :default => 0.0,  :nullable => false
   
   def self.get_domestic
-    all(:is_domestic => true)
-          # TODO :order => "price ASC")
+    all(:is_domestic => true, :order => "price ASC")
   end
 
   def self.get_foreign
-    all(:is_domestic => false)
-         # TODO :order => "price ASC")
+    all(:is_domestic => false, :order => "price ASC")
   end
   
   # Calculates shipping price for a shipping type with weight.
@@ -34,8 +32,9 @@ class OrderShippingType
       )
       price = proper_weight.price if proper_weight
     end
-    
-    self.calculated_price = price + Preference.find_by_name('store_handling_fee').value.to_f
+        
+    #self.calculated_price = price + Preference.find_by_name('store_handling_fee').value.to_f
+    self.calculated_price = price 
   end
   
   # Sets weight variations from attribute list.
