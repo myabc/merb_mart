@@ -21,8 +21,15 @@ describe Order do
   
   describe "class methods" do
     
-    it "should return a search result"
-    it "should generate an order number"
+    it "should return a search result" do
+      pending
+    end
+    
+    it "should generate an order number" do
+      Order.generate_order_number
+      
+      pending
+    end
     
     it "should get totals"
 

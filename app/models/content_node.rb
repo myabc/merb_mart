@@ -3,8 +3,8 @@
 class ContentNode
   
   include DataMapper::Resource
+  #include DataMapper::Validate
   
-  #has_and_belongs_to_many :sections
   many_to_many :sections
 
   TYPES = ['Blog', 'Page', 'Snippet']

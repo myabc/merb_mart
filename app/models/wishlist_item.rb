@@ -4,8 +4,8 @@ class WishlistItem
   
   include DataMapper::Resource
   
-  #belongs_to :order_user
-  #belongs_to :item
+  many_to_one :order_user
+  many_to_one :item
   
   property :id,         Fixnum,  :serial => true
   property :created_on, DateTime

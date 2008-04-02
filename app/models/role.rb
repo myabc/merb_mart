@@ -4,8 +4,6 @@ class Role
   
   include DataMapper::Resource
   
-  #has_and_belongs_to_many :users 
-  #has_and_belongs_to_many :rights, :order => 'name ASC'
   many_to_many  :users
   many_to_many  :rights, :order => 'name ASC'
 

@@ -5,8 +5,8 @@ class ProductImage
   
   include DataMapper::Resource
   
-  #belongs_to :product
-  #belongs_to :image
+  many_to_one :product
+  many_to_one :image
   
   property :rank, Fixnum
   

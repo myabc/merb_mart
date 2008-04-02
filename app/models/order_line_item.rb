@@ -2,8 +2,8 @@ class OrderLineItem
   
   include DataMapper::Resource
   
-  #belongs_to :product
-  #belongs_to :store_item
+  many_to_one :product
+  many_to_one :store_item
   
   property :id,         Fixnum,  :serial => true
   property :quantity,   Fixnum,  :default => 0,   :nullable => false

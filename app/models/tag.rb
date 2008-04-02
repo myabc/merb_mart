@@ -9,8 +9,7 @@ class Tag
   include DataMapper::Resource
   #include DataMapper::Is::Tree
   
-  #has_and_belongs_to_many :products,
-  #  :join_table => 'products_tags'
+  many_to_many :products, :join_table => 'products_tags'
   
   property :id,         Fixnum, :serial => true
   property :name,       String, :length => 100, :default => "", :nullable => false, :key => :unique
@@ -27,13 +26,14 @@ class Tag
   # Most used finder function for tags.
   # Selects by alpha sort.
   def self.find_alpha
-    all(:order => 'name ASC') 
+    all(:order => [ DataMapper::Query::Direction.new("name", :asc) ])
   end
   
   # Finds ordered parent tags.
   #
   def self.find_ordered_parents
-    all(:conditions => {:parent_id => nil, :parent_id => 0}, :order => "-rank DESC")
+    all(:conditions => [:parent_id => nil, :parent_id => 0], 
+        :order => [ DataMapper::Query::Direction.new(:rank, :desc) ])
   end
   
   # Finds a list of related tags for the tag id's passed in

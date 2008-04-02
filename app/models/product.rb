@@ -7,19 +7,18 @@ class Product < StoreItem
       OR (items.is_discontinued = 1 AND (items.quantity > 0 OR items.variation_quantity > 0))
   /
   
-  # FIXME!!!
-  #has_many :product_images
-  #has_many   :variations, :dependent => :destroy, :order => 'name ASC'
-  #has_many :images, 
-  #  :through => :product_images, :order => "-product_images.rank DESC",
-  #  :dependent => :destroy
+  one_to_many :product_images
+  one_to_many :variations, :dependent => :destroy, :order => 'name ASC'
+  one_to_many :images, 
+    :through => :product_images, :order => "-product_images.rank DESC",
+    :dependent => :destroy
   
   # Join with related items...
-  #has_and_belongs_to_many :related_products,
-  #  :class_name => 'Product',
-  #  :join_table => 'related_products',
-  #  :association_foreign_key => 'related_id',
-  #  :foreign_key => 'product_id',
+  many_to_many :related_products,
+    :class_name => 'Product',
+    :join_table => 'related_products',
+    :association_foreign_key => 'related_id',
+    :foreign_key => 'product_id'
   #  :after_add => :add_return_relation,
   #  :after_remove => :remove_return_relation
   
@@ -33,7 +32,6 @@ class Product < StoreItem
     database.query(sql)
   end
   
-  #has_and_belongs_to_many :tags
   many_to_many :tags
   
   #############################################################################

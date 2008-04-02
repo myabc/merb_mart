@@ -2,7 +2,7 @@ class OrderStatusCode
   
   include DataMapper::Resource
   
-  #has_many :orders
+  one_to_many :orders
   
   property :id,   Fixnum, :serial => true
   property :name, String, :length => 30, :nullable => false

@@ -2,9 +2,10 @@
 #
 class Variation < StoreItem
   
-  #belongs_to :product
+  many_to_one :product
   
-  #property :variation_quantity,  Fixnum, :default => 0, :nullable => false
+  # FIXME: work out why this isn't working!
+  #property :variation_quantity, Fixnum, :default => 0, :nullable => false
   
   #############################################################################
   # CALLBACKS

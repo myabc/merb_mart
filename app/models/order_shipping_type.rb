@@ -2,8 +2,8 @@ class OrderShippingType
   
   include DataMapper::Resource
   
-  #has_many :orders
-  #has_many :weights, :class => 'OrderShippingWeight', :dependent => :destroy
+  one_to_many :orders
+  one_to_many :weights, :class => 'OrderShippingWeight', :dependent => :destroy
 
   attr_accessor :calculated_price
 

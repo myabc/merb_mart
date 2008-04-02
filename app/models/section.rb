@@ -8,12 +8,12 @@ class Section
   include DataMapper::Resource
   #include DataMapper::Is::Tree
   
-  #has_and_belongs_to_many :content_nodes
-  #has_and_belongs_to_many :blogs,
-  #  :join_table => 'content_nodes_sections',
-  #  :association_foreign_key => 'content_node_id',
-  #  :conditions => "content_nodes.type = 'Blog'",
-  #  :order => 'display_on DESC'
+  many_to_many :content_nodes
+  many_to_many :blogs,
+    :join_table => 'content_nodes_sections',
+    :association_foreign_key => 'content_node_id',
+    :conditions => "content_nodes.type = 'Blog'",
+    :order => 'display_on DESC'
 
   property :id,         Fixnum, :serial => true
   property :name,       String, :length => 100, :default => "", :nullable => false

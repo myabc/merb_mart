@@ -6,8 +6,8 @@ class StoreItem
 
   include DataMapper::Resource
 
-  #has_many :order_line_items
-  #has_many :wishlist_items, :dependent => :destroy
+  one_to_many :order_line_items
+  one_to_many :wishlist_items, :dependent => :destroy
 
   property :id,             Fixnum, :serial => true
   property :code,           String, :length => 20,  :default => "",    :nullable => false
@@ -21,7 +21,6 @@ class StoreItem
   property :size_depth,     Float,                   :default => 0.0,   :nullable => false
   property :weight,         Float,                   :default => 0.0,   :nullable => false
   property :is_discontinued, TrueClass,                 :default => false, :nullable => false
-                            # Boolean?
   
   property :type,           Class    # enable single-table inheritence
   

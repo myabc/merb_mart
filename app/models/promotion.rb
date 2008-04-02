@@ -11,9 +11,10 @@ class Promotion
     'Percent of total order' => 1,
     'Buy [n] get 1 free' => 2
   }
+  
   # Associations
-  #has_many :orders
-  #belongs_to :item
+  one_to_many :orders
+  many_to_one :item
   
   # Properties
   property :id,               Fixnum,   :serial => true

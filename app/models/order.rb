@@ -2,17 +2,17 @@ class Order
   
   include DataMapper::Resource
   
-  #has_many :order_line_items, :dependent => :destroy
+  one_to_many :order_line_items, :dependent => :destroy
   
   # billing_address defined as a method!
-  #has_one :billing_address,  :class => 'OrderAddress', :foreign_key => 'billing_address_id'
-  #has_one :shipping_address, :class => 'OrderAddress', :foreign_key => 'shipping_address_id'
+  one_to_one :billing_address,  :class => 'OrderAddress', :foreign_key => 'billing_address_id'
+  one_to_one :shipping_address, :class => 'OrderAddress', :foreign_key => 'shipping_address_id'
   
-  #belongs_to :order_account
-  #belongs_to :order_user
-  #belongs_to :order_shipping_type
-  #belongs_to :order_status_code
-  #belongs_to :promotion
+  many_to_one :order_account
+  many_to_one :order_user
+  many_to_one :order_shipping_type
+  many_to_one :order_status_code
+  many_to_one :promotion
   
   attr_accessor :promotion_code
   
@@ -157,7 +157,7 @@ class Order
     record = Object.new
     while record
       random = rand(999999999)
-      record = find(:first, :conditions => ["order_number = ?", random])
+      record = first(:conditions => ['order_number = ?', random])
     end
     return random
   end

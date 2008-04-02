@@ -7,7 +7,7 @@ class OrderShippingWeight
   
   include DataMapper::Resource
   
- # belongs_to :order_shipping_type
+  many_to_one :order_shipping_type
 
   property :id,         Fixnum, :serial => true
   property :min_weight, Float, :default => 0.0, :nullable => false

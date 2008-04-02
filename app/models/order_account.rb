@@ -3,9 +3,9 @@ class OrderAccount
   include DataMapper::Resource
   require 'ezcrypto'
   
-  #has_one :order_account_type
-  #has_one :order
-  #belongs_to :order_user, :accessor => :protected
+  one_to_one :order_account_type
+  one_to_one :order
+  many_to_one :order_user, :accessor => :protected
   
   @@salt = 'salt_$alt_salt'
   #cattr_accessor :salt

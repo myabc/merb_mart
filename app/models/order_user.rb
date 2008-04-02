@@ -8,20 +8,20 @@ class OrderUser
   
   include DataMapper::Resource
   
-  #has_many :orders,
-  #  :dependent => :nullify,
-  #  :order => "created_on DESC"
-  #has_one :last_order,
-  #  :class_name => "Order",
-  #  :order => "created_on DESC"
-  #has_many :order_addresses, :dependent => :destroy
-  #has_many :order_accounts, :dependent => :destroy
+  one_to_many :orders,
+    :dependent => :nullify,
+    :order => "created_on DESC"
+  one_to_many :last_order,
+    :class_name => "Order",
+    :order => "created_on DESC"
+  one_to_many :order_addresses, :dependent => :destroy
+  one_to_many :order_accounts, :dependent => :destroy
   
-  #has_many :wishlist_items, 
-  #  :dependent => :destroy,
-  #  :order => "created_on DESC"
-  #has_many :items, :through => :wishlist_items,
-  #  :order => "wishlist_items.created_on DESC"
+  one_to_many :wishlist_items, 
+    :dependent => :destroy,
+    :order => "created_on DESC"
+  one_to_many :items, :through => :wishlist_items,
+    :order => "wishlist_items.created_on DESC"
   
   property :id,            Fixnum,  :serial => true
   property :username,      String,  :length => 50

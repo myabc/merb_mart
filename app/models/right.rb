@@ -11,7 +11,6 @@ class Right
   
   include DataMapper::Resource
   
-  #has_and_belongs_to_many :roles 
   many_to_many  :roles
 
   property :id,         Fixnum, :serial => true

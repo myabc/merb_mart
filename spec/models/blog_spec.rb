@@ -24,5 +24,9 @@ describe Blog do
     blog = Blog.first[person.id]
     blog.should == person
   end
+  
+  it "should find latest" do
+    Blog.find_latest
+  end
 
 end

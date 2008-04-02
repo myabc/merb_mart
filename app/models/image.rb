@@ -2,8 +2,8 @@
 #
 class Image < UserUpload
 
-  #has_many :product_images
-  #has_many :products, :through => :product_images
+  one_to_many :product_images
+  one_to_many :products, :through => :product_images
 
 #  has_attachment :content_type => :image,
 #                 :storage => :file_system,

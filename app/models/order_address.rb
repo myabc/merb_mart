@@ -2,9 +2,9 @@ class OrderAddress
   
   include DataMapper::Resource
   
-  #has_one :order
-  #belongs_to :order_user
-  #belongs_to :country
+  one_to_one :order
+  many_to_one :order_user
+  many_to_one :country
   
   #t.integer "order_user_id",               :default => 0,  :null => false
   
