@@ -1,6 +1,9 @@
+require 'validate'
+
 class Question
   
   include DataMapper::Resource
+  include DataMapper::Validate
 
   property :id,             Fixnum, :serial => true
   property :short_question, String
@@ -14,5 +17,5 @@ class Question
   property :email_address,  String,  :length => 50
   
   # Validation
-	#validates_presence_of :short_question, :message => ERROR_EMPTY
+  validates_presence_of :short_question, :message => ERROR_EMPTY
 end

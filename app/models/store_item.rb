@@ -1,10 +1,12 @@
 # This is the base model for Product and ProductVariation.
 #
 require "date"
+require "validate"
 
 class StoreItem
 
   include DataMapper::Resource
+  include DataMapper::Validate
 
   one_to_many :order_line_items
   one_to_many :wishlist_items, :dependent => :destroy
@@ -32,8 +34,8 @@ class StoreItem
   #add_index ["date_available", "is_discontinued", "quantity", "variation_quantity", "type"], :name => "tag_view"
   #add_index ["name", "code", "is_discontinued", "date_available", "quantity", "variation_quantity", "type"], :name => "search"
 
-  # FIXME
-  #validates_presence_of :name, :code
+  validates_presence_of :name, :code
+  # FIXME: fix validates_uniqueness_of
   #validates_uniqueness_of :code
   
   #############################################################################

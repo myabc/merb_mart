@@ -1,6 +1,9 @@
+require 'validate'
+
 class OrderAccount
   
   include DataMapper::Resource
+  include DataMapper::Validate
   require 'ezcrypto'
   
   one_to_one :order_account_type
@@ -34,20 +37,22 @@ class OrderAccount
   
   #validates_presence_of :order_user_id
   
-  #validates_presence_of :cc_number,
-  #  :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Credit Card'] },
-  #  :message => ERROR_EMPTY
+  validates_presence_of :cc_number,
+    :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Credit Card'] },
+    :message => ERROR_EMPTY
   
-  #validates_presence_of :routing_number,
-  #  :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Checking'] || oa.order_account_type_id == TYPES['Business Checking'] },
-  #  :message => ERROR_EMPTY
+  validates_presence_of :routing_number,
+    :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Checking'] || oa.order_account_type_id == TYPES['Business Checking'] },
+    :message => ERROR_EMPTY
   
-  #validates_presence_of :account_number,
-  #  :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Checking'] || oa.order_account_type_id == TYPES['Business Checking'] },
-  #  :message => ERROR_EMPTY
+  validates_presence_of :account_number,
+    :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Checking'] || oa.order_account_type_id == TYPES['Business Checking'] },
+    :message => ERROR_EMPTY
+    
+  # TODO: add validates_absence_of here
   
-  #validates_format_of :credit_ccv, :with => /^[\d]*$/, :message => ERROR_NUMBER
-  #validates_numericality_of :expiration_month, :expiration_year
+  validates_format_of :credit_ccv, :with => /^[\d]*$/, :message => ERROR_NUMBER
+  validates_numericalnes_of :expiration_month, :expiration_year
 
   # Make sure expiration date is ok.
   def validate

@@ -1,3 +1,5 @@
+require 'validate'
+
 # Tags are how we organize products inside Substruct.
 #
 # Tags may be ordered, and contain other tags. In this fashion,
@@ -7,6 +9,7 @@
 class Tag
   
   include DataMapper::Resource
+  include DataMapper::Validate
   #include DataMapper::Is::Tree
   
   many_to_many :products, :join_table => 'products_tags'
@@ -16,7 +19,7 @@ class Tag
   property :rank,       Fixnum
   property :parent_id,  Fixnum
     
-  #validates_presence_of :name
+  validates_presence_of :name
   #validates_uniqueness_of :name
   
   # FIXME : fix the tree

@@ -1,3 +1,5 @@
+require 'validate'
+
 # Promotions allow discounts to be applied to orders, and
 # have the ability to add items to an order as well.
 #
@@ -5,6 +7,7 @@
 class Promotion
   
   include DataMapper::Resource
+  include DataMapper::Validate
 
   TYPES = {
     'Dollars' => 0,
@@ -27,9 +30,10 @@ class Promotion
   property :description,      String,                  :default => "", :nullable => false
   
   # Validation
-  #validates_presence_of :code, :discount_amount, :discount_type, :description
+  validates_presence_of :code, :discount_amount, :discount_type, :description
+  # FIXME: fix validates_uniqueness_of
   #validates_uniqueness_of :code
-  #validates_numericality_of :discount_amount
+  validates_numericalnes_of :discount_amount
   
   # FIXME: call backs
   #before_save :clean_code

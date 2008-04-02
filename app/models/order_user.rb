@@ -1,3 +1,5 @@
+require 'validate'
+
 # OrderUser aka Customer
 #
 # This is what ties all orders / addresses / wishlist items
@@ -7,6 +9,7 @@
 class OrderUser
   
   include DataMapper::Resource
+  include DataMapper::Validate
   
   one_to_many :orders,
     :dependent => :nullify,
@@ -31,16 +34,17 @@ class OrderUser
   property :first_name,    String,  :length => 50, :default => "", :nullable => false
   property :last_name,     String,  :length => 50, :default => "", :nullable => false
 
-  #validates_presence_of :email_address, :message => ERROR_EMPTY
-  #validates_length_of :email_address, :maximum => 255
+  validates_presence_of :email_address, :message => ERROR_EMPTY
+  validates_length_of :email_address, :maximum => 255
+  # FIXME: fix validates_uniqueness_of (not available yet)
   #validates_uniqueness_of :email_address, 
   #  :message => %q/
   #    This email address has already been taken in our system.<br\/>
   #    If you have already ordered with us, please login.
   #  /
-  #validates_format_of :email_address,
-  #                    :with => /^([^@\s]+)@((?:[-a-zA-Z0-9]+\.)+[a-zA-Z]{2,})$/,
-  #                    :message => "Please enter a valid email address."
+  validates_format_of :email_address,
+                      :with => /^([^@\s]+)@((?:[-a-zA-Z0-9]+\.)+[a-zA-Z]{2,})$/,
+                      :message => "Please enter a valid email address."
 
   # We don't save passwords all the time when creating an account.
   # Generate one before save if a new record

@@ -1,9 +1,11 @@
+require 'validate'
+
 # ContentNode is the base class for all of our content.
 #
 class ContentNode
   
   include DataMapper::Resource
-  #include DataMapper::Validate
+  include DataMapper::Validate
   
   many_to_many :sections
 
@@ -25,8 +27,8 @@ class ContentNode
   # VALIDATION
   #############################################################################
 
-  #validates_presence_of :name, :title, :content
-
+  validates_presence_of :name, :title, :content
+  # FIXME: fix validates_uniqueness_of
 #  validates_uniqueness_of :name, :message => 'This URL has already been taken. Create a unique URL please.'
 
 #  before_validation :normalize

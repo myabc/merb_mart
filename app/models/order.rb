@@ -1,6 +1,9 @@
+require 'validate'
+
 class Order
   
   include DataMapper::Resource
+  include DataMapper::Validate
   
   one_to_many :order_line_items, :dependent => :destroy
   
@@ -30,7 +33,8 @@ class Order
   #property t.integer  :shipping_address_id",    :default => 0,   :null => false
   #property t.integer  :billing_address_id",     :default => 0,   :null => false
   
-  #validates_presence_of   :order_number
+  validates_presence_of   :order_number
+  # FIXME: fix validates_uniqueness_of
   #validates_uniqueness_of :order_number
   
   # CALLBACKS =================================================================

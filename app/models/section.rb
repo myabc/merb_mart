@@ -1,3 +1,5 @@
+require 'validate'
+
 # A section is an organizational unit for content nodes.
 #
 # Sections can be applied to pages or snippets, but really are
@@ -6,6 +8,7 @@
 class Section
   
   include DataMapper::Resource
+  include DataMapper::Validate
   #include DataMapper::Is::Tree
   
   many_to_many :content_nodes
@@ -19,9 +22,9 @@ class Section
   property :name,       String, :length => 100, :default => "", :nullable => false
   property :rank,       Fixnum
   property :parent_id,  Fixnum
-   
-  # FIXME : validations 
-  #validates_presence_of :name
+
+  validates_presence_of :name
+  # FIXME: fix validates_uniqueness_of (not available yet)
   #validates_uniqueness_of :name
   # FIXME : tree
   #is_a_tree :order => 'rank' # '-rank DESC'

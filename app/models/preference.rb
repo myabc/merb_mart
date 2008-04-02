@@ -1,3 +1,5 @@
+require 'validate'
+
 # Handles storing of preferences for the application.
 #
 # This is an internal structure mostly, which is useful to access / save
@@ -9,6 +11,7 @@
 class Preference
   
   include DataMapper::Resource
+  include DataMapper::Validate
   
   # Types can hold strings, booleans, or pointers to
   # other records (like country)
@@ -19,8 +22,8 @@ class Preference
   property :name,  String, :default => "", :nullable => false
   property :value, String, :default => ""
   
-  # FIXME
-  #validates_presence_of :name, :type
+  validates_presence_of :name, :type
+  # FIXME: fix validates_uniqueness_of
   #validates_uniqueness_of :name
   
   def self.find_by_name(name)
