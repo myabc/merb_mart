@@ -2,16 +2,17 @@
 #
 class Variation < StoreItem
   
-  belongs_to :product
+  #belongs_to :product
   
-  property :variation_quantity,  :integer, :default => 0, :nullable => false
+  #property :variation_quantity,  Fixnum, :default => 0, :nullable => false
   
   #############################################################################
   # CALLBACKS
   #############################################################################
   
-  before_save :set_date_available
-  after_save  :update_parent_quantity
+  # FIXME: fix callbacks
+  #before_save :set_date_available
+  #after_save  :update_parent_quantity
   
   # DB complains if there's not a date available set.
   # This is a cheap fix.

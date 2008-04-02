@@ -4,20 +4,23 @@
 #
 # Before a save, checks to set the type, based on file extension.
 #
+#require "date"
+
 class UserUpload
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
   IMAGE_EXTENSIONS = ['gif', 'jpg', 'jpeg', 'png', 'bmp']
 
-  property :filename,  :string
-  property :width,     :integer, :default => 0, :nullable => false
-  property :height,    :integer, :default => 0, :nullable => false
-  property :created_on, :datetime
+  property :id,         Fixnum, :serial => true
+  property :filename,   String
+  property :width,      Fixnum, :default => 0, :nullable => false
+  property :height,     Fixnum, :default => 0, :nullable => false
+  property :created_on, DateTime
   #property :parent_id
-  property :content_type, :string
-  property :thumbnail,    :string
-  property :size,         :integer
+  property :content_type, String
+  property :thumbnail,    String
+  property :size,         Fixnum
   
   # Checks what type of file this is based on extension.
   #
@@ -27,7 +30,8 @@ class UserUpload
   # No, we're not using anything fancy here, just the extension set.
   #
 
-  before_save :downcase_extension
+  # FIXME
+  #before_save :downcase_extension
   
   def downcase_extension
     self.filename = "#{self.filename[0, self.filename.rindex('.')]}.#{self.extension.downcase}"

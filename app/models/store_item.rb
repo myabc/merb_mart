@@ -1,35 +1,41 @@
 # This is the base model for Product and ProductVariation.
 #
+require "date"
+
 class StoreItem
 
-  include DataMapper::Persistable
+  include DataMapper::Resource
 
-  has_many :order_line_items
-  has_many :wishlist_items, :dependent => :destroy
+  #has_many :order_line_items
+  #has_many :wishlist_items, :dependent => :destroy
 
-  property :code,           :string,  :length => 20,  :default => "",    :nullable => false
-  property :name,           :string,  :length => 100, :default => "",    :nullable => false
-  property :description,    :text
-  property :price,          :float,                   :default => 0.0,   :nullable => false
-  property :date_available, :datetime,                                   :nullable => false
-  property :quantity,       :integer,                 :default => 0,     :nullable => false
-  property :size_width,     :float,                   :default => 0.0,   :nullable => false
-  property :size_height,    :float,                   :default => 0.0,   :nullable => false
-  property :size_depth,     :float,                   :default => 0.0,   :nullable => false
-  property :weight,         :float,                   :default => 0.0,   :nullable => false
-  property :is_discontinued,:boolean,                 :default => false, :nullable => false
+  property :id,             Fixnum, :serial => true
+  property :code,           String, :length => 20,  :default => "",    :nullable => false
+  property :name,           String, :length => 100, :default => "",    :nullable => false
+  property :description,    DataMapper::Types::Text
+  property :price,          Float,                   :default => 0.0,   :nullable => false
+  property :date_available, DateTime,                                   :nullable => false
+  property :quantity,       Fixnum,                 :default => 0,     :nullable => false
+  property :size_width,     Float,                   :default => 0.0,   :nullable => false
+  property :size_height,    Float,                   :default => 0.0,   :nullable => false
+  property :size_depth,     Float,                   :default => 0.0,   :nullable => false
+  property :weight,         Float,                   :default => 0.0,   :nullable => false
+  property :is_discontinued, TrueClass,                 :default => false, :nullable => false
+                            # Boolean?
   
-  property :type,           :class    # enable single-table inheritence
+  property :type,           Class    # enable single-table inheritence
   
   #t.integer  "product_id",                        :default => 0,     :null => false
 
+  # FIXME
   #add_index ["quantity", "is_discontinued", "variation_quantity"], :name => "published"
   #add_index ["product_id", "type"], :name => "variation"
   #add_index ["date_available", "is_discontinued", "quantity", "variation_quantity", "type"], :name => "tag_view"
   #add_index ["name", "code", "is_discontinued", "date_available", "quantity", "variation_quantity", "type"], :name => "search"
 
+  # FIXME
   #validates_presence_of :name, :code
-  validates_uniqueness_of :code
+  #validates_uniqueness_of :code
   
   #############################################################################
   # CALLBACKS

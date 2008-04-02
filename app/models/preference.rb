@@ -8,19 +8,20 @@
 #
 class Preference
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
   # Types can hold strings, booleans, or pointers to
   # other records (like country)
   CC_PROCESSORS = ['Authorize.net', 'PayPal IPN']
   MAIL_AUTH = ['none', 'plain', 'login', 'cram_md5']
   
-  property :name,  :string, :default => "", :nullable => false
-  property :value, :string, :default => ""
+  property :id,    Fixnum, :serial => true
+  property :name,  String, :default => "", :nullable => false
+  property :value, String, :default => ""
   
+  # FIXME
   #validates_presence_of :name, :type
-  validates_uniqueness_of :name
-  
+  #validates_uniqueness_of :name
   
   def self.find_by_name(name)
     first(:name => name)

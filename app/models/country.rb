@@ -1,12 +1,13 @@
 class Country
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  property :name,       :string, :length => 100, :nullable => false
-  property :fedex_code, :string, :length => 50
-  property :ufsi_code,  :string, :length => 3
+  property :id,         Fixnum, :serial => true
+  property :name,       String, :length => 100, :nullable => false
+  property :fedex_code, String, :length => 50
+  property :ufsi_code,  String, :length => 3
   
   # TODO: not really a normalized way of doing things? should we keep this?
-  property :number_of_orders, :integer, :default => 0, :index => true
+  property :number_of_orders, Fixnum, :default => 0, :index => true
 
 end

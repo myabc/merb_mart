@@ -1,16 +1,17 @@
 class OrderShippingType
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  has_many :orders
-  has_many :weights, :class => 'OrderShippingWeight', :dependent => :destroy
+  #has_many :orders
+  #has_many :weights, :class => 'OrderShippingWeight', :dependent => :destroy
 
   attr_accessor :calculated_price
 
-  property :name,        :string, :length => 100, :default => "", :nullable => false
-  property :code,        :string, :length => 50
-  property :is_domestic, :boolean, :default => true, :nullable => false
-  property :price,       :float,   :default => 0.0,  :nullable => false
+  property :id,          Fixnum, :serial => true
+  property :name,        String, :length => 100, :default => "", :nullable => false
+  property :code,        String, :length => 50
+  property :is_domestic, TrueClass, :default => true, :nullable => false
+  property :price,       Float,   :default => 0.0,  :nullable => false
   
   def self.get_domestic
     all(:is_domestic => true, :order => "price ASC")

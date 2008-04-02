@@ -2,11 +2,12 @@
 #
 class WishlistItem
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  belongs_to :order_user
-  belongs_to :item
+  #belongs_to :order_user
+  #belongs_to :item
   
-  property :created_on, :datetime
+  property :id,         Fixnum,  :serial => true
+  property :created_on, DateTime
   
 end

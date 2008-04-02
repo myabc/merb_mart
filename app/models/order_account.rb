@@ -1,11 +1,11 @@
 class OrderAccount
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   require 'ezcrypto'
   
-  has_one :order_account_type
-  has_one :order
-  belongs_to :order_user, :accessor => :protected
+  #has_one :order_account_type
+  #has_one :order
+  #belongs_to :order_user, :accessor => :protected
   
   @@salt = 'salt_$alt_salt'
   #cattr_accessor :salt
@@ -22,32 +22,32 @@ class OrderAccount
     'PayPal' => 5
   }
   
-  property :cc_number,        :string
-  property :account_number,   :string
-  property :expiration_month, :integer, :length => 2
-  property :expiration_year,  :integer, :length => 4
-  property :credit_ccv,       :integer, :length => 5
-  property :routing_number,   :string,  :length => 20
-  property :bank_name,        :string,  :length => 50
+  property :cc_number,        String
+  property :account_number,   String
+  property :expiration_month, Fixnum, :length => 2
+  property :expiration_year,  Fixnum, :length => 4
+  property :credit_ccv,       Fixnum, :length => 5
+  property :routing_number,   String, :length => 20
+  property :bank_name,        String, :length => 50
 
   # VALIDATION ================================================================
   
   #validates_presence_of :order_user_id
   
-  validates_presence_of :cc_number,
-    :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Credit Card'] },
-    :message => ERROR_EMPTY
+  #validates_presence_of :cc_number,
+  #  :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Credit Card'] },
+  #  :message => ERROR_EMPTY
   
-  validates_presence_of :routing_number,
-    :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Checking'] || oa.order_account_type_id == TYPES['Business Checking'] },
-    :message => ERROR_EMPTY
+  #validates_presence_of :routing_number,
+  #  :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Checking'] || oa.order_account_type_id == TYPES['Business Checking'] },
+  #  :message => ERROR_EMPTY
   
-  validates_presence_of :account_number,
-    :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Checking'] || oa.order_account_type_id == TYPES['Business Checking'] },
-    :message => ERROR_EMPTY
+  #validates_presence_of :account_number,
+  #  :if => Proc.new { |oa| oa.order_account_type_id == TYPES['Checking'] || oa.order_account_type_id == TYPES['Business Checking'] },
+  #  :message => ERROR_EMPTY
   
-  validates_format_of :credit_ccv, :with => /^[\d]*$/, :message => ERROR_NUMBER
-  validates_numericality_of :expiration_month, :expiration_year
+  #validates_format_of :credit_ccv, :with => /^[\d]*$/, :message => ERROR_NUMBER
+  #validates_numericality_of :expiration_month, :expiration_year
 
   # Make sure expiration date is ok.
   def validate

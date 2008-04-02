@@ -1,10 +1,11 @@
 class OrderStatusCode
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  has_many :orders
+  #has_many :orders
   
-  property :name, :string, :length => 30, :nullable => false
+  property :id,   Fixnum, :serial => true
+  property :name, String, :length => 30, :nullable => false
   
   # Defines if we can edit this order or not based on the status code
   def is_editable?

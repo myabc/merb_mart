@@ -1,29 +1,30 @@
 class Order
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  has_many :order_line_items, :dependent => :destroy
+  #has_many :order_line_items, :dependent => :destroy
   
   # billing_address defined as a method!
-  has_one :billing_address,  :class => 'OrderAddress', :foreign_key => 'billing_address_id'
-  has_one :shipping_address, :class => 'OrderAddress', :foreign_key => 'shipping_address_id'
+  #has_one :billing_address,  :class => 'OrderAddress', :foreign_key => 'billing_address_id'
+  #has_one :shipping_address, :class => 'OrderAddress', :foreign_key => 'shipping_address_id'
   
-  belongs_to :order_account
-  belongs_to :order_user
-  belongs_to :order_shipping_type
-  belongs_to :order_status_code
-  belongs_to :promotion
+  #belongs_to :order_account
+  #belongs_to :order_user
+  #belongs_to :order_shipping_type
+  #belongs_to :order_status_code
+  #belongs_to :promotion
   
   attr_accessor :promotion_code
   
-  property :order_number,  :integer,  :default => 0,   :nullable => false, :index => :unique
-  property :created_on,    :datetime
-  property :shipped_on,    :datetime
-  property :notes,         :text
-  property :referer,       :string
-  property :product_cost,  :float,    :default => 0.0
-  property :shipping_cost, :float,    :default => 0.0
-  property :tax,           :float,    :default => 0.0, :nullable => false
+  property :id,            Fixnum,  :serial => true
+  property :order_number,  Fixnum,  :default => 0,   :nullable => false, :index => :unique
+  property :created_on,    DateTime
+  property :shipped_on,    DateTime
+  property :notes,         DataMapper::Types::Text
+  property :referer,       String
+  property :product_cost,  Float,   :default => 0.0
+  property :shipping_cost, Float,   :default => 0.0
+  property :tax,           Float,   :default => 0.0, :nullable => false
 
   #property t.string   :auth_transaction_id"
   #property t.integer  :shipping_address_id",    :default => 0,   :null => false
@@ -34,8 +35,9 @@ class Order
   
   # CALLBACKS =================================================================
   
-  before_save :set_product_cost
-  before_save :set_promo_code
+  # FIXME: callbacks
+  #before_save :set_product_cost
+  #before_save :set_promo_code
   
   # Sets product cost based on line items total before a save.
   def set_product_cost

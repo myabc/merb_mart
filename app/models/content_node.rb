@@ -2,20 +2,24 @@
 #
 class ContentNode
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  has_and_belongs_to_many :sections
+  #has_and_belongs_to_many :sections
+  many_to_many :sections
 
   TYPES = ['Blog', 'Page', 'Snippet']
+
+  property :id,         Fixnum,  :serial => true
+  property :name,       String,  :length => 200, :default => "", :nullable => false, :index => true
+  property :title,      String,  :length => 100, :default => "", :nullable => false
+  property :content,    DataMapper::Types::Text
+  property :display_on, DateTime
+  property :created_on, DateTime
   
-  property :name,       :string,  :length => 200, :default => "", :nullable => false, :index => true
-  property :title,      :string,  :length => 100, :default => "", :nullable => false
-  property :content,    :text
-  property :display_on, :datetime
-  property :created_on, :datetime
+  property :type,       Class   # support single-table inheritence
   
   # TODO: get composite index working
-  index [:id, :type]
+  #index [:id, :type]
   
   #############################################################################
   # VALIDATION

@@ -1,16 +1,17 @@
 class Question
   
-  include DataMapper::Persistable
-  
-  property :short_question, :string
-  property :long_question,  :text
-  property :answer,         :text
-  property :rank,           :integer
-  property :featured,       :boolean, :default => false, :nullable => false
-  property :times_viewed,   :integer, :default => 0,     :nullable => false
-  property :created_on,     :datetime, :nullable => false
-  property :answered_on,    :datetime
-  property :email_address,  :string,  :length => 50
+  include DataMapper::Resource
+
+  property :id,             Fixnum, :serial => true
+  property :short_question, String
+  property :long_question,  DataMapper::Types::Text
+  property :answer,         DataMapper::Types::Text
+  property :rank,           Fixnum
+  property :featured,       TrueClass, :default => false, :nullable => false
+  property :times_viewed,   Fixnum,    :default => 0,     :nullable => false
+  property :created_on,     DateTime,  :nullable => false
+  property :answered_on,    DateTime
+  property :email_address,  String,  :length => 50
   
   # Validation
 	#validates_presence_of :short_question, :message => ERROR_EMPTY

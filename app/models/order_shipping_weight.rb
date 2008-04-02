@@ -5,12 +5,13 @@
 #
 class OrderShippingWeight
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  belongs_to :order_shipping_type
-  
-  property :min_weight, :float, :default => 0.0, :nullable => false
-  property :max_weight, :float, :default => 0.0, :nullable => false
-  property :price,      :float, :default => 0.0, :nullable => false
+ # belongs_to :order_shipping_type
+
+  property :id,         Fixnum, :serial => true
+  property :min_weight, Float, :default => 0.0, :nullable => false
+  property :max_weight, Float, :default => 0.0, :nullable => false
+  property :price,      Float, :default => 0.0, :nullable => false
   
 end

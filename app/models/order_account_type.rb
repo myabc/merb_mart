@@ -1,7 +1,8 @@
 class OrderAccountType
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  property :name, :string, :length => 30, :default => "", :nullable => false
+  property :id,   Fixnum, :serial => true
+  property :name, String, :length => 30, :default => "", :nullable => false
   
 end

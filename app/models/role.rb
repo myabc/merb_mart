@@ -2,13 +2,16 @@
 #
 class Role
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  has_and_belongs_to_many :users 
-  has_and_belongs_to_many :rights, :order => 'name ASC'
+  #has_and_belongs_to_many :users 
+  #has_and_belongs_to_many :rights, :order => 'name ASC'
+  many_to_many  :users
+  many_to_many  :rights, :order => 'name ASC'
 
-  property :name,        :string
-  property :description, :text
+  property :id,          Fixnum, :serial => true
+  property :name,        String
+  property :description, DataMapper::Types::Text
 
   # Sets rights by list of id's passed in
   def right_ids=(id_list)

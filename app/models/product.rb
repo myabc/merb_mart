@@ -7,20 +7,21 @@ class Product < StoreItem
       OR (items.is_discontinued = 1 AND (items.quantity > 0 OR items.variation_quantity > 0))
   /
   
-  has_many :product_images
-  has_many   :variations, :dependent => :destroy, :order => 'name ASC'
-  has_many :images, 
-    :through => :product_images, :order => "-product_images.rank DESC",
-    :dependent => :destroy
+  # FIXME!!!
+  #has_many :product_images
+  #has_many   :variations, :dependent => :destroy, :order => 'name ASC'
+  #has_many :images, 
+  #  :through => :product_images, :order => "-product_images.rank DESC",
+  #  :dependent => :destroy
   
   # Join with related items...
-  has_and_belongs_to_many :related_products,
-    :class_name => 'Product',
-    :join_table => 'related_products',
-    :association_foreign_key => 'related_id',
-    :foreign_key => 'product_id',
-    :after_add => :add_return_relation,
-    :after_remove => :remove_return_relation
+  #has_and_belongs_to_many :related_products,
+  #  :class_name => 'Product',
+  #  :join_table => 'related_products',
+  #  :association_foreign_key => 'related_id',
+  #  :foreign_key => 'product_id',
+  #  :after_add => :add_return_relation,
+  #  :after_remove => :remove_return_relation
   
   def add_return_relation(relative)
     relative.related_products << self unless relative.related_products.include?(self)
@@ -32,13 +33,15 @@ class Product < StoreItem
     database.query(sql)
   end
   
-  has_and_belongs_to_many :tags
+  #has_and_belongs_to_many :tags
+  many_to_many :tags
   
   #############################################################################
   # CALLBACKS
   #############################################################################
   
-  after_create :add_cached_related_products
+  # FIXME Fix callbacks
+  #after_create :add_cached_related_products
   
   # Related products (associations) freak out if this
   # object isn't saved before adding relatives.

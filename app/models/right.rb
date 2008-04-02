@@ -9,12 +9,14 @@
 #
 class Right
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  has_and_belongs_to_many :roles 
+  #has_and_belongs_to_many :roles 
+  many_to_many  :roles
 
-  property :name,       :string
-  property :controller, :string
-  property :actions,    :string
+  property :id,         Fixnum, :serial => true
+  property :name,       String
+  property :controller, String
+  property :actions,    String
 
 end

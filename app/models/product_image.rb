@@ -3,11 +3,11 @@
 #
 class ProductImage
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  belongs_to :product
-  belongs_to :image
+  #belongs_to :product
+  #belongs_to :image
   
-  property :rank, :integer
+  property :rank, Fixnum
   
 end

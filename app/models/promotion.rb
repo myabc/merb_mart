@@ -4,7 +4,7 @@
 #
 class Promotion
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
 
   TYPES = {
     'Dollars' => 0,
@@ -12,24 +12,26 @@ class Promotion
     'Buy [n] get 1 free' => 2
   }
   # Associations
-  has_many :orders
-  belongs_to :item
+  #has_many :orders
+  #belongs_to :item
   
   # Properties
-  property :code,            :string,   :length => 15, :default => "",  :nullable => false
-  property :discount_type,   :integer,                 :default => 0,   :nullable => false
-  property :discount_amount, :float,                   :default => 0.0, :nullable => false
-  property :start,           :datetime,                                 :nullable => false
-  property :end,             :datetime,                                 :nullable => false
-  property :minimum_cart_value, :float
-  property :description,      :string,                  :default => "", :nullable => false
+  property :id,               Fixnum,   :serial => true
+  property :code,             String,   :length => 15, :default => "",  :nullable => false
+  property :discount_type,    Fixnum,                  :default => 0,   :nullable => false
+  property :discount_amount,  Float,                   :default => 0.0, :nullable => false
+  property :start,            DateTime,                                 :nullable => false
+  property :end,              DateTime,                                 :nullable => false
+  property :minimum_cart_value, Float
+  property :description,      String,                  :default => "", :nullable => false
   
   # Validation
   #validates_presence_of :code, :discount_amount, :discount_type, :description
-  validates_uniqueness_of :code
-  validates_numericality_of :discount_amount
+  #validates_uniqueness_of :code
+  #validates_numericality_of :discount_amount
   
-  before_save :clean_code
+  # FIXME: call backs
+  #before_save :clean_code
   
   def clean_code
     self.code.gsub!(' ', '')

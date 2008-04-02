@@ -6,20 +6,22 @@
 #
 class Tag
   
-  include DataMapper::Persistable
-  include DataMapper::Is::Tree
+  include DataMapper::Resource
+  #include DataMapper::Is::Tree
   
-  has_and_belongs_to_many :products,
-    :join_table => 'products_tags'
-    
-  property :name, :string, :length => 100, :default => "", :nullable => false, :key => :unique
-  property :rank, :integer
-  property :parent_id, :integer
+  #has_and_belongs_to_many :products,
+  #  :join_table => 'products_tags'
+  
+  property :id,         Fixnum, :serial => true
+  property :name,       String, :length => 100, :default => "", :nullable => false, :key => :unique
+  property :rank,       Fixnum
+  property :parent_id,  Fixnum
     
   #validates_presence_of :name
   #validates_uniqueness_of :name
   
-  is_a_tree
+  # FIXME : fix the tree
+  #is_a_tree
   #acts_as_tree :order => '-rank DESC'
   
   # Most used finder function for tags.

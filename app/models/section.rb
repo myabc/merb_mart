@@ -5,23 +5,26 @@
 #
 class Section
   
-  include DataMapper::Persistable
-  include DataMapper::Is::Tree
+  include DataMapper::Resource
+  #include DataMapper::Is::Tree
   
-  has_and_belongs_to_many :content_nodes
-  has_and_belongs_to_many :blogs,
-    :join_table => 'content_nodes_sections',
-    :association_foreign_key => 'content_node_id',
-    :conditions => "content_nodes.type = 'Blog'",
-    :order => 'display_on DESC'
-    
-  property :name, :string, :length => 100, :default => "", :nullable => false
-  property :rank, :integer
-  property :parent_id, :integer
-    
+  #has_and_belongs_to_many :content_nodes
+  #has_and_belongs_to_many :blogs,
+  #  :join_table => 'content_nodes_sections',
+  #  :association_foreign_key => 'content_node_id',
+  #  :conditions => "content_nodes.type = 'Blog'",
+  #  :order => 'display_on DESC'
+
+  property :id,         Fixnum, :serial => true
+  property :name,       String, :length => 100, :default => "", :nullable => false
+  property :rank,       Fixnum
+  property :parent_id,  Fixnum
+   
+  # FIXME : validations 
   #validates_presence_of :name
-  validates_uniqueness_of :name
-  is_a_tree :order => 'rank' # '-rank DESC'
+  #validates_uniqueness_of :name
+  # FIXME : tree
+  #is_a_tree :order => 'rank' # '-rank DESC'
   
   # Most used finder function for tags.
   # Selects by alpha sort.

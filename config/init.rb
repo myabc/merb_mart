@@ -8,7 +8,8 @@ $LOAD_PATH.unshift(Merb.root / "lib")
 
 Merb::Config.use do |c|
   c[:session_secret_key]  = 'efeb3cd8e1d8a6deedefd479843705ff21c022a1'
-  c[:session_store] = 'datamapper'
+  #c[:session_store] = 'datamapper' -- TEMPORARILY DISABLE
+  c[:session_store] = 'cookie'
 end  
 
 ### Globals

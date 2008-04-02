@@ -1,13 +1,14 @@
 class OrderLineItem
   
-  include DataMapper::Persistable
+  include DataMapper::Resource
   
-  belongs_to :product
-  belongs_to :store_item
+  #belongs_to :product
+  #belongs_to :store_item
   
-  property :quantity,   :integer, :default => 0,   :nullable => false
-  property :unit_price, :float,   :default => 0.0, :nullable => false
-  property :name,       :string,  :default => ""
+  property :id,         Fixnum,  :serial => true
+  property :quantity,   Fixnum,  :default => 0,   :nullable => false
+  property :unit_price, Float,   :default => 0.0, :nullable => false
+  property :name,       String,  :default => ""
   
   #alias_attribute :price, :unit_price
   
