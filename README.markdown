@@ -41,9 +41,13 @@ patches and let us know when you're done.
 Getting the Source
 ------------------
 
-    git clone git://github.com/myabc/merb_mart.git
+Performing a git clone on either of the following repositories will get you 
+the latest source:
 
-The following mirrors are also available:
+    git clone git://github.com/myabc/merb_mart.git
+    git clone git://gitorious.org/merb_mart/mainline.git (on gitorious)
+
+The following additional mirrors are available:
 
     git://repo.or.cz/merb_mart.git
     http://repo.or.cz/r/merb_mart.git
