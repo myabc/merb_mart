@@ -27,6 +27,7 @@ describe Blog do
   
   it "should find latest" do
     Blog.find_latest
+    
   end
 
 end

@@ -32,12 +32,13 @@ class Section
   # Most used finder function for tags.
   # Selects by alpha sort.
   def self.find_alpha
-    all(:order => 'name ASC')
+    all(:order => [ DataMapper::Query::Direction.new(:name, :asc) ])
   end
   
   # Finds ordered parent tags.
   def self.find_ordered_parents
-    all(:conditions => {:parent_id => nil, :parent_id => 0}, :order => "-rank DESC")
+    all(:conditions => [:parent_id => nil, :parent_id => 0], 
+        :order => [ DataMapper::Query::Direction.new(:rank, :asc) ])
   end
   
   # Returns the number of products tagged with this item

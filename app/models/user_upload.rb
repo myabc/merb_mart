@@ -4,8 +4,6 @@
 #
 # Before a save, checks to set the type, based on file extension.
 #
-#require "date"
-
 class UserUpload
   
   include DataMapper::Resource
@@ -21,6 +19,7 @@ class UserUpload
   property :content_type, String
   property :thumbnail,    String
   property :size,         Fixnum
+  property :type,       Class
   
   # Checks what type of file this is based on extension.
   #

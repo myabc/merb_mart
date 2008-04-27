@@ -19,7 +19,7 @@ MEGABYTE = 1024.0 * 1024.0
 MAX_SIZE = 10 * MEGABYTE
 
 ### Specify the ORM: DataMapper
-use_orm :datamapper
+use_orm :dm_core
 
 ### Specify the Test Framework: RSpec
 use_test :rspec
