@@ -13,8 +13,6 @@ Merb::Config.use do |c|
 end  
 
 ### Globals
-ERROR_EMPTY  = 'Please fill in this field.'
-ERROR_NUMBER = 'Please enter only numbers (0-9) in this field.'
 MEGABYTE = 1024.0 * 1024.0
 MAX_SIZE = 10 * MEGABYTE
 

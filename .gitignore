@@ -8,6 +8,7 @@ cache/*
 config/database.yml
 coverage
 gems
+nbproject
 pkg
 pkg/*
 tmp

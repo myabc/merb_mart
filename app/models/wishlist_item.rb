@@ -1,5 +1,3 @@
-# Items that make up a customer's wishlist.
-#
 class WishlistItem
   
   include DataMapper::Resource
@@ -9,5 +7,5 @@ class WishlistItem
   
   property :id,         Fixnum,  :serial => true
   property :created_on, DateTime
-  
+
 end

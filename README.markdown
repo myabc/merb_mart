@@ -1,37 +1,37 @@
 MerbMart README
 ===============
 
-MerbMart is an *open-source e-commerce engine*, developed on top of the recent
-Ruby-language Merb MVC framework. Although MerbMart is designed for e-commerce
-sites of all sizes, the speed and scalability of the Merb framework make it
-scalable for even large online vendors.
+MerbMart is an *open-source e-commerce application*, developed on top of the 
+recent Ruby-language Merb MVC framework. Although MerbMart is designed for 
+e-commerce sites of all sizes, the speed and scalability of the Merb framework 
+make it scalable even for large online vendors.
 
-In addition to Merb framework, MerbMart is also built on the following open-
-source foundations:
+In addition to Merb framework, the following technologies and frameworks
+provide a foundation for MerbMart:
 
- * DataMapper (0.9 branch), for object relation mapping (ORM) and persistence.
- * RSpec, for behavio(u)r driven development (BDD).
- * ActiveMerchant, for Credit Card, payment and shipping processing.
+ * **DataMapper** (bleeding-edge 0.9), for object relation mapping (ORM) and 
+   persistence.
+ * **RSpec**, for behavio(u)r driven development (BDD).
+ * **ActiveMerchant**, for Credit Card, payment and shipping processing.
    as well as attachmerb\_fu, merb\_paginate.
 
 See INSTALL or the project wiki for a full list of dependencies.
 
-MerbMart is a loose port of the Substruct e-commerce application for Ruby-on-
-Rails. The initial 0.1 release of MerbMart will be a feature-equivalent port
-of Substruct 0.97. MerbMart borrows many ideas, its database entity-
-relationship design and some lines of code from Substruct, and is grateful to i
-ts developers for developing such a great application:
-  http://code.google.com/p/substruct/
-  http://substruct.subimage.com/
+MerbMart is inspired by other, Rails based e-commerce applications, including
+[Substruct][substruct] and [Spree][spree]. Although MerbMart started out as a
+project to port Substruct to Merb, the initial 0.1 release of MerbMart will
+instead be a its own implementation of an e-commerce engine, trying to match
+the feature sets other e-commerce applications, but taking advantages of the
+unique features of Merb and DataMapper.
 
-Developer ReadMe
-----------------
+Developer Notes
+---------------
 
 **WARNING** : MerbMart is at a very early development stages. At this stage, 
 the application should be considered only for consumption by advanced Ruby and
 Merb developers. If you're looking for something for production consumption,
 or not yet ready to jump from Ruby on Rails, then we would strongly advise 
-trying Substruct.
+trying [Substruct][substruct] or [Spree][spree].
 
 **REQUEST** : Your development support is very much appreciated. Please 
 contact us below if you're interested in lending a hand with the development 
@@ -61,8 +61,8 @@ MerbMart.
 Licensing and Copyright
 -----------------------
 
-MerbMart is released under the **Artistic License**. Copyright information,
-as well as a copy of the Artistic License may be found in the LICENSE file.
+This code is licensed under the **GNU Public License (GPL) v2**. Please see
+LICENSE for licensing and copyright information.
 
 Support
 -------
@@ -83,4 +83,6 @@ list:
  * **MerbMart homepage**: _coming soon_
  * Contact the developers directly:
     - <alex@alexcolesportfolio.com> | myabc on #datamapper, #merb IRC
-  
+
+[substruct]:http://code.google.com/p/substruct/ "Substruct e-commerce project"
+[spree]:http://spreehq.org/ "Spree Online Commerce for Ruby on Rails"

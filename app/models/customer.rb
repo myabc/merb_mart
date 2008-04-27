@@ -1,12 +1,6 @@
 require 'validate'
 
-# OrderUser aka Customer
-#
-# This is what ties all orders / addresses / wishlist items
-# together for a customer. Lets them login, etc.
-#
-#
-class OrderUser
+class Customer
   
   include DataMapper::Resource
   include DataMapper::Validate
