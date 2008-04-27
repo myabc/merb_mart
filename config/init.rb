@@ -17,7 +17,7 @@ MEGABYTE = 1024.0 * 1024.0
 MAX_SIZE = 10 * MEGABYTE
 
 ### Specify the ORM: DataMapper
-use_orm :dm_core
+use_orm :datamapper
 
 ### Specify the Test Framework: RSpec
 use_test :rspec
@@ -35,7 +35,7 @@ use_test :rspec
 dependency "merb-assets"
 dependency "merb-mailer"
 dependency "merb_helpers"
-dependency "merb_paginate"
+#dependency "merb_paginate"
 dependency "ezcrypto"
 
 #MerbPaginate.activate! :finder => :datamapper # require the custom finder for datamapper

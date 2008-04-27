@@ -1,6 +1,8 @@
 module Accounts
   class BankAccount < BaseAccount
 
+    include DataMapper::Resource
+
     property :account_subtype,  DataMapper::Types::Enum    
     property :account_number,   String
     property :routing_number,   String, :length => 20
