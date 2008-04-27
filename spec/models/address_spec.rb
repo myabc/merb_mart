@@ -1,6 +1,6 @@
 require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
-describe OrderAddress do
+describe Address do
 
   describe "associations" do
     it "should belong to a country"
@@ -16,7 +16,7 @@ describe OrderAddress do
   it "should require an address"
   
   it "should limit the first name to be a maximum of 50 characters" do
-    order_address = OrderAddress.new
+    order_address = Address.new
     [3,51].each do |num|
       order_address.first_name = "a" * num
       #order_address.valid?
@@ -31,11 +31,11 @@ describe OrderAddress do
   it "should not allow PO Box or variants to be entered as an address"
 
   it "should find a shipping address for a customer (OrderUser)" do
-    order_address = OrderAddress.find_shipping_address_for_user(1)
+    order_address = Address.find_shipping_address_for_user(1)
   end
   
   it "should provide a name" do
-    order_address = OrderAddress.new
+    order_address = Address.new
     order_address.first_name = "John"
     order_address.last_name = "Doe"
     order_address.name.should == "John Doe"

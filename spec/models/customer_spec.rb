@@ -1,6 +1,6 @@
 require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
-describe OrderUser do
+describe Customer do
 
   describe "associations" do
 
@@ -17,7 +17,7 @@ describe OrderUser do
   describe "email address" do
 
     it "should require an email address" do
-      order_user = OrderUser.new
+      order_user = Customer.new
       order_user.valid?
       order_user.errors.on(:email).should_not be_nil
     end
@@ -31,13 +31,13 @@ describe OrderUser do
   it "should have an authenticate method"
   
   it "should generate a random password" do
-    password = OrderUser.generate_password
+    password = Customer.generate_password
     password.should_not be_nil
     password.length.should == 8
   end
   
   it "should generate a random password of 15 characters" do
-    password = OrderUser.generate_password(15)
+    password = Customer.generate_password(15)
     password.should_not be_nil
     password.length.should == 15
   end

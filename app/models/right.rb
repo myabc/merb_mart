@@ -1,4 +1,3 @@
-
 class Right
   
   include DataMapper::Resource

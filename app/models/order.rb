@@ -7,7 +7,6 @@ class Order
   
   one_to_many :order_line_items, :dependent => :destroy
   
-  # billing_address defined as a method!
   one_to_one :billing_address,  :class => 'OrderAddress', :foreign_key => 'billing_address_id'
   one_to_one :shipping_address, :class => 'OrderAddress', :foreign_key => 'shipping_address_id'
   

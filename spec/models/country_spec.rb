@@ -30,8 +30,6 @@ describe Country do
   
   describe "finders" do
     
-    
-    
   end
   
 end

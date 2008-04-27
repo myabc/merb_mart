@@ -1,18 +1,18 @@
 require 'validate'
 
-class OrderAddress
+class Address
   
   include DataMapper::Resource
   include DataMapper::Validate
   
-  one_to_one :order
+  one_to_one  :order
   many_to_one :order_user
   many_to_one :country
     
-  property :first_name, String, :length => 50, :default => "", :nullable => false
-  property :last_name,  String, :length => 50, :default => "", :nullable => false
+  property :first_name, String, :length => 50, :nullable => false
+  property :last_name,  String, :length => 50, :nullable => false
   property :telephone,  String, :length => 20
-  property :address,    String,                :default => "", :nullable => false
+  property :address,    String,                :nullable => false
   property :city,       String, :length => 50
   property :state,      String, :length => 30
   property :zip,        String, :length => 10 

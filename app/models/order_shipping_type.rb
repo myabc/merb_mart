@@ -8,10 +8,10 @@ class OrderShippingType
   attr_accessor :calculated_price
 
   property :id,          Fixnum, :serial => true
-  property :name,        String, :length => 100, :default => "", :nullable => false
+  property :name,        String, :length => 100,      :nullable => false
   property :code,        String, :length => 50
   property :is_domestic, TrueClass, :default => true, :nullable => false
-  property :price,       Float,   :default => 0.0,  :nullable => false
+  property :price,       Float,   :default => 0.0,    :nullable => false
   
   def self.get_domestic
     all(:is_domestic => true, :order => "price ASC")

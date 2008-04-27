@@ -9,7 +9,7 @@ class Tag
   many_to_many :products, :join_table => 'products_tags'
   
   property :id,         Fixnum, :serial => true
-  property :name,       String, :length => 100, :default => "", :nullable => false, :key => :unique
+  property :name,       String, :length => 100, :nullable => false, :key => :unique
   property :rank,       Fixnum
   property :parent_id,  Fixnum
     

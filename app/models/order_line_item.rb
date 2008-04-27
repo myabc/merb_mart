@@ -8,6 +8,6 @@ class OrderLineItem
   property :id,         Fixnum,  :serial => true
   property :quantity,   Fixnum,  :default => 0,   :nullable => false
   property :unit_price, Float,   :default => 0.0, :nullable => false
-  property :name,       String,  :default => ""
+  property :name,       String
   
 end

@@ -6,7 +6,6 @@ class Product < StoreItem
     :through => :product_images, :order => "-product_images.rank DESC",
     :dependent => :destroy
   
-  # Join with related items...
   many_to_many :related_products,
     :class_name => 'Product',
     :join_table => 'related_products',

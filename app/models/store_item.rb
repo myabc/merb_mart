@@ -10,12 +10,12 @@ class StoreItem
   one_to_many :wishlist_items, :dependent => :destroy
 
   property :id,             Fixnum, :serial => true
-  property :code,           String, :length => 20,  :default => "",    :nullable => false
-  property :name,           String, :length => 100, :default => "",    :nullable => false
+  property :code,           String, :length => 20,                    :nullable => false
+  property :name,           String, :length => 100,                    :nullable => false
   property :description,    DataMapper::Types::Text
   property :price,          Float,                   :default => 0.0,   :nullable => false
   property :date_available, DateTime,                                   :nullable => false
-  property :quantity,       Fixnum,                 :default => 0,     :nullable => false
+  property :quantity,       Fixnum,                 :default => 0,      :nullable => false
   property :size_width,     Float,                   :default => 0.0,   :nullable => false
   property :size_height,    Float,                   :default => 0.0,   :nullable => false
   property :size_depth,     Float,                   :default => 0.0,   :nullable => false

@@ -1,6 +1,6 @@
 require 'validate'
 
-class OrderAccount
+class Account
   
   include DataMapper::Resource
   include DataMapper::Validate
@@ -17,6 +17,5 @@ class OrderAccount
   property :credit_ccv,       Fixnum, :length => 5
   property :routing_number,   String, :length => 20
   property :bank_name,        String, :length => 50
-
 
 end
