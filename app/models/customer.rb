@@ -5,6 +5,14 @@ class Customer
   include DataMapper::Resource
   include DataMapper::Validate
   
+  property :id,            Fixnum,  :serial => true
+  property :username,      String,  :length => 50
+  property :email_address, String,  :length => 50, :nullable => false, :index => :unique
+  property :password,      String,  :length => 20
+  property :created_on,    DateTime
+  property :first_name,    String,  :length => 50, :nullable => false
+  property :last_name,     String,  :length => 50, :nullable => false
+
   one_to_many :orders,
     :dependent => :nullify,
     :order => "created_on DESC"
@@ -19,17 +27,8 @@ class Customer
     :order => "created_on DESC"
   one_to_many :items, :through => :wishlist_items,
     :order => "wishlist_items.created_on DESC"
-  
-  property :id,            Fixnum,  :serial => true
-  property :username,      String,  :length => 50
-  property :email_address, String,  :length => 50, :nullable => false, :index => :unique
-  property :password,      String,  :length => 20
-  property :created_on,    DateTime
-  property :first_name,    String,  :length => 50, :nullable => false
-  property :last_name,     String,  :length => 50, :nullable => false
 
-  validates_presence_of :email_address, :message => ERROR_EMPTY
-  validates_length_of :email_address, :maximum => 255
-
+  validates_presence_of :email_address
+  #validates_length_of :email_address, :maximum => 255
 
 end

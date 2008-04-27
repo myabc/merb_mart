@@ -11,9 +11,6 @@ class Promotion
     'Buy [n] get 1 free' => 2
   }
   
-  one_to_many :orders
-  many_to_one :item
-  
   property :id,               Fixnum,   :serial => true
   property :code,             String,   :length => 15,                  :nullable => false
   property :discount_type,    Fixnum,                  :default => 0,   :nullable => false
@@ -22,6 +19,9 @@ class Promotion
   property :end,              DateTime,                                 :nullable => false
   property :minimum_cart_value, Float
   property :description,      String,                                   :nullable => false
+
+  one_to_many :orders
+  many_to_one :item
   
   validates_presence_of :code, :discount_amount, :discount_type, :description
   validates_numericalnes_of :discount_amount  

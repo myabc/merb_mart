@@ -10,8 +10,8 @@ class Order
   one_to_one :billing_address,  :class => 'OrderAddress', :foreign_key => 'billing_address_id'
   one_to_one :shipping_address, :class => 'OrderAddress', :foreign_key => 'shipping_address_id'
   
-  many_to_one :order_account
-  many_to_one :order_user
+  many_to_one :account
+  many_to_one :customer
   many_to_one :order_shipping_type
   many_to_one :order_status_code
   many_to_one :promotion
@@ -28,8 +28,6 @@ class Order
   property :shipping_cost, Float,   :default => 0.0
   property :tax,           Float,   :default => 0.0, :nullable => false
 
-  
   validates_presence_of   :order_number
- 
   
 end
