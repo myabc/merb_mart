@@ -1,6 +1,6 @@
 require File.join( File.dirname(__FILE__), "..", "..", "spec_helper" )
 
-describe Accounts::BaseAccount do
+describe Mart::Accounts::AbstractAccount do
 
   describe "associations" do
     it "should have an order account type"
@@ -9,7 +9,7 @@ describe Accounts::BaseAccount do
   end
   
   it "should have a list of months" do
-    months = Accounts::BaseAccount.months
+    months = Mart::Accounts::AbstractAccount.months
     months.should_not == nil
     months.empty?.should == false
     months.length.should == 12
@@ -20,7 +20,7 @@ describe Accounts::BaseAccount do
   end
   
   it "should have a list of the next 10 years" do
-    years = Accounts::BaseAccount.years
+    years = Mart::Accounts::AbstractAccount.years
     years.should_not == nil
     years.empty?.should == false
     years.length.should == 10

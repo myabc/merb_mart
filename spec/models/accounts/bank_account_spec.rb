@@ -1,6 +1,6 @@
 require File.join( File.dirname(__FILE__), "..", "..", "spec_helper" )
 
-describe Accounts::BankAccount do
+describe Mart::Accounts::BankAccount do
 
   it "should have a routing number if the account type is a checking account"
 
