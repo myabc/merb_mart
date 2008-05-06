@@ -11,7 +11,7 @@ class Tag
   property :rank,       Fixnum
   property :parent_id,  Fixnum
 
-  many_to_many :products, :join_table => 'products_tags'    
+  many_to_many :products #, :join_table => 'products_tags'    
   validates_presence_of :name
   #validates_uniqueness_of :name
   

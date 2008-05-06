@@ -10,7 +10,7 @@ module Accounts
     property :type, Class # enable single-table inheritance    
     
     one_to_one :order
-    many_to_one :customer, :accessor => :protected
+    many_to_one :customer #, :accessor => :protected
 
   end
 end

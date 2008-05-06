@@ -1,7 +1,7 @@
 module Accounts
   class CreditCardAccount < Accounts::BaseAccount
     
-    include DataMapper::Resource
+    #include DataMapper::Resource
     
     property :cc_number,        String
     property :expiration_month, Fixnum, :length => 2

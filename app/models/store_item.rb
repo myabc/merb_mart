@@ -22,7 +22,7 @@ class StoreItem
   property :type,           Class    # enable single-table inheritance
 
   one_to_many :order_line_items
-  one_to_many :wishlist_items, :dependent => :destroy
+  one_to_many :wishlist_items #, :dependent => :destroy
 
   validates_presence_of :name, :code
 

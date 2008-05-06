@@ -5,10 +5,10 @@ class Order
   include DataMapper::Resource
   include DataMapper::Validate
   
-  one_to_many :order_line_items, :dependent => :destroy
+  one_to_many :order_line_items #, :dependent => :destroy
   
-  one_to_one :billing_address,  :class => 'OrderAddress', :foreign_key => 'billing_address_id'
-  one_to_one :shipping_address, :class => 'OrderAddress', :foreign_key => 'shipping_address_id'
+  one_to_one :billing_address,  :class_name => 'OrderAddress' #, :foreign_key => 'billing_address_id'
+  one_to_one :shipping_address, :class_name => 'OrderAddress' #, :foreign_key => 'shipping_address_id'
   
   many_to_one :account
   many_to_one :customer
