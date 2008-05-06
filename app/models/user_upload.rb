@@ -13,6 +13,6 @@ class UserUpload
   property :content_type, String
   property :thumbnail,    String
   property :size,         Fixnum
-  property :type,       Class
+  property :type,       Class   # single-table inheritance
 
 end

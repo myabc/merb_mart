@@ -7,6 +7,6 @@ class Right
   property :controller, String
   property :actions,    String
 
-  many_to_many  :roles
+  many_to_many :roles
 
 end

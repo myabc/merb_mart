@@ -19,11 +19,12 @@ class Promotion
   property :end,              DateTime,                                 :nullable => false
   property :minimum_cart_value, Float
   property :description,      String,                                   :nullable => false
+  property :store_item_id,    Fixnum  # foreign-key
 
   one_to_many :orders
-  many_to_one :item
+  many_to_one :store_item_id
   
   validates_presence_of :code, :discount_amount, :discount_type, :description
   validates_numericalnes_of :discount_amount  
-  
+
 end

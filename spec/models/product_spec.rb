@@ -7,8 +7,8 @@ describe Product do
   end
 
   it "should be valid" do
-    @product.title = "mousemat"
-    @product.slug = "mousemat"
+    @product.name = "mousemat"
+    @product.code = "MSMT"
     @product.should be_valid
   end
 

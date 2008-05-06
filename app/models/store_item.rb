@@ -18,8 +18,7 @@ class StoreItem
   property :size_depth,     Float,                  :default => 0.0,    :nullable => false
   property :weight,         Float,                  :default => 0.0,    :nullable => false
   property :is_discontinued, TrueClass,             :default => false,  :nullable => false
-  
-  property :type,           Class    # enable single-table inheritance
+  property :type,           Class    # single-table inheritance
 
   one_to_many :order_line_items
   one_to_many :wishlist_items #, :dependent => :destroy

@@ -2,9 +2,6 @@ class OrderShippingType
   
   include DataMapper::Resource
   
-  one_to_many :orders
-  one_to_many :weights, :class_name => 'OrderShippingWeight' #, :dependent => :destroy
-
   attr_accessor :calculated_price
 
   property :id,          Fixnum, :serial => true
@@ -12,6 +9,9 @@ class OrderShippingType
   property :code,        String, :length => 50
   property :is_domestic, TrueClass, :default => true, :nullable => false
   property :price,       Float,   :default => 0.0,    :nullable => false
+  
+  one_to_many :orders
+  one_to_many :weights, :class_name => 'OrderShippingWeight' #, :dependent => :destroy
   
   def self.get_domestic
     all(:is_domestic => true, :order => "price ASC")

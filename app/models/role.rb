@@ -6,7 +6,7 @@ class Role
   property :name,        String
   property :description, DataMapper::Types::Text
 
-  many_to_many  :users
-  many_to_many  :rights #, :order => 'name ASC'
+  many_to_many :users
+  many_to_many :rights #, :order => 'name ASC'
 
 end

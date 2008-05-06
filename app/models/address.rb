@@ -5,14 +5,16 @@ class Address
   include DataMapper::Resource
   include DataMapper::Validate
   
-  property :first_name, String, :length => 50, :nullable => false
-  property :last_name,  String, :length => 50, :nullable => false
-  property :company,    String, :length => 100
-  property :telephone,  String, :length => 20
-  property :address1,   String, :length => 200, :nullable => false
-  property :address2,   String, :length => 200
-  property :city,       String, :length => 50
-  property :postal_code,String, :length => 10 
+  property :first_name,   String, :length => 50, :nullable => false
+  property :last_name,    String, :length => 50, :nullable => false
+  property :company,      String, :length => 100
+  property :telephone,    String, :length => 20
+  property :address1,     String, :length => 200, :nullable => false
+  property :address2,     String, :length => 200
+  property :city,         String, :length => 50
+  property :postal_code,  String, :length => 10 
+  property :state_id,     Fixnum  # foreign-key
+  property :country_code, String  # foreign-key
   
   many_to_one :state
   many_to_one :country

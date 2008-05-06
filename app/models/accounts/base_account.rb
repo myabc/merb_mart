@@ -7,7 +7,8 @@ module Accounts
     include DataMapper::Validate
     require 'ezcrypto'
 
-    property :type, Class # enable single-table inheritance    
+    property :type,         Class   # single-table inheritance
+    property :customer_id,  Fixnum  # foreign-key
     
     one_to_one :order
     many_to_one :customer #, :accessor => :protected
