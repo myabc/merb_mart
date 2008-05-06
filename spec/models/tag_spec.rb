@@ -27,10 +27,10 @@ describe Tag do
       #Tag.find_related_tags(id_list)
     end
   
-    it "should provide a product count" do
-      tag = Tag.all
-      tag.product_count.should_not be_nil
-    end
+    #it "should provide a product count" do
+    #  tag = Tag.all
+    #  tag.product_count.should_not be_nil
+    #end
 
   end
 

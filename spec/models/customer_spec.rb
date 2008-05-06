@@ -17,9 +17,9 @@ describe Customer do
   describe "email address" do
 
     it "should require an email address" do
-      order_user = Customer.new
-      order_user.valid?
-      order_user.errors.on(:email).should_not be_nil
+      customer = Customer.new
+      customer.valid?
+      customer.errors.on(:email).should_not be_nil
     end
   
     it "should require an email address to be less than least 255"
@@ -30,24 +30,24 @@ describe Customer do
   
   it "should have an authenticate method"
   
-  it "should generate a random password" do
-    password = Customer.generate_password
-    password.should_not be_nil
-    password.length.should == 8
-  end
+  #it "should generate a random password" do
+  #  password = Customer.generate_password
+  #  password.should_not be_nil
+  #  password.length.should == 8
+  #end
   
-  it "should generate a random password of 15 characters" do
-    password = Customer.generate_password(15)
-    password.should_not be_nil
-    password.length.should == 15
-  end
+  #it "should generate a random password of 15 characters" do
+  #  password = Customer.generate_password(15)
+  #  password.should_not be_nil
+  #  password.length.should == 15
+  #end
   
   it "should provide the last billing address"
   it "should provide the last shipping address"
   it "should provide the last order account"
   
-  it "should have a reset_password method"
-  it "should have an add_item_to_wishlist method"
-  it "should have a remove_item_from_wishlist method"
+  #it "should have a reset_password method"
+  #it "should have an add_item_to_wishlist method"
+  #it "should have a remove_item_from_wishlist method"
 
 end

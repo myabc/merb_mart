@@ -58,8 +58,6 @@ describe Order do
     
   end
   
-
-  
   it "should assign line items from a hash"
   
   it "should get the total amount of all line items associated with this order"

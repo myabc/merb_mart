@@ -16,12 +16,12 @@ class Tag
   #validates_uniqueness_of :name
   
   def self.find_alpha
-    all(:order => [ DataMapper::Query::Direction.new("name", :asc) ])
+    all(:order => [ DataMapper::Query::Direction.new(:name, :asc) ])
   end
   
   def self.find_ordered_parents
-    all(:conditions => [:parent_id => nil, :parent_id => 0], 
-        :order => [ DataMapper::Query::Direction.new(:rank, :desc) ])
+    all(:conditions => [:parent_id => nil, :parent_id => 0],  
+        :order => [ DataMapper::Query::Direction.new(:rank, :desc) ])  # [:rank.desc]
   end
   
 end

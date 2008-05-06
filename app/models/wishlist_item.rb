@@ -1,6 +1,7 @@
 class WishlistItem
   
   include DataMapper::Resource
+  include DataMapper::Validate
   
   property :id,         Fixnum,  :serial => true
   property :created_on, DateTime

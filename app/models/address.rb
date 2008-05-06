@@ -26,4 +26,8 @@ class Address
   validates_length_of :last_name,  :maximum => 50
   validates_length_of :address,    :maximum => 255
   
+  def name
+    "#{self.first_name} #{self.last_name}"
+  end
+  
 end
