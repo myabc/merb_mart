@@ -8,9 +8,10 @@ module Accounts
     require 'ezcrypto'
 
     property :type,         Class   # single-table inheritance
+    property :order_id,     Fixnum  # foreign-key
     property :customer_id,  Fixnum  # foreign-key
     
-    one_to_one :order
+    one_to_one  :order
     many_to_one :customer #, :accessor => :protected
 
   end

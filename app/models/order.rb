@@ -14,6 +14,8 @@ class Order
   property :product_cost,  Float,   :default => 0.0
   property :shipping_cost, Float,   :default => 0.0
   property :tax,           Float,   :default => 0.0, :nullable => false
+  property :billing_address_id, Fixnum      # foreign-key
+  property :shipping_address_id, Fixnum     # foreign-key
   property :account_id,    Fixnum           # foreign-key
   property :customer_id,   Fixnum           # foreign-key
   property :order_shipping_type_id, Fixnum  # foreign-key
