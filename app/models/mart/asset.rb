@@ -1,5 +1,5 @@
 module Mart
-  class Asset < UserUpload
+  class Asset < AbstractUpload
 
   end
 end

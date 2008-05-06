@@ -1,5 +1,5 @@
 module Mart
-  class UserUpload
+  class AbstractUpload
   
     include DataMapper::Resource
   
