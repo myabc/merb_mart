@@ -1,6 +1,6 @@
 require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
-describe Promotion do
+describe Mart::Store::Promotion do
 
   describe "associations" do
     it "should belong to an item"

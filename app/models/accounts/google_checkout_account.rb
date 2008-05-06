@@ -1,7 +1,9 @@
-module Accounts
-  class GoogleCheckoutAccount < BaseAccount
+module Mart
+  module Accounts
+    class GoogleCheckoutAccount < AbstractAccount
   
-    # TODO: Implement Me
+      # TODO: Implement Me
   
+    end
   end
 end

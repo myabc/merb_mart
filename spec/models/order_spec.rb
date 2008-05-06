@@ -1,9 +1,9 @@
 require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
-describe Order do
+describe Mart::Order do
 
   before(:each) do
-    @order = Order.new
+    @order = Mart::Order.new
   end
 
   describe "associations" do
@@ -26,7 +26,7 @@ describe Order do
     end
     
     it "should generate an order number" do
-      Order.generate_order_number
+      Mart::Order.generate_order_number
       
       pending
     end
@@ -34,24 +34,24 @@ describe Order do
     it "should get totals"
 
     it "should get CSV for orders" do
-      order1 = Order.new
-      order2 = Order.new
+      order1 = Mart::Order.new
+      order2 = Mart::Order.new
       order_list = Array.new
       #order_list << [order1, order2]
-      order_list << Order.new
-      order_list << Order.new
+      order_list << Mart::Order.new
+      order_list << Mart::Order.new
       order_list.should_not == nil
-      @csv = Order.get_csv_for_orders(order_list)
+      @csv = Mart::Order.get_csv_for_orders(order_list)
     end
     
     it "should get XML for orders" do
       order1 = Order.new
       order2 = Order.new
       order_list = Array.new
-      order_list << Order.new
-      order_list << Order.new
+      order_list << Mart::Order.new
+      order_list << Mart::Order.new
       order_list.should_not == nil
-      @xml = Order.get_xml_for_orders(order_list)
+      @xml = Mart::Order.get_xml_for_orders(order_list)
     end
     
     it "should get order status"    

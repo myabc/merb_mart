@@ -1,24 +1,28 @@
-class OrderShippingType
+module Mart
+  module Shipping
+    class Type
   
-  include DataMapper::Resource
+      include DataMapper::Resource
   
-  attr_accessor :calculated_price
+      attr_accessor :calculated_price
 
-  property :id,          Fixnum, :serial => true
-  property :name,        String, :length => 100,      :nullable => false
-  property :code,        String, :length => 50
-  property :is_domestic, TrueClass, :default => true, :nullable => false
-  property :price,       Float,   :default => 0.0,    :nullable => false
+      property :id,          Fixnum, :serial => true
+      property :name,        String, :length => 100,      :nullable => false
+      property :code,        String, :length => 50
+      property :is_domestic, TrueClass, :default => true, :nullable => false
+      property :price,       Float,   :default => 0.0,    :nullable => false
   
-  one_to_many :orders
-  one_to_many :weights, :class_name => 'OrderShippingWeight' #, :dependent => :destroy
+      one_to_many :orders
+      one_to_many :weights, :class_name => 'OrderShippingWeight' #, :dependent => :destroy
   
-  def self.get_domestic
-    all(:is_domestic => true, :order => "price ASC")
-  end
+      def self.get_domestic
+        all(:is_domestic => true, :order => "price ASC")
+      end
 
-  def self.get_foreign
-    all(:is_domestic => false, :order => "price ASC")
-  end
+      def self.get_foreign
+        all(:is_domestic => false, :order => "price ASC")
+      end
   
+    end
+  end
 end

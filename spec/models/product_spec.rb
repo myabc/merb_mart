@@ -1,9 +1,9 @@
 require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
-describe Product do
+describe Mart::Store::Product do
 
   before(:each) do
-    @product = Product.new
+    @product = Mart::Store::Product.new
   end
 
   it "should be valid" do

@@ -1,7 +1,9 @@
-module Accounts
-  class PaypalAccount < BaseAccount
+module Mart
+  module Accounts
+    class PaypalAccount < AbstractAccount
 
-    # TODO: Implement Me
+      # TODO: Implement Me
 
+    end
   end
 end

@@ -1,9 +1,9 @@
 require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
-describe WishlistItem do
+describe Mart::Customers::WishlistItem do
 
   before(:each) do
-    @wishlist_item = WishlistItem.new
+    @wishlist_item = Mart::Customers::WishlistItem.new
   end
 
   describe "associations" do

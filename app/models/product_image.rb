@@ -1,12 +1,16 @@
-class ProductImage
+module Mart
+  module Store
+    class ProductImage
   
-  include DataMapper::Resource
+      include DataMapper::Resource
   
-  property :product_id, Fixnum  # foreign-key
-  property :image_id,   Fixnum  # foreign-key
-  property :rank,       Fixnum
+      property :product_id, Fixnum  # foreign-key
+      property :image_id,   Fixnum  # foreign-key
+      property :rank,       Fixnum
 
-  many_to_one :product
-  many_to_one :image
+      many_to_one :product
+      many_to_one :image
 
+    end
+  end
 end

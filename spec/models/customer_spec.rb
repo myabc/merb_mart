@@ -1,6 +1,6 @@
 require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
-describe Customer do
+describe Mart::Customer do
 
   describe "associations" do
 
@@ -17,7 +17,7 @@ describe Customer do
   describe "email address" do
 
     it "should require an email address" do
-      customer = Customer.new
+      customer = Mart::Customer.new
       customer.valid?
       customer.errors.on(:email).should_not be_nil
     end

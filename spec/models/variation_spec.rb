@@ -1,9 +1,9 @@
 require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
-describe Variation do
+describe Mart::Store::Variation do
 
   before(:each) do
-    @variation = Variation.new
+    @variation = Mart::Store::Variation.new
   end
 
   describe "associations" do

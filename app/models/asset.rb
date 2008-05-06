@@ -1,3 +1,5 @@
-class Asset < UserUpload
+module Mart
+  class Asset < UserUpload
 
+  end
 end
