@@ -1,25 +1,50 @@
-= Installation
-
- merb_mart dm_0_9_0 branch is being built around the cutting-edge Merb
- framework, and the bleeding edge DataMapper framework. As such, you'll have
- to get yourself setup with those gems before you get the chance to play with 
- merb_mart.
+Installation
+============
  
- Dependencies for the dm_0_9_0 branch of merb_mart:
+Dependencies
+------------
 
- * datamapper 0.9.0 - 'edge' development
-    * do (DataObjects)  : git://github.com/sam/do.git
-    * dm-core           : git://github.com/sam/dm-core.git
-    * dm-more           : git://github.com/sam/dm-more.git
- 
- * merb 0.9.2 (or above)
-    * merb-core         : sudo gem install merb-core
-    * merb-more         : sudo gem install merb-more
+MerbMart master branch is being built on the cutting-edge Merb framework, and
+the bleeding edge DataMapper framework. As such, you'll have to get yourself 
+setup with those gems before you get the chance to play with MerbMart.
+
+Dependencies for MerbMart:
+
+ * **DataMapper 0.9** - 'edge' development
+    * *DataObjects*
+        * `git clone git://github.com/sam/do.git`
+        * `cd data_objects && rake gem && sudo gem install pkg/data_objects-0.9.0.gem`
+        * install the relevant driver for your database
+    * *dm-core* 
+        * `git clone git://github.com/sam/dm-core.git`
+    * *dm-more* 
+        * `git clone git://github.com/sam/dm-more.git`
+        * *dm-is-tree*
+        * *dm-migrations*
+        * *dm-timestamps*
+        * *dm-types*
+        * *dm-validations*
+        * *merb\_datamapper*  
+        (do not use the *merb\_datamapper* included in the 0.9.2 distribution of
+         *merb_plugins*, as it was designed for DataMapper 0.3 series)
+ * **Merb 0.9.2** (or above)
+    * *merb-core*       : `sudo gem install merb-core`
+    * *merb-more*       : `sudo gem install merb-more`
     
-    * merb-plugins (merb_datamapper, merb_helpers, merb_rspec):
-        ** you will need myabc's dm_0_9_0 branch of merb-plugins
-           which contains some changes to work nicely with the 
-           dm-core and dm-more edge:
-           
-           http://github.com/myabc/merb-plugins/tree/dm_0_9_0 **
-           
+Running Specs
+-------------
+
+To run all specs:
+ 
+    rake spec
+
+You can also run individual groups of specs. To see tasks available to you:
+
+    rake -T
+
+Installation
+------------
+
+Like any other Merb application, to startup the application:
+
+    merb

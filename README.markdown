@@ -55,14 +55,30 @@ The following additional mirrors are available:
 Installation and Setup
 ----------------------
 
-Please see the INSTALL file for details on getting up and running with 
-MerbMart.
+Please see the INSTALL file for details on getting up and running with MerbMart.
 
-Licensing and Copyright
------------------------
+Copyright and License
+---------------------
 
-This code is licensed under the **GNU Public License (GPL) v2**. Please see
-LICENSE for licensing and copyright information.
+MerbMart is licensed under the **GNU Public License (GPL)**:
+
+   > Copyright (C) 2007  Alex Coles
+
+   > This program is free software: you can redistribute it and/or modify
+   > it under the terms of the GNU General Public License as published by
+   > the Free Software Foundation, either version 2 of the License, or
+   > (at your option) any later version.
+
+   > This program is distributed in the hope that it will be useful,
+   > but WITHOUT ANY WARRANTY; without even the implied warranty of
+   > MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   > GNU General Public License for more details.
+
+   > You should have received a copy of the GNU General Public License
+   > along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+A copy of the GPL License may be found in the GPL-LICENSE, included with
+the distribution.
 
 Support
 -------
