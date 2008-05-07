@@ -13,12 +13,32 @@ describe Mart::Store::Product do
   end
 
   describe "associations" do
-    it "should have many product images"
-    it "should have variations"
-    it "should have images"
+    
+    it "should have 0..n order line items" do
+      @product.should respond_to(:line_items)
+    end
+    
+    it "should have 0..n wishlist items" do
+      @product.should respond_to(:wishlist_items)
+    end
+    
+    it "should have 0..n variations" do
+      @product.should respond_to(:variations)
+    end
+
+    it "should have many product images" do
+      @product.should respond_to(:product_images)
+    end
+       
+    it "should have images" do
+      pending
+    end
   
     it "should have related products"
-    it "should have and belong to many tags"
+    
+    it "should have and belong to many tags" do
+      pending
+    end
   end
   
   it "should have a search method"

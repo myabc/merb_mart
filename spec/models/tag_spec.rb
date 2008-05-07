@@ -2,10 +2,6 @@ require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
 describe Tag do
 
-  describe "associations" do
-    it "should have and belong to many products"
-  end
-
   describe "finders" do
     
     before(:each) do
@@ -13,15 +9,19 @@ describe Tag do
       tag2 = Tag.new(:name => 'sunscreen')
       tag3 = Tag.new(:name => 'hats')
       tag4 = Tag.new(:name => 'sandals')
+      tag5 = Tag.new(:name => 'towels')
+      tag6 = Tag.new(:name => 'beach')
+      tag7 = Tag.new(:name => 'vacations')
+      tag8 = Tag.new(:name => 'holidays')
     end
 
-    it "should find alpha" do
-      Tag.find_alpha.should_not be_nil
+    it "should find all tags ordered by name" do
+      Tag.all_ordered.should_not be_nil
     end
   
-    it "should find ordered parents" do
-      Tag.find_ordered_parents.should_not be_nil
-    end
+    #it "should find ordered parents" do
+    #  Tag.all_parents.should_not be_nil
+    #end
   
     it "should find related tags" do
       #Tag.find_related_tags(id_list)

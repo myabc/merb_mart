@@ -12,6 +12,6 @@ class State
   property :name,         String, :length => 50, :nullable => false
   property :country_code, String  # foreign-key
   
-  many_to_one :country
+  belongs_to :country
   
 end

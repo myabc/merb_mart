@@ -10,7 +10,7 @@ module Mart
       property :price,      Float, :default => 0.0, :nullable => false
       property :order_shipping_type_id, Fixnum  # foreign-key
 
-      many_to_one :order_shipping_type
+      belongs_to :type
   
     end
   end

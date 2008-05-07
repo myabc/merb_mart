@@ -2,9 +2,9 @@ module Mart
   module Store
     class Product < AbstractItem
 
-      one_to_many :product_images
-      one_to_many :variations #, :dependent => :destroy, :order => 'name ASC'
-      one_to_many :images #, 
+      has n, :product_images
+      has n, :variations #, :dependent => :destroy, :order => 'name ASC'
+      #has n, :images #, ## FIXME
         #:through => :product_images,
         #:order => "-product_images.rank DESC",
         #:dependent => :destroy

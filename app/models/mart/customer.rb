@@ -1,4 +1,4 @@
-require 'validate'
+require 'dm-validations'
 
 module Mart
   class Customer
@@ -14,23 +14,18 @@ module Mart
     property :first_name,    String,  :length => 50, :nullable => false
     property :last_name,     String,  :length => 50, :nullable => false
 
-    one_to_many :orders #,
-      #:dependent => :nullify,
-      #:order => "created_on DESC"
-    one_to_many :last_order#,
-      #:class_name => "Order",
-      #:order => "created_on DESC"
-    one_to_many :order_addresses #, :dependent => :destroy
-    one_to_many :order_accounts  #, :dependent => :destroy
-  
-    one_to_many :wishlist_items #, 
-      #:dependent => :destroy,
-      #:order => "created_on DESC"
-    one_to_many :items #, :through => :wishlist_items,
-      #:order => "wishlist_items.created_on DESC"
+    has n, :orders
+    has n, :addresses
+    has n, :accounts
+    has n, :wishlist_items
+    # has n, :items, :through => :wishlist_items ## FIXME
 
     validates_presence_of :email_address
-    #validates_length_of :email_address, :maximum => 255
+    validates_length_of   :email_address, :maximum => 255
+
+    def last_order
+      # TODO
+    end
 
   end
 end

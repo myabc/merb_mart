@@ -1,11 +1,6 @@
 require File.join( File.dirname(__FILE__), "..", "..", "..", "spec_helper" )
 
 describe Mart::Store::AbstractItem do
-
-  describe "associations" do
-    it "should have many order line items"
-    it "should have many wishlist items"
-  end
   
   it "should require a name"
   it "should require a code"

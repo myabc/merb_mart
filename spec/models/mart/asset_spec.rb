@@ -1,24 +1,11 @@
 require File.join( File.dirname(__FILE__), "..", "..", "spec_helper" )
 
 describe Mart::Asset do
-
-  it "should have a filename" do
-    @asset = Mart::Asset.new
-    @asset.should_not be_valid
-  end
-
-  it "should have a size" do 
-    @asset = Mart::Asset.new
-    @asset.should_not be_valid
-    @asset.width = 20
-    @asset.height = 40
-    @asset.should be_valid
-  end
   
   it "should provide an extension" do
     @asset = Mart::Asset.new
-    @asset.filename = "fish.jpg"
-    @asset.extension.should == "jpg"
+    @asset.filename = "fish.pdf"
+    @asset.extension.should == "pdf"
     
     @asset.filename = "document.html.erb"
     @asset.extension.should == "erb"
@@ -27,8 +14,8 @@ describe Mart::Asset do
 
   it "should provide a filename without extension" do
     @asset = Mart::Asset.new
-    @asset.filename = "fish.jpg"
-    @asset.filename_without_ext.should == "fish"
+    @asset.filename = "fish.pdf"
+    @asset.filename_base.should == "fish"
   end
   
   it "should provide a relative path" do

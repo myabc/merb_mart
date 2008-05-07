@@ -1,5 +1,3 @@
-require 'validate'
-
 class Address
 
   include DataMapper::Resource
@@ -16,17 +14,22 @@ class Address
   property :state_id,     Fixnum  # foreign-key
   property :country_code, String  # foreign-key
 
-  many_to_one :state
-  many_to_one :country
+  belongs_to :state
+  belongs_to :country
 
   validates_presence_of :first_name
   validates_presence_of :last_name
-  validates_presence_of :address
-  validates_presence_of :zip
+  validates_presence_of :address1
+  validates_presence_of :postal_code
 
   validates_length_of :first_name, :maximum => 50
   validates_length_of :last_name,  :maximum => 50
-  validates_length_of :address,    :maximum => 255
+  validates_length_of :address1,   :maximum => 255
+
+  alias :zipcode  :postal_code
+  alias :zipcode= :postal_code=
+  alias :province  :state
+  alias :province= :state=
 
   def name
     "#{self.first_name} #{self.last_name}"

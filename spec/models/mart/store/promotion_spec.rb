@@ -3,9 +3,15 @@ require File.join( File.dirname(__FILE__), "..", "..", "..", "spec_helper" )
 describe Mart::Store::Promotion do
 
   describe "associations" do
-    it "should belong to an item"
+    it "should belong to an item" do
+      promotion = Mart::Store::Promotion.new
+      promotion.should respond_to(:item)
+    end
   
-    it "should have many orders"
+    it "should have 0..* orders" do
+      promotion = Mart::Store::Promotion.new
+      promotion.should respond_to(:orders)
+    end
   end
   
   it "should require a code"

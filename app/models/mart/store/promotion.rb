@@ -1,4 +1,4 @@
-require 'validate'
+require 'dm-validations'
 
 module Mart
   module Store
@@ -23,8 +23,8 @@ module Mart
       property :description,      String,                                   :nullable => false
       property :store_item_id,    Fixnum  # foreign-key
 
-      one_to_many :orders
-      many_to_one :store_item_id
+      has n, :orders
+      belongs_to :item, :class_name => "Mart::Store::AbstractItem"
   
       validates_presence_of :code, :discount_amount, :discount_type, :description
       validates_numericalnes_of :discount_amount  

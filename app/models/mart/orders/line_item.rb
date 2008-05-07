@@ -11,8 +11,8 @@ module Mart
       property :product_id, Fixnum    ## FIXME: should not be both product_id + store_item_id
       property :store_item_id, Fixnum # foreign-key
   
-      many_to_one :product     ## FIXME: should not be both product_id + store_item_id
-      many_to_one :store_item
+      belongs_to :product     ## FIXME: should not be both product_id + store_item_id
+      belongs_to :store_item
   
     end
   end

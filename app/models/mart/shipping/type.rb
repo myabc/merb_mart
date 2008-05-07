@@ -12,8 +12,8 @@ module Mart
       property :is_domestic, TrueClass, :default => true, :nullable => false
       property :price,       Float,   :default => 0.0,    :nullable => false
   
-      one_to_many :orders
-      one_to_many :weights, :class_name => 'OrderShippingWeight' #, :dependent => :destroy
+      has n, :orders
+      has n, :weights, :class_name => 'OrderShippingWeight' #, :dependent => :destroy
   
       def self.get_domestic
         all(:is_domestic => true, :order => "price ASC")

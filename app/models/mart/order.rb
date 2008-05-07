@@ -1,4 +1,4 @@
-require 'validate'
+require 'dm-validations'
 
 module Mart
   class Order
@@ -23,16 +23,15 @@ module Mart
     property :status_code_id,Fixnum           # foreign-key
     property :promotion_id,  Fixnum           # foreign-key
   
-    one_to_many :line_items,      :class_name => 'Orders::LineItem' #, :dependent => :destroy
+    has 1..n, :line_items,       :class_name => 'Orders::LineItem' #, :dependent => :destroy
+    has 1,    :billing_address,  :class_name => 'Address' #, :foreign_key => 'billing_address_id'
+    has 1,    :shipping_address, :class_name => 'Address' #, :foreign_key => 'shipping_address_id'
   
-    one_to_one :billing_address,  :class_name => 'Address' #, :foreign_key => 'billing_address_id'
-    one_to_one :shipping_address, :class_name => 'Address' #, :foreign_key => 'shipping_address_id'
-  
-    many_to_one :account
-    many_to_one :customer
-    many_to_one :order_shipping_type
-    many_to_one :status_code,     :class_name => 'Orders::StatusCode'
-    many_to_one :promotion
+    belongs_to :account
+    belongs_to :customer
+    belongs_to :order_shipping_type
+    belongs_to :status_code,     :class_name => 'Orders::StatusCode'
+    belongs_to :promotion
   
     attr_accessor :promotion_code
   

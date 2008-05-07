@@ -1,8 +1,13 @@
 module Mart
   class Image < AbstractUpload
 
-    one_to_many :product_images
-    one_to_many :products #, :through => :product_images
+    IMAGE_EXTENSIONS = ['gif', 'jpg', 'jpeg', 'png', 'bmp']
+    
+    property :width,      Fixnum, :default => 0, :nullable => false
+    property :height,     Fixnum, :default => 0, :nullable => false
+
+    has n, :product_images
+    #has n, :products, :through => :product_images ## FIXME
 
   end
 end

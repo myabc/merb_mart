@@ -1,4 +1,4 @@
-require 'validate'
+require 'dm-validations'
 
 class Tag
   
@@ -11,17 +11,17 @@ class Tag
   property :rank,       Fixnum
   property :parent_id,  Fixnum
 
-  many_to_many :products #, :join_table => 'products_tags'    
-  validates_presence_of :name
-  #validates_uniqueness_of :name
+  #many_to_many :products #, :join_table => 'products_tags'    
+  validates_presence_of   :name
+  validates_uniqueness_of :rank
   
-  def self.find_alpha
-    all(:order => [ DataMapper::Query::Direction.new(:name, :asc) ])
+  def self.all_ordered
+    all(:order => [ :name.asc ])
   end
   
-  def self.find_ordered_parents
-    all(:conditions => [:parent_id => nil, :parent_id => 0],  
-        :order => [ DataMapper::Query::Direction.new(:rank, :desc) ])  # [:rank.desc]
+  def self.all_parents
+    all(:conditions => [:parent_id => 0],  # parent_id => nil, 
+        :order => [ :rank.desc ])
   end
   
 end

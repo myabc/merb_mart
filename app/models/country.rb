@@ -8,6 +8,13 @@ class Country
   include DataMapper::Validate
   
   property :code, String, :serial => true, :length => 2     # ISO 3166-1 alpha-2
-  property :name, String, :length => 100,  :nullable => false
+  property :name, String, :length => 100,  :nullable => false, :unique => true
+
+  has n, :states
+
+  validates_presence_of   :name
+  validates_uniqueness_of :name
+
+  alias :provinces :states
 
 end

@@ -1,4 +1,4 @@
-require 'validate'
+require 'dm-validations'
 
 module Mart
   module Accounts
@@ -12,8 +12,21 @@ module Mart
       property :order_id,     Fixnum  # foreign-key
       property :customer_id,  Fixnum  # foreign-key
     
-      one_to_one  :order
-      many_to_one :customer #, :accessor => :protected
+      has 1, :order
+      belongs_to :customer #, :accessor => :protected
+
+      def self.months
+        (1..12).to_a
+      end
+      
+      def self.years
+        year = Date.today.year
+        years = Array.new
+        (0..9).each do |n|
+          years << year + n
+        end
+        years
+      end
 
     end
   end

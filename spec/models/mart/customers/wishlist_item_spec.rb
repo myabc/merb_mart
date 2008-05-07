@@ -8,12 +8,12 @@ describe Mart::Customers::WishlistItem do
 
   describe "associations" do
     
-    it "should belong to an order user" do
-      @wishlist_item.should be_valid
+    it "should belong to a customer" do
+      @wishlist_item.should respond_to(:customer)
     end
     
     it "should belong to an item" do
-      @wishlist_item.should be_valid
+      @wishlist_item.should respond_to(:store_item)
     end
     
   end

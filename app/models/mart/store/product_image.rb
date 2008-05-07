@@ -8,8 +8,8 @@ module Mart
       property :image_id,   Fixnum  # foreign-key
       property :rank,       Fixnum
 
-      many_to_one :product
-      many_to_one :image
+      belongs_to :product
+      belongs_to :image
 
     end
   end

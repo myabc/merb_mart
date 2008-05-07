@@ -1,6 +1,6 @@
 require 'digest/sha1'
 require "date"
-require 'validate'
+require "dm-validations"
 begin
   require File.join(File.dirname(__FILE__), '..', '..', "lib", "authenticated_system", "authenticated_dependencies")
 rescue 
@@ -38,11 +38,11 @@ class User
   validates_presence_of       :password_confirmation,   :if => proc {password_required?}
   validates_length_of         :password,                :within => 4..40, :if => proc {password_required?}
   validates_confirmation_of   :password,                :groups => :create
-   
-  # FIXME : fix callbacks  
-  #before_save :encrypt_password
-  #before_create :make_activation_code
-  #after_create :send_signup_notification
+  
+  before :save,   :encrypt_password
+  # FIXME
+  #before :create, :make_activation_code
+  #after :create,  :send_signup_notification
   
   def login=(value)
     @login = value.downcase unless value.nil?

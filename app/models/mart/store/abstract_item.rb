@@ -1,5 +1,5 @@
 require "date"
-require "validate"
+require "dm-validations"
 
 module Mart
   module Store
@@ -21,12 +21,12 @@ module Mart
       property :weight,         Float,                  :default => 0.0,    :nullable => false
       property :is_discontinued, TrueClass,             :default => false,  :nullable => false
       property :type,           Class    # single-table inheritance
-
-      one_to_many :order_line_items
-      one_to_many :wishlist_items #, :dependent => :destroy
-
+      
+      has n, :line_items,     :class_name => "Mart::Orders::LineItem"
+      has n, :wishlist_items, :class_name => "Mart::Customers::WishlistItem" #, :dependent => :destroy
+      
       validates_presence_of :name, :code
-
+      
     end
   end
 end

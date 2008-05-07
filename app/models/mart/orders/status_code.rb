@@ -7,7 +7,7 @@ module Mart
       property :id,   Fixnum, :serial => true
       property :name, String, :length => 30, :nullable => false
   
-      one_to_many :orders
+      has n, :orders
   
     end
   end
