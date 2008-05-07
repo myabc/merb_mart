@@ -62,7 +62,7 @@ Copyright and License
 
 MerbMart is licensed under the **GNU Public License (GPL)**:
 
-   > Copyright (C) 2007  Alex Coles
+   > Copyright (C) 2008  Alex Coles
 
    > This program is free software: you can redistribute it and/or modify
    > it under the terms of the GNU General Public License as published by

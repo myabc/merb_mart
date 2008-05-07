@@ -55,7 +55,11 @@ module AuthenticatedSystem
 
       # Redirect as appropriate when an access request fails.
       #
-      # The default action is to redirect to the login screen.
+      # The default HTML action is to redirect to the login screen.
+      #
+      # The default XML action is to render the text Couldn't authenticate you.
+      # To provide this response wrapped in XML, make sure to specify an
+      # XML layout, such as /app/views/layouts/application.xml.builder.
       #
       # Override this method in your controllers if you want to have special
       # behavior in case the user is not authorized
@@ -69,8 +73,8 @@ module AuthenticatedSystem
         when :xml
           headers["Status"]             = "Unauthorized"
           headers["WWW-Authenticate"]   = %(Basic realm="Web Password")
-          set_status(401)
-          render :text => "Couldn't authenticate you"
+          self.status = 401
+          render "Couldn't authenticate you"
         end
       end
     

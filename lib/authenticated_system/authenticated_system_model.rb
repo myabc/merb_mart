@@ -51,7 +51,24 @@ module AuthenticatedSystem
         self.save
       end
       
+      # Returns true if the <%= singular_name %> has just been activated.
+      def recently_activated?
+        @activated
+      end
+
+      def activated?
+       return false if self.new_record?
+       !! activation_code.nil?
+      end
+
+      def active?
+        # the existence of an activation code means they have not activated yet
+        activation_code.nil?
+      end      
       protected
+      def make_activation_code
+        self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+      end
       
       def password_required?
         crypted_password.blank? || !password.blank?
