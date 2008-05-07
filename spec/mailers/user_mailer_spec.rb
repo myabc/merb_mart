@@ -4,8 +4,8 @@ require File.join( File.dirname(__FILE__), "..", "authenticated_system_spec_help
 
 describe UserMailer do
   
-  def deliver(action, mail_opts= {},opts = {})
-    UserMailer.dispatch_and_deliver action, mail_opts, opts
+  def deliver(action, mail_opts= {}, opts = {})
+    UserMailer.dispatch_and_deliver(action, mail_opts, opts)
     @delivery = Merb::Mailer.deliveries.last
   end
   
