@@ -14,8 +14,8 @@ class User
   
   attr_accessor :password, :password_confirmation
   
-  property :id,                         Fixnum, :serial => true
-  property :login,                      String
+  property :id,                         Fixnum,   :serial => true
+  property :login,                      String,   :unique => true
   property :email,                      String
   property :crypted_password,           String
   property :salt,                       String
@@ -32,19 +32,18 @@ class User
   validates_format_of         :email,                   :as => :email_address
   validates_length_of         :email,                   :within => 3..100
   validates_uniqueness_of     :email
-  validates_presence_of       :password,                :if => proc {password_required?}
-  validates_presence_of       :password_confirmation,   :if => proc {password_required?}
-  validates_length_of         :password,                :within => 4..40, :if => proc {password_required?}
-  validates_confirmation_of   :password,                :groups => :create
+  validates_presence_of       :password,                :if => lambda { |r| r.password_required? }
+  validates_presence_of       :password_confirmation,   :if => lambda { |r| r.password_required? }
+  validates_length_of         :password,                :within => 4..40, :if => lambda { |r| r.password_required? }
+  validates_confirmation_of   :password#,                :groups => :create
   
   before :save,   :encrypt_password
-  before_class_method :create, :make_activation_code
-  after_class_method  :create, :send_signup_notification
+  #before_class_method :create, :make_activation_code
+  #after_class_method  :create, :send_signup_notification
   
   def login=(value)
     @login = value.downcase unless value.nil?
   end
-    
   
   EMAIL_FROM = "info@mysite.com"
   SIGNUP_MAIL_SUBJECT = "Welcome to MYSITE.  Please activate your account."
@@ -67,14 +66,14 @@ class User
 
   end
   
-  def send_signup_notification
-    UserMailer.dispatch_and_deliver(
-        :signup_notification,
-      { :from => User::EMAIL_FROM,
-        :to  => self.email,
-        :subject => User::SIGNUP_MAIL_SUBJECT },
-        :user => self        
-    )
-  end
+  #def send_signup_notification
+  #  UserMailer.dispatch_and_deliver(
+  #      :signup_notification,
+  #    { :from => User::EMAIL_FROM,
+  #      :to  => self.email,
+  #      :subject => User::SIGNUP_MAIL_SUBJECT },
+  #      :user => self        
+  #  )
+  #end
   
 end

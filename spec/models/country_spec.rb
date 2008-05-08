@@ -16,7 +16,7 @@ describe Country do
 
   before(:each) do
     @country = Country.new
-    #Country.auto_migrate! # clear db table
+    Country.auto_migrate! # clear db table
   end
 
   it "should be valid" do
@@ -34,6 +34,7 @@ describe Country do
     country2 = Country.new(:code => "ZZ", :name => "France")
     country1.save.should be_true
     country1.name = "France"
+    country2.valid?
     country2.save.should be_false
     country2.errors.on(:name).should_not be_nil 
   end

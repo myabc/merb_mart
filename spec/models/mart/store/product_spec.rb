@@ -9,7 +9,12 @@ describe Mart::Store::Product do
   it "should be valid" do
     @product.name = "mousemat"
     @product.code = "MSMT"
+    @product.date_available = DateTime.now
     @product.should be_valid
+  end
+  
+  it "should have a date available automatically assigned to it" do
+    pending
   end
 
   describe "associations" do

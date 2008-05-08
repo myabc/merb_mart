@@ -36,7 +36,7 @@ module AuthenticatedSystem
       end
 
       def remember_me_for(time)
-        remember_me_until (Time.now + time)
+        remember_me_until (DateTime.now + time)
       end
 
       # These create and unset the fields required for remembering users between browser closes
@@ -65,15 +65,16 @@ module AuthenticatedSystem
         # the existence of an activation code means they have not activated yet
         activation_code.nil?
       end      
+
+      def password_required?
+        crypted_password.blank? || !password.blank?
+      end
+
       protected
       def make_activation_code
         self.activation_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
       end
-      
-      def password_required?
-        crypted_password.blank? || !password.blank?
-      end
-            
+
     end
     
     module ClassMethods
