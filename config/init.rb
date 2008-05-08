@@ -33,10 +33,11 @@ Gem.path.unshift(Merb.root / "gems")
 # ==== Dependencies
 
 dependency "merb-assets"
-dependency "merb-mailer"
+dependency "merb-haml"
 dependency "merb_helpers"
+dependency "merb-mailer"
 #dependency "merb_paginate"
-dependency "ezcrypto"
+require "ezcrypto"
 
 #MerbPaginate.activate! :finder => :datamapper # require the custom finder for datamapper
 #MerbPaginate.activate! :view_helpers # require the will_paginate view helper

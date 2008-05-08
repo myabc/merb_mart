@@ -21,9 +21,7 @@ Merb::Router.prepare do |r|
   r.match("/logout").to(:controller => "Sessions", :action => "destroy").name(:logout)
   r.match("/users/activate/:activation_code").to(:controller => "Users", :action => "activate").name(:user_activation)
   
-  
-  #r.match('/').to(:controller => 'ContentNodes', :action =>'show_by_name', :name => 'home')
-  #r.match('').to(:controller => 'ContentNodes', :action => 'show_by_name', :name => 'home')
+  r.match('/').to(:controller => 'Store', :action => 'index')
 
   # Default administration mapping
   #map.connect 'admin',
