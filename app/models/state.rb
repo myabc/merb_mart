@@ -14,12 +14,9 @@ class State
 
   include DataMapper::Resource
 
-  property :id,           Fixnum, :serial => true
-  property :abbr,         String, :length => 10
-  property :name,         String, :length => 50, :nullable => false
-  property :country_code, String  # foreign-key
-  
-  ## TODO   country_code and abbr a composite-key
+  property :country_code, String, :key => true  # foreign-key, ISO 3166-1 alpha-2
+  property :abbr,         String, :key => true, :length => 10
+  property :name,         String,               :length => 50, :nullable => false
   
   belongs_to :country
   
