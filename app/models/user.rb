@@ -1,5 +1,6 @@
 require 'digest/sha1'
 require "date"
+require "dm-aggregates"
 require "dm-validations"
 begin
   require File.join(File.dirname(__FILE__), '..', '..', "lib", "authenticated_system", "authenticated_dependencies")
