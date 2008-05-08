@@ -1,14 +1,11 @@
-<% form_tag :action => url(:login) do -%>
-<p><label for="login">Login</label><br/>
-<%= text_field :name => "login" %></p>
-
-<p><label for="password">Password</label><br/>
-<%= password_field :name => "password" %></p>
-
-<!-- Uncomment this if you want this functionality
-<p><label for="remember_me">Remember me:</label>
-<%= checkbox_field :name => 'remember_me' %></p>
--->
-
-<p><%= submit_button 'Log in' %></p>
-<% end -%>
+- form_tag :action => url(:login) do
+  %p
+    %label {:for => "login" } Login
+    = text_field :name => "login"
+  %p
+    %label { :for => "password" } Password
+    = password_field :name => "password"
+  %p
+    %label { :for => "remember_me"} Remember me:
+    = checkbox_field :name => 'remember_me'
+  %li= submit_button 'Log in'
