@@ -1,3 +1,6 @@
+#
+# A generic representation of an Address.
+#
 class Address
 
   include DataMapper::Resource

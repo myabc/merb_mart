@@ -1,16 +1,22 @@
 !!! Strict
 %html{ "xml:lang" => "en-us", :lang => "en-us", :xmlns => "http://www.w3.org/1999/xhtml" }
   %head
-    %title= title @title unless @title.nil?
+    %title= @title unless @title.nil?
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }
+    %meta{ :generator => "MerbMart" }
     = css_include_tag :master
-    / = css_include_tag :more
-    / = js_include_tag :js
+    = include_required_css
+    = include_required_js
   %body
     #container
       #header
-        %p Header
+        %h1 MerbMart
+        #navigation
+          %ul
+            %li 
+              =link_to 'Store', ''
       #content
         = catch_content :for_layout
       #footer
-        %p Footer
+        %p Powered by MerbMart, Merb and DataMapper.
+        %p Copyright &copy; 2008, Alex Coles.

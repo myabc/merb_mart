@@ -37,6 +37,8 @@ dependency "merb-haml"
 dependency "merb_helpers"
 dependency "merb-mailer"
 #dependency "merb_paginate"
+dependency "merb_stories"
+
 require "ezcrypto"
 
 #MerbPaginate.activate! :finder => :datamapper # require the custom finder for datamapper
