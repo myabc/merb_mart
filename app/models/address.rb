@@ -4,8 +4,8 @@
 class Address
 
   include DataMapper::Resource
-  include DataMapper::Validate
 
+  property :id,           Fixnum, :serial => true
   property :first_name,   String, :length => 50, :nullable => false
   property :last_name,    String, :length => 50, :nullable => false
   property :company,      String, :length => 100
@@ -20,14 +20,14 @@ class Address
   belongs_to :state
   belongs_to :country
 
-  validates_presence_of :first_name
-  validates_presence_of :last_name
-  validates_presence_of :address1
-  validates_presence_of :postal_code
+  validates_present :first_name
+  validates_present :last_name
+  validates_present :address1
+  validates_present :postal_code
 
-  validates_length_of :first_name, :maximum => 50
-  validates_length_of :last_name,  :maximum => 50
-  validates_length_of :address1,   :maximum => 255
+  validates_length :first_name, :maximum => 50
+  validates_length :last_name,  :maximum => 50
+  validates_length :address1,   :maximum => 255
 
   alias :zipcode  :postal_code
   alias :zipcode= :postal_code=

@@ -5,14 +5,13 @@ require 'dm-validations'
 class Tag
   
   include DataMapper::Resource
-  include DataMapper::Validate
   
   property :id,         Fixnum, :serial => true
   property :name,       String, :length => 100, :nullable => false, :key => :unique
   property :rank,       Fixnum
   
-  validates_presence_of   :name
-  validates_uniqueness_of :rank
+  validates_present   :name
+  validates_is_unique :rank
   
   def self.all_ordered
     all(:order => [ :name.asc ])

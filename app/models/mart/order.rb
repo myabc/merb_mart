@@ -1,10 +1,10 @@
+require "bigdecimal"
 require 'dm-validations'
 
 module Mart
   class Order
   
     include DataMapper::Resource
-    include DataMapper::Validate
 
     property :id,            Fixnum,  :serial => true
     property :order_number,  Fixnum,  :default => 0,   :nullable => false, :index => :unique
@@ -12,9 +12,9 @@ module Mart
     property :shipped_on,    DateTime
     property :notes,         DataMapper::Types::Text
     property :referer,       String
-    property :product_cost,  Float,   :default => 0.0
-    property :shipping_cost, Float,   :default => 0.0
-    property :tax,           Float,   :default => 0.0, :nullable => false
+    property :product_cost,  BigDecimal,   :default => 0.0
+    property :shipping_cost, BigDecimal,   :default => 0.0
+    property :tax,           Float,        :default => 0.0, :nullable => false
     property :billing_address_id, Fixnum      # foreign-key
     property :shipping_address_id, Fixnum     # foreign-key
     property :account_id,    Fixnum           # foreign-key
@@ -35,7 +35,7 @@ module Mart
   
     attr_accessor :promotion_code
   
-    validates_presence_of   :order_number
+    validates_present :order_number
   
   end
 end

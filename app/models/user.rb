@@ -10,7 +10,6 @@ end
 class User
   
   include DataMapper::Resource
-  include DataMapper::Validate
   include AuthenticatedSystem::Model
   
   attr_accessor :password, :password_confirmation
@@ -26,22 +25,22 @@ class User
   property :remember_token,             String
   property :created_at,                 DateTime
   property :updated_at,                 DateTime
-  
-  validates_length_of         :login,                   :within => 3..40
-  validates_uniqueness_of     :login
-  validates_presence_of       :email
-  validates_format_of         :email,                   :as => :email_address
-  validates_length_of         :email,                   :within => 3..100
-  validates_uniqueness_of     :email
-  validates_presence_of       :password,                :if => lambda { |r| r.password_required? }
-  validates_presence_of       :password_confirmation,   :if => lambda { |r| r.password_required? }
-  validates_length_of         :password,                :within => 4..40, :if => lambda { |r| r.password_required? }
-  validates_confirmation_of   :password#,                :groups => :create
-  
+
+  validates_length        :login,                   :within => 3..40
+  validates_is_unique     :login
+  validates_present       :email
+  validates_format        :email,                   :as => :email_address
+  validates_length        :email,                   :within => 3..100
+  validates_is_unique     :email
+  validates_present       :password,                :if => lambda { |r| r.password_required? }
+  validates_present       :password_confirmation,   :if => lambda { |r| r.password_required? }
+  validates_length        :password,                :within => 4..40, :if => lambda { |r| r.password_required? }
+  validates_is_confirmed  :password#,                :groups => :create
+
   before :save,   :encrypt_password
   #before_class_method :create, :make_activation_code
   #after_class_method  :create, :send_signup_notification
-  
+
   def login=(value)
     @login = value.downcase unless value.nil?
   end

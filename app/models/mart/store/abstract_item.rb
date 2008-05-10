@@ -1,3 +1,4 @@
+require "bigdecimal"
 require "date"
 require "dm-validations"
 
@@ -6,13 +7,12 @@ module Mart
     class AbstractItem
 
       include DataMapper::Resource
-      include DataMapper::Validate
 
       property :id,             Fixnum, :serial => true
       property :code,           String, :length => 20,                      :nullable => false
       property :name,           String, :length => 100,                     :nullable => false
       property :description,    DataMapper::Types::Text
-      property :price,          Float,                  :default => 0.0,    :nullable => false
+      property :price,          BigDecimal,             :default => 0.0,    :nullable => false
       property :date_available, DateTime,                                   :nullable => false
       property :quantity,       Fixnum,                 :default => 0,      :nullable => false
       property :size_width,     Float,                  :default => 0.0,    :nullable => false
@@ -25,7 +25,7 @@ module Mart
       has n, :line_items,     :class_name => "Mart::Orders::LineItem"
       has n, :wishlist_items, :class_name => "Mart::Customers::WishlistItem" #, :dependent => :destroy
       
-      validates_presence_of :name, :code
+      validates_present :name, :code
       
     end
   end

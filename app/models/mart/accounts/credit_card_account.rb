@@ -2,8 +2,6 @@ module Mart
   module Accounts
     class CreditCardAccount < Accounts::AbstractAccount
     
-      #include DataMapper::Resource
-    
       property :cc_number,        String
       property :expiration_month, Fixnum, :length => 2
       property :expiration_year,  Fixnum, :length => 4

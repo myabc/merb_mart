@@ -1,3 +1,5 @@
+require "bigdecimal"
+
 module Mart
   module Customers
     class Cart

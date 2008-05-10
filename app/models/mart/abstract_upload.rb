@@ -2,16 +2,14 @@ module Mart
   class AbstractUpload
   
     include DataMapper::Resource
-    include DataMapper::Validate
 
-    property :id,         Fixnum, :serial => true
-    property :filename,   String
-    property :created_on, DateTime
-    #property :parent_id
+    property :id,           Fixnum, :serial => true
+    property :filename,     String
+    property :created_on,   DateTime
     property :content_type, String
     property :thumbnail,    String
     property :size,         Fixnum
-    property :type,       Class   # single-table inheritance
+    property :type,         Class   # single-table inheritance
 
     def filename_base
       filename.split('.').first
