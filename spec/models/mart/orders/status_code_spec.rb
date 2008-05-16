@@ -8,8 +8,8 @@ describe Mart::Orders::StatusCode do
       status_code.should respond_to(:orders)
     end
   end
-  
-  it "should know if it the order can be edited or not, based on 
+
+  it "should know if it the order can be edited or not, based on
   status code" do
     osc = Mart::Orders::StatusCode.new(:id => 1)
     #osc.is_editable?.should == false

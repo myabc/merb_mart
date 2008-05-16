@@ -7,13 +7,13 @@ describe Mart::Store::Promotion do
       promotion = Mart::Store::Promotion.new
       promotion.should respond_to(:item)
     end
-  
+
     it "should have 0..* orders" do
       promotion = Mart::Store::Promotion.new
       promotion.should respond_to(:orders)
     end
   end
-  
+
   it "should require a code"
   it "should require a discount amount"
   it "should require a discount type"

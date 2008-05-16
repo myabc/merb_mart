@@ -2,9 +2,9 @@ require 'dm-validations'
 
 module Mart
   class Customer
-  
+
     include DataMapper::Resource
-  
+
     property :id,            Fixnum,  :serial => true
     property :username,      String,  :length => 50
     property :email_address, String,  :length => 50, :nullable => false, :index => :unique

@@ -7,7 +7,7 @@ describe Mart::Store::Variation do
   end
 
   describe "associations" do
-    
+
     it "should belong to a product" do
       @variation.should respond_to(:product)
     end
@@ -15,13 +15,13 @@ describe Mart::Store::Variation do
     it "should have 0..* order line items" do
       @variation.should respond_to(:line_items)
     end
-    
+
     it "should have 0..* wishlist items" do
       @variation.should respond_to(:wishlist_items)
     end
-    
+
   end
-  
+
   it "should provide images"
   it "should provide a name"
 

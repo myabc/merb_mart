@@ -17,7 +17,7 @@ class State
   property :country_code, String, :key => true  # foreign-key, ISO 3166-1 alpha-2
   property :abbr,         String, :key => true, :length => 10
   property :name,         String,               :length => 50, :nullable => false
-  
+
   belongs_to :country
-  
+
 end

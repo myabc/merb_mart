@@ -4,16 +4,16 @@ require "dm-aggregates"
 require "dm-validations"
 begin
   require File.join(File.dirname(__FILE__), '..', '..', "lib", "authenticated_system", "authenticated_dependencies")
-rescue 
+rescue
   nil
 end
 class User
-  
+
   include DataMapper::Resource
   include AuthenticatedSystem::Model
-  
+
   attr_accessor :password, :password_confirmation
-  
+
   property :id,                         Fixnum,   :serial => true
   property :login,                      String,   :unique => true
   property :email,                      String
@@ -44,11 +44,11 @@ class User
   def login=(value)
     @login = value.downcase unless value.nil?
   end
-  
+
   EMAIL_FROM = "info@mysite.com"
   SIGNUP_MAIL_SUBJECT = "Welcome to MYSITE.  Please activate your account."
   ACTIVATE_MAIL_SUBJECT = "Welcome to MYSITE"
-  
+
   # Activates the user in the database
   def activate
     @activated = true
@@ -65,15 +65,15 @@ class User
                                       :user => self )
 
   end
-  
+
   #def send_signup_notification
   #  UserMailer.dispatch_and_deliver(
   #      :signup_notification,
   #    { :from => User::EMAIL_FROM,
   #      :to  => self.email,
   #      :subject => User::SIGNUP_MAIL_SUBJECT },
-  #      :user => self        
+  #      :user => self
   #  )
   #end
-  
+
 end

@@ -4,15 +4,15 @@ require 'dm-validations'
 module Mart
   module Store
     class Promotion
-  
+
       include DataMapper::Resource
 
       ## TODO: add support for subtypes:
       # - dollars off
       # - percetnage off
       # - buy n, get n free
-      # - 
-  
+      # -
+
       property :id,               Fixnum,   :serial => true
       property :code,             String,   :length => 15,                  :nullable => false
       property :discount_type,    Fixnum,                 :default => 0,    :nullable => false
@@ -25,9 +25,9 @@ module Mart
 
       has n, :orders
       belongs_to :item, :class_name => "Mart::Store::AbstractItem"
-  
+
       validates_present   :code, :discount_amount, :discount_type, :description
-      validates_is_number :discount_amount  
+      validates_is_number :discount_amount
 
     end
   end

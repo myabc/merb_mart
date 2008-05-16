@@ -7,17 +7,17 @@ describe Mart::Customers::WishlistItem do
   end
 
   describe "associations" do
-    
+
     it "should belong to a customer" do
       @wishlist_item.should respond_to(:customer)
     end
-    
+
     it "should belong to an item" do
       @wishlist_item.should respond_to(:store_item)
     end
-    
+
   end
-  
+
   describe "properties" do
     it "should have a created on date"
   end

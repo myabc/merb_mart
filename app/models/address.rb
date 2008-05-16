@@ -13,7 +13,7 @@ class Address
   property :address1,     String, :length => 200, :nullable => false
   property :address2,     String, :length => 200
   property :city,         String, :length => 50
-  property :postal_code,  String, :length => 10 
+  property :postal_code,  String, :length => 10
   property :state_id,     Fixnum  # foreign-key
   property :country_code, String  # foreign-key
 

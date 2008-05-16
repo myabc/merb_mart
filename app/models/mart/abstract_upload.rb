@@ -1,6 +1,6 @@
 module Mart
   class AbstractUpload
-  
+
     include DataMapper::Resource
 
     property :id,           Fixnum, :serial => true
@@ -18,7 +18,7 @@ module Mart
     def extension
       filename.split('.').last
     end
-    
+
     def relative_path
       filename # TODO
     end

@@ -3,7 +3,7 @@ require 'dm-validations'
 module Mart
   module Accounts
     class AbstractAccount
-  
+
       include DataMapper::Resource
       include DataMapper::Validate
       require 'ezcrypto'
@@ -12,14 +12,14 @@ module Mart
       property :type,         Class   # single-table inheritance
       property :order_id,     Fixnum  # foreign-key
       property :customer_id,  Fixnum  # foreign-key
-    
+
       has 1, :order
       belongs_to :customer #, :accessor => :protected
 
       def self.months
         (1..12).to_a
       end
-      
+
       def self.years
         year = Date.today.year
         years = Array.new

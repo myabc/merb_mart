@@ -17,9 +17,9 @@ describe Mart::Shipping::Type do
   #  shipping_types.should_not be_nil
     # test the result set
   #end
-  
+
   it "should get price"
-  
+
   #it "should calculate a price for a weight" do
   #  shipping_type = Mart::Shipping::Type.new
   #  shipping_type.price = 86.23
@@ -27,7 +27,7 @@ describe Mart::Shipping::Type do
     # if no weights are set, then it should return the same price
   #  shipping_type.calculated_price.should == 86.23
   #end
-  
+
   #it "should allow weight variations to be set from a list" do
   #  shipping_type = Mart::Shipping::Type.new
   #  weights = [20.1, 56.32, 123.2, 93.12, 1022.0]

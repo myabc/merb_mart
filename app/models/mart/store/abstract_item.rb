@@ -21,12 +21,12 @@ module Mart
       property :weight,         Float,                  :default => 0.0,    :nullable => false
       property :is_discontinued, TrueClass,             :default => false
       property :type,           Class    # single-table inheritance
-      
+
       has n, :line_items,     :class_name => "Mart::Orders::LineItem"
       has n, :wishlist_items, :class_name => "Mart::Customers::WishlistItem" #, :dependent => :destroy
-      
+
       validates_present :name, :code
-      
+
     end
   end
 end

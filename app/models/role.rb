@@ -1,5 +1,5 @@
 class Role
-  
+
   include DataMapper::Resource
 
   property :id,          Fixnum, :serial => true

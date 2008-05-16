@@ -3,14 +3,14 @@ require "bigdecimal"
 module Mart
   module Customers
     class Cart
-  
+
       attr_reader :items, :shipping_cost, :tax, :total
-  
+
       # Initializes the shopping cart
       def initialize
         empty!
       end
-  
+
       # Empties or initializes the cart
       def empty!
         @items = []
@@ -18,15 +18,15 @@ module Mart
         @total = 0.0
         @shipping_cost = 0.0
       end
-  
+
       def tax_cost
         @tax * @total
       end
-  
+
       def empty?
         @items.length == 0
       end
-  
+
       # Returns the total price of our cart
       def total
         @total = 0.0
@@ -41,7 +41,7 @@ module Mart
       def line_items_total
         total
       end
-  
+
       # Adds a product to our shopping cart
       def add_product(product, quantity=1)
         item = @items.find { |i| i.product_id == product.id }
@@ -55,7 +55,7 @@ module Mart
            @items << item
          end
       end
-  
+
       # Removes all quantities of product from our cart
       def remove_product(product, quantity=nil)
         item = @items.find { |i| i.product_id == product.id }
@@ -70,7 +70,7 @@ module Mart
           end
         end
       end
-  
+
       # Checks inventory of products, and removes them if
       # they're out of stock.
       #
@@ -90,7 +90,7 @@ module Mart
         end
         return removed_items
       end
-  
+
     end
   end
 end

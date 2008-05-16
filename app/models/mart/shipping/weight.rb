@@ -13,7 +13,7 @@ module Mart
       property :order_shipping_type_id, Fixnum  # foreign-key
 
       belongs_to :type
-  
+
     end
   end
 end

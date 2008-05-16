@@ -16,29 +16,29 @@ describe Mart::Order do
       @order.should respond_to(:customer)
       @order.should respond_to(:customer=)
     end
-    
+
     it "should have many (1..*) line items" do
       @order.should respond_to(:line_items)
       #@order.should respond_to(:line_items=)
     end
-    
+
     it "should have at least one line item"
-    
+
     it "should have a billing address" do
       @order.should respond_to(:billing_address)
       @order.should respond_to(:billing_address=)
     end
-    
+
     it "should have a shipping address" do
       @order.should respond_to(:shipping_address)
       @order.should respond_to(:shipping_address=)
     end
-    
+
     it "may belong to a promotion" do
       @order.should respond_to(:promotion)
       @order.should respond_to(:promotion=)
     end
-    
+
   end
 
   it "should be valid" do
@@ -47,19 +47,19 @@ describe Mart::Order do
   end
 
   it "should have a total"
-  
+
   describe "class methods" do
-    
+
     it "should return a search result" do
       pending
     end
-    
+
     it "should generate an order number" do
       #Mart::Order.generate_order_number
       Mart::Order.should respond_to(:generate_order_number)
       pending
     end
-    
+
     it "should get totals"
 
     it "should get CSV for orders" do
@@ -73,7 +73,7 @@ describe Mart::Order do
       #@csv = Mart::Order.get_csv_for_orders(order_list)
       pending
     end
-    
+
     it "should get XML for orders" do
       order1 = Mart::Order.new
       order2 = Mart::Order.new
@@ -84,13 +84,13 @@ describe Mart::Order do
       #@xml = Mart::Order.get_xml_for_orders(order_list)
       pending
     end
-    
-    it "should get order status"    
-    
+
+    it "should get order status"
+
   end
-  
+
   it "should assign line items from a hash"
-  
+
   it "should get the total amount of all line items associated with this order"
 
   it "should test weight"
@@ -100,14 +100,14 @@ describe Mart::Order do
   it "should work for a valid transaction"
   it "should not work for an invalid transaction"
 
-  #it "should clean up" 
+  #it "should clean up"
   #it "should not cleanup"
 
 
   it "should have a shipping type"
-  
+
   it "should have a order status code"
-  
+
   it "should belong to a promotion"
 
   it "should have a unique order number"

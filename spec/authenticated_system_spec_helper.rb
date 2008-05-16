@@ -7,13 +7,13 @@ class Merb::Mailer
 end
 
 class Hash
-  
+
   def with( opts )
     self.merge(opts)
   end
-  
+
   def without(*args)
     self.dup.delete_if{ |k,v| args.include?(k)}
   end
-  
+
 end

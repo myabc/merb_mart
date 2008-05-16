@@ -1,10 +1,10 @@
-#  __  __         _    __  __          _   
-# |  \/  |___ _ _| |__|  \/  |__ _ _ _| |_ 
+#  __  __         _    __  __          _
+# |  \/  |___ _ _| |__|  \/  |__ _ _ _| |_
 # | |\/| / -_) '_| '_ \ |\/| / _` | '_|  _|
 # |_|  |_\___|_| |_.__/_|  |_\__,_|_|  \__|
 #
 # Copyright (C) 2008  Alex Coles
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 2 of the License, or
@@ -20,7 +20,7 @@
 #
 
 # ==== Load paths
- 
+
 # Make the app's "gems" directory a place where gems are loaded from
 Gem.clear_paths
 Gem.path.unshift(Merb.root / "gems")
@@ -73,8 +73,8 @@ Merb::Config.use do |c|
   c[:session_store] = 'cookie'
   # c[:session_store] = 'datamapper'  ## FIXME: temporarily disabled
   # c[:use_mutex] = false             ## FIXME: disable Mutex
-  
-end  
+
+end
 
 # ==== Inflector Customization
 
