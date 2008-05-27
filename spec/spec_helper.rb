@@ -5,7 +5,7 @@ require 'data_mapper'
 require 'can_has_fixtures'
 
 # Add the dependency in a before_app_loads hook
-Merb::BootLoader.before_app_loads { require(File.join(File.dirname(__FILE__), '..', 'lib', 'merb_e_mart')) }
+Merb::BootLoader.before_app_loads { require(File.join(File.dirname(__FILE__), '..', 'lib', 'merb-E-mart')) }
 
 DataMapper.setup(:default, 'sqlite3::memory:')
 DataMapper.auto_migrate!
@@ -60,7 +60,7 @@ Address.fixture {{
 
 Country.fixture {{
   :code => 2.of {('a'..'z').random}.to_s,
-  :name => Random.word(:max => 100)
+  :name => Random.word(:max => 100, :unique => true)
 }}
 
 State.fixture {{

@@ -11,7 +11,7 @@ file: config/init.rb
 
 # add the slice as a regular dependency
 
-dependency 'merb_e_mart'
+dependency 'merb-E-mart'
 
 # if needed, configure which slices to load and in which order
 
@@ -21,13 +21,13 @@ Merb::Plugins.config[:merb_slices] = { :queue => ["MerbEMart", ...] }
 
 Merb::BootLoader.before_app_loads do
   
-  Merb::Slices::config[:merb_e_mart] = { ... }
+  Merb::Slices::config[:merb_E_mart] = { ... }
   
 end
 
 file: config/router.rb
 
-# example: /merb_e_mart/:controller/:action/:id
+# example: /merb-E-mart/:controller/:action/:id
 
 r.add_slice(:MerbEMart)
 
@@ -45,32 +45,32 @@ r.slice(:MerbEMart)
 
 Normally you should also run the following rake task:
 
-rake slices:merb_e_mart:install
+rake slices:merb_E_mart:install
 
 ------------------------------------------------------------------------------
 
 You can put your application-level overrides in:
 
-host-app/slices/merb_e_mart/app - controllers, models, views ...
+host-app/slices/merb-E-mart/app - controllers, models, views ...
 
 Templates are located in this order:
 
-1. host-app/slices/merb_e_mart/app/views/*
-2. gems/merb_e_mart/app/views/*
+1. host-app/slices/merb-E-mart/app/views/*
+2. gems/merb-E-mart/app/views/*
 3. host-app/app/views/*
 
 You can use the host application's layout by configuring the
-merb_e_mart slice in a before_app_loads block:
+merb-E-mart slice in a before_app_loads block:
 
-Merb::Slices.config[:merb_e_mart] = { :layout => :application }
+Merb::Slices.config[:merb_E_mart] = { :layout => :application }
 
-By default :merb_e_mart is used. If you need to override
+By default :merb_E_mart is used. If you need to override
 stylesheets or javascripts, just specify your own files in your layout
 instead/in addition to the ones supplied (if any) in 
-host-app/public/slices/merb_e_mart.
+host-app/public/slices/merb-E-mart.
 
 In any case don't edit those files directly as they may be clobbered any time
-rake merb_e_mart:install is run.
+rake merb_E_mart:install is run.
 
 ------------------------------------------------------------------------------
 

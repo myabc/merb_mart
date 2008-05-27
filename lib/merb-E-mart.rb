@@ -2,11 +2,21 @@ if defined?(Merb::Plugins)
 
   require 'merb-slices'
   require 'dm-validations'
-  Merb::Plugins.add_rakefiles "merb_e_mart/merbtasks"
+  Merb::Plugins.add_rakefiles "merb-E-mart/merbtasks"
 
+  # Register the Slice for the current host application
   Merb::Slices::register(__FILE__)
-  Merb::Slices::config[:merb_e_mart] = { :layout => :merb_e_mart }
   
+  # Slice configuration - set this in a before_app_loads callback.
+  # By default a Slice uses its own layout, so you can swicht to 
+  # the main application layout or no layout at all if needed.
+  # 
+  # Configuration options:
+  # :layout - the layout to use; defaults to :merb_E_mart
+  # :mirror - which path component types to use on copy operations; defaults to all
+  Merb::Slices::config[:merb_E_mart] = { :layout => :merb_E_mart }
+  
+  # All Slice code is expected to be namespaced inside a module
   module MerbEMart
     
     # Slice metadata
@@ -40,10 +50,10 @@ if defined?(Merb::Plugins)
   # Setup the slice layout for MerbEMart
   #
   # Use MerbEMart.push_path and MerbEMart.push_app_path
-  # to set paths to merb_e_mart-level and app-level paths. Example:
+  # to set paths to merb-E-mart-level and app-level paths. Example:
   #
   # MerbEMart.push_path(:application, MerbEMart.root)
-  # MerbEMart.push_app_path(:application, Merb.root / 'slices' / 'merb_e_mart')
+  # MerbEMart.push_app_path(:application, Merb.root / 'slices' / 'merb-E-mart')
   # ...
   #
   # Any component path that hasn't been set will default to MerbEMart.root
