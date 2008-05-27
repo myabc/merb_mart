@@ -1,0 +1,5 @@
+log
+*.db
+tmp
+pkg
+.DS_Store
