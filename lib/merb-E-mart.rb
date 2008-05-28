@@ -2,6 +2,7 @@ if defined?(Merb::Plugins)
 
   require 'merb-slices'
   require 'dm-validations'
+  require 'dm-types'
   Merb::Plugins.add_rakefiles "merb-E-mart/merbtasks"
 
   # Register the Slice for the current host application

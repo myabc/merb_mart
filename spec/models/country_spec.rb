@@ -2,7 +2,7 @@ require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
 describe Country do
   before(:each) do
-    Country.auto_migrate!
+    DataMapper.auto_migrate!
     @country = Country.gen
   end
 

@@ -11,5 +11,4 @@ class Country
   has n, :states
 
   alias :provinces :states
-
 end

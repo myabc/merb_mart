@@ -2,7 +2,7 @@ require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
 describe State do
   before(:each) do
-    State.auto_migrate!
+    DataMapper.auto_migrate!
     @state = State.gen
   end
 
