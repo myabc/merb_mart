@@ -24,9 +24,25 @@ Customer.fixture {{
   :username => Random.word(:max => 50, :unique => true)
 }}
 
+Item.fixture {{
+
+}}
+
+LineItem.fixture {{
+  :quantity => rand(10),
+  :unit_price => rand * rand(1_000)
+}}
+
 Order.fixture {{
   :order_number => rand(100_000),
   :tax          => rand * rand(1_000)
+}}
+
+Product.fixture {{
+  :name => Random.word,
+  :code => "%010d" % rand(1_000_000),
+  :date_available => Time.now,
+  :is_discontinued => Random.boolean
 }}
 
 State.fixture {{

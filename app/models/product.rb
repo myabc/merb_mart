@@ -13,11 +13,11 @@ class Product
   property :size_height,      Float,                  :default => 0.0,      :nullable => false
   property :size_depth,       Float,                  :default => 0.0,      :nullable => false
   property :weight,           Float,                  :default => 0.0,      :nullable => false
-  property :is_discontinued,  Boolean,                :default => false
+  property :is_discontinued,  Boolean,                :default => false,    :nullable => false
 
   has n, :items
   has n, :variations
   has n, :product_images
 
-  validates_present :name, :code
+  alias_method :discontinued?, :is_discontinued
 end

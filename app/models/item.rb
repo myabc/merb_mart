@@ -6,5 +6,7 @@ class Item
   property :name,       String
   property :product_id, Integer  # foreign-key
 
-  has 1, :product
+  belongs_to :product
+
+  validates_present :product
 end
