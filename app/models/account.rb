@@ -6,6 +6,8 @@ class Account
   property :order_id,     Integer  # foreign-key
   property :customer_id,  Integer  # foreign-key
 
-  has 0..1, :order
+  has 1,     :order
   belongs_to :customer
+
+  validates_present :customer
 end

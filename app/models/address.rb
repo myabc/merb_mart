@@ -18,6 +18,7 @@ class Address
 
   belongs_to :state
   belongs_to :country, :through => :state
+  belongs_to :customer
 
   alias :zipcode  :postal_code
   alias :zipcode= :postal_code=
