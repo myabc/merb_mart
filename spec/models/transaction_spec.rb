@@ -29,5 +29,13 @@ describe Transaction do
       transaction.should_not be_valid
       transaction.errors.should include(:account)
     end
+
+    it "should belong to a customer through the transaction" do
+      pending "i figure out this whole :through business"
+      customer = Customer.gen
+      order = Order.gen(:customer => customer)
+      transaction = Transaction.gen(:order => order)
+      transaction.customer.should == customer
+    end
   end
 end
