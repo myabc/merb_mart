@@ -14,6 +14,7 @@ describe Customer do
     end
 
     it "should have n addresses" do
+      pending ":through working in DM"
       addresses = (1..10).of {Address.gen}
       customer = Customer.create(Customer.gen_attrs.merge(:addresses => addresses))
       customer.addresses = addresses
@@ -21,6 +22,7 @@ describe Customer do
     end
 
     it "should have n accounts" do
+      pending ":through working in DM"
       accounts = (1..10).of {Account.gen}
       customer = Customer.create(Customer.gen_attrs.merge(:accounts => accounts))
       customer.accounts = accounts

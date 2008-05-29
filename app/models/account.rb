@@ -3,11 +3,10 @@ class Account
 
   property :id,           Integer, :serial => true
   property :type,         Class    # single-table inheritance
-  property :order_id,     Integer  # foreign-key
-  property :customer_id,  Integer  # foreign-key
+  property :address_id,   Integer  # foreign-key
 
-  has 1,     :order
-  belongs_to :customer
+  has n,  :transactions
+  belongs_to :address, :class_name => 'Address' #stupid DM, tries to singularize a 'has 1'
 
-  validates_present :customer
+  validates_present :address
 end

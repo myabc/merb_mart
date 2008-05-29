@@ -1,5 +1,5 @@
 Account.fixture {{
-  :customer => Customer.gen
+  :address => Address.gen
 }}
 
 Address.fixture {{
@@ -34,8 +34,13 @@ LineItem.fixture {{
 }}
 
 Order.fixture {{
-  :order_number => rand(100_000),
-  :tax          => rand * rand(1_000)
+  :order_number     => rand(100_000),
+  :shipping_cost    => rand(10),
+  :product_cost     => rand(10),
+  :tax              => rand(10),
+  :line_items       => (1..10).of {LineItem.gen},
+  :shipping_info    => ShippingInfo.gen,
+  :customer         => Customer.gen
 }}
 
 Product.fixture {{
@@ -45,8 +50,21 @@ Product.fixture {{
   :is_discontinued => Random.boolean
 }}
 
+Promotion.fixture {{
+  
+}}
+
+ShippingInfo.fixture {{
+  
+}}
+
 State.fixture {{
   :country  => Country.gen,
   :name     => name = Random.word,
   :abbr     => name[0, 10]
+}}
+
+Transaction.fixture {{
+  :order    => Order.gen,
+  :account  => Account.gen
 }}

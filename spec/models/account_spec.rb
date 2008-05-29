@@ -6,27 +6,22 @@ describe Account do
   end
 
   describe "associations" do
-    it "should have 0..1 order" do
-      order = Order.gen
-      account = Account.create(Account.gen_attrs.merge(:order => order))
-      account.order.should == order
-      account.should be_valid
-
-      account = Account.create(Account.gen_attrs.except(:order))
-      account.order.should be_nil
+    it "should has 1..n transactions" do
+      transactions = (1..10).of {Transaction.gen}
+      account = Account.create(Account.gen_attrs.merge(:transactions => transactions))
+      account.transactions.should == transactions
       account.should be_valid
     end
 
-    it "should have a customer" do
-      customer = Customer.gen
-      account = Account.create(Account.gen_attrs.merge(:customer => customer))
-      account.customer.should == customer
-      account.should be_valid
+    it "should belong to an address" do
+      address = Address.gen
+      account = Account.create(Account.gen_attrs.merge(:address => address))
+      account.address.should == address
 
-      account = Account.create(Account.gen_attrs.except(:customer))
-      account.order.should be_nil
+      account = Account.create(Account.gen_attrs.except(:address))
+      account.address.should be_nil
       account.should_not be_valid
-      account.errors.should include(:customer)
+      account.errors.should include(:address)
     end
   end
 end
