@@ -3,6 +3,8 @@ if defined?(Merb::Plugins)
   require 'merb-slices'
   require 'dm-validations'
   require 'dm-types'
+
+  require 'lib/merb-E-mart/exceptions/mixin_missing'
   Merb::Plugins.add_rakefiles "merb-E-mart/merbtasks"
 
   # Register the Slice for the current host application

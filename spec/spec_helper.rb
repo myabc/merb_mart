@@ -62,3 +62,9 @@ class Random
     "#{(100..999).random}-#{(100..999).random}-#{(0..9999).random}"
   end
 end
+
+module MockUploadProcessor
+  def process; end
+end
+
+Upload.send :include, MockUploadProcessor

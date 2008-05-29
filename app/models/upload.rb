@@ -3,5 +3,7 @@ class Upload
 
   property :id,         Integer, :serial => true
   property :type,       Class    # single-table inheritance
-  property :filename,   String
+  property :location,   DM::URI, :nullable => false
+
+  before :save, :process
 end

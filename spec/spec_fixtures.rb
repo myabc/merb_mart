@@ -68,3 +68,17 @@ Transaction.fixture {{
   :order    => Order.gen,
   :account  => Account.gen
 }}
+
+Upload.fixture {{
+  :location => Tempfile.new(Random.word).path
+}}
+
+User.fixture {{
+  :username => Random.word(:unique => true)
+}}
+
+Weight.fixture {{
+  :min_weight => rand(10),
+  :max_weight => rand(10),
+  :price      => rand(10)
+}}
