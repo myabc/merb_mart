@@ -16,13 +16,10 @@ class Order
   property :promotion_id,           Integer     # foreign-key
 
   belongs_to  :customer
+  belongs_to  :shipping_info
 
   has 1..n,   :line_items
   has 1..n,   :transactions
-  has 1,      :shipping_info
-  has 0..1,   :promotion
-
-  attr_accessor :promotion_code
 
   validates_present :customer, :line_items, :shipping_info
 end

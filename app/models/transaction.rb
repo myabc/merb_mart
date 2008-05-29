@@ -9,10 +9,11 @@ class Transaction
   property :created_at,   DateTime
   property :updated_at,   DateTime
   property :amount,       BigDecimal
+  property :order_id,     Integer
+  property :account_id,   Integer
 
   belongs_to :order
   belongs_to :account
-  belongs_to :customer, :through => :order
 
   validates_present :order, :account
 end

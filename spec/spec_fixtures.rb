@@ -50,12 +50,8 @@ Product.fixture {{
   :is_discontinued => Random.boolean
 }}
 
-Promotion.fixture {{
-  
-}}
-
 ShippingInfo.fixture {{
-  
+  :name   => Random.word
 }}
 
 State.fixture {{

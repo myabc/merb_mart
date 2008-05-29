@@ -54,6 +54,8 @@ describe Order do
     end
 
     it "should have 0..1 promotion" do
+      pending "many to many in DM core"
+
       promotion = Promotion.gen
       order = Order.create(Order.gen_attrs.merge(:promotion => promotion))
       order.promotion.should == promotion
