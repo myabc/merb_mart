@@ -1,5 +1,4 @@
 class Image < Upload
-  include Merb::Slices::config[:merb_E_mart][:image_resize_mixin]
 
   IMAGE_EXTENSIONS = ['gif', 'jpg', 'jpeg', 'png', 'bmp']
 
@@ -9,4 +8,6 @@ class Image < Upload
   validates_present :width, :height
 
   after :process, :resize
+
+  def resize; end
 end

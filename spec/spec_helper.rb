@@ -13,24 +13,6 @@ DataMapper.setup(:default, 'sqlite3::memory:')
 # - testing standalone, without being installed as a gem and no host application
 # - testing from within the host application; its root will be used
 
-module MockUploadProcessor
-  def process; end
-end
-
-module MockImageResize
-  def resize; end
-end
-
-module MockThumbnailGenerator
-  def generate_thumbnail; end
-end
-
-Merb::BootLoader.before_app_loads do
-  Merb::Slices::config[:merb_E_mart][:upload_processor_mixin] = MockUploadProcessor
-  Merb::Slices::config[:merb_E_mart][:image_resize_mixin] = MockImageResize
-  Merb::Slices::config[:merb_E_mart][:thumbnail_mixin] = MockThumbnailGenerator
-end
-
 Merb.start_environment(
   :testing => true, 
   :adapter => 'runner', 

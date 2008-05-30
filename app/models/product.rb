@@ -9,11 +9,7 @@ class Product
   property :price,            BigDecimal,             :default => 0.0,      :nullable => false
   property :date_available,   DateTime,                                     :nullable => false
   property :quantity,         Integer,                :default => 0,        :nullable => false
-  property :size_width,       Float,                  :default => 0.0,      :nullable => false
-  property :size_height,      Float,                  :default => 0.0,      :nullable => false
-  property :size_depth,       Float,                  :default => 0.0,      :nullable => false
-  property :weight,           Float,                  :default => 0.0,      :nullable => false
-  property :is_discontinued,  Boolean,                :default => false,    :nullable => false
+  property :is_discontinued,  Boolean
 
   has n, :items
   has n, :variations

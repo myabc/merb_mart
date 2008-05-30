@@ -1,6 +1,7 @@
 if defined?(Merb::Plugins)
 
   require 'merb-slices'
+  require 'merb-haml'
   require 'dm-validations'
   require 'dm-types'
 
@@ -46,6 +47,11 @@ if defined?(Merb::Plugins)
     #  router behaviour is a valid namespace, so you can attach
     #  routes at any level of your router setup.
     def self.setup_router(scope)
+      scope.namespace(:admin) do |admin|
+        admin.to(:controller => 'products') do |products|
+          products.match('/products').to.name(:products)
+        end
+      end
     end
     
   end
@@ -55,8 +61,8 @@ if defined?(Merb::Plugins)
   # Use MerbEMart.push_path and MerbEMart.push_app_path
   # to set paths to merb-E-mart-level and app-level paths. Example:
   #
-  # MerbEMart.push_path(:application, MerbEMart.root)
-  # MerbEMart.push_app_path(:application, Merb.root / 'slices' / 'merb-E-mart')
+  MerbEMart.push_path(:application, MerbEMart.root)
+  MerbEMart.push_app_path(:application, Merb.root / 'slices' / 'merb-E-mart')
   # ...
   #
   # Any component path that hasn't been set will default to MerbEMart.root
