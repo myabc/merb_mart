@@ -4,11 +4,11 @@ Installation
 Dependencies
 ------------
 
-MerbMart master branch is being built on the cutting-edge Merb framework, and
+Merb eMart master branch is being built on the cutting-edge Merb framework, and
 the bleeding edge DataMapper framework. As such, you'll have to get yourself 
-setup with those gems before you get the chance to play with MerbMart.
+setup with those gems before you get the chance to play with Merb eMart.
 
-Dependencies for MerbMart:
+Dependencies for Merb eMart:
 
  * **DataMapper 0.9** - 'edge' development
     * *DataObjects*

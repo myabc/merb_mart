@@ -1,13 +1,13 @@
-MerbMart README
-===============
+Merb eMart README
+=================
 
-MerbMart is an *open-source e-commerce application*, developed on top of the 
-recent Ruby-language Merb MVC framework. Although MerbMart is designed for 
+Merb eMart is an *open-source e-commerce application*, developed on top of the 
+recent Ruby-language Merb MVC framework. Although Merb eMart is designed for 
 e-commerce sites of all sizes, the speed and scalability of the Merb framework 
 make it scalable even for large online vendors.
 
 In addition to Merb framework, the following technologies and frameworks
-provide a foundation for MerbMart:
+provide a foundation for Merb eMart:
 
  * **DataMapper** (bleeding-edge 0.9), for object relation mapping (ORM) and 
    persistence.
@@ -17,9 +17,9 @@ provide a foundation for MerbMart:
 
 See INSTALL or the project wiki for a full list of dependencies.
 
-MerbMart is inspired by other, Rails based e-commerce applications, including
-[Substruct][substruct] and [Spree][spree]. Although MerbMart started out as a
-project to port Substruct to Merb, the initial 0.1 release of MerbMart will
+Merb eMart is inspired by other, Rails based e-commerce applications, including
+[Substruct][substruct] and [Spree][spree]. Although Merb eMart started out as a
+project to port Substruct to Merb, the initial 0.1 release of Merb eMart will
 instead be a its own implementation of an e-commerce engine, trying to match
 the feature sets other e-commerce applications, but taking advantages of the
 unique features of Merb and DataMapper.
@@ -27,7 +27,7 @@ unique features of Merb and DataMapper.
 Developer Notes
 ---------------
 
-**WARNING** : MerbMart is at a very early development stages. At this stage, 
+**WARNING** : Merb eMart is at a very early development stages. At this stage, 
 the application should be considered only for consumption by advanced Ruby and
 Merb developers. If you're looking for something for production consumption,
 or not yet ready to jump from Ruby on Rails, then we would strongly advise 
@@ -55,12 +55,12 @@ The following additional mirrors are available:
 Installation and Setup
 ----------------------
 
-Please see the INSTALL file for details on getting up and running with MerbMart.
+Please see the INSTALL file for details on getting up and running with Merb eMart.
 
 Copyright and License
 ---------------------
 
-MerbMart is licensed under the **GNU Public License (GPL)**:
+Merb eMart is licensed under the **GNU Public License (GPL)**:
 
    > Copyright (C) 2008  Alex Coles
 
@@ -83,7 +83,7 @@ the distribution.
 Support
 -------
 
-**WARNING REPEATED** : MerbMart is still at a very early stage of its 
+**WARNING REPEATED** : Merb eMart is still at a very early stage of its 
 development. You should not use this code unless you're reasonably secure with 
 the Ruby language, and the DataMapper and Merb frameworks. That said, _please 
 do get involved_ - and if you're happy to contribute back with bug reports and 
@@ -92,11 +92,11 @@ patches, then we'll be happy to help you get the application up and running.
 Your best source for support currently is either the wiki, IRC or the mailing
 list:
 
- * **MerbMart Wiki** (this is its temporary residence):
+ * **Merb eMart Wiki** (this is its temporary residence):
     http://github.com/myabc/merb_mart/wikis
- * **MerbMart mailing list**:
+ * **Merb eMart mailing list**:
     <http://groups.google.com/group/merb_mart>
- * **MerbMart homepage**: _coming soon_
+ * **Merb eMart homepage**: _coming soon_
  * Contact the developers directly:
     - <alex@alexcolesportfolio.com> | myabc on #datamapper, #merb IRC
 
