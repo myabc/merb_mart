@@ -11,7 +11,6 @@
 #   German Bundesland                 => Baden-Württemburg/BW
 #
 class State
-
   include DataMapper::Resource
 
   property :country_code, String, :key => true  # foreign-key, ISO 3166-1 alpha-2
@@ -19,5 +18,4 @@ class State
   property :name,         String,               :length => 50, :nullable => false
 
   belongs_to :country
-
 end

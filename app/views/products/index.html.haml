@@ -1,0 +1,4 @@
+%h3 Products
+%ul.products
+  -@products.each do |product|
+    =partial :preview, :product => product

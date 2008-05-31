@@ -2,54 +2,33 @@ require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
 describe Country do
 
+  before(:each) do
+    DataMapper.auto_migrate!
+    @country = Country.gen
+  end
+
   describe "associations" do
     it "should have many (0..*) states" do
-      country = Country.new
-      country.should respond_to(:states)
+      @country.should respond_to(:states)
+      @country.states.each do |state|
+        state.country.should == @country
+      end
     end
 
     it "should have many (0..*) provinces (alias for states)" do
-      country = Country.new
-      country.should respond_to(:provinces)
+      @country.should respond_to(:provinces)
     end
   end
 
-  before(:each) do
-    @country = Country.new
-    Country.auto_migrate!
-  end
-
-  it "should be valid" do
-    @country.code = "AD"
-    @country.name = "Andorra"
-    @country.should be_valid
+  it "should be valid when all attributes are supplied" do
+    Country.gen.should be_valid
   end
 
   it "should have a name field" do
-    @country.valid?
-    @country.errors.on(:name).should_not be_nil
+    Country.create(Country.gen_attrs.except(:name)).should_not be_valid
   end
 
   it "should have a unique name field" do
-    country1 = Country.new(:code => "FR", :name => "France")
-    country2 = Country.new(:code => "ZZ", :name => "France")
-    country1.save.should be_true
-    country1.name = "France"
-    country2.valid?
-    # see http://wm.lighthouseapp.com/projects/4819/tickets/272-invalid-resources-still-save
-    #country2.save.should be_false
-    pending
-    country2.errors.on(:name).should_not be_nil
-  end
-
-  it "should have a code field" do
-    @country.name = "Lithuania"
-    @country.code = "LT"
-    @country.should be_valid
-  end
-
-  describe "finders" do
-
-  end
+    Country.create(Country.gen_attrs.merge(:name => @country.name)).should_not be_valid
 
 end

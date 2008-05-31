@@ -1,116 +1,69 @@
-require File.join( File.dirname(__FILE__), "..", "..", "spec_helper" )
+require File.join( File.dirname(__FILE__), "..", "spec_helper" )
 
-describe Mart::Order do
-
+describe Order do
   before(:each) do
-    @order = Mart::Order.new
+    DataMapper.auto_migrate!
   end
 
   describe "associations" do
-    it "should belong to account" do
-      @order.should respond_to(:account)
-      @order.should respond_to(:account=)
-    end
-
     it "should belong to a customer" do
-      @order.should respond_to(:customer)
-      @order.should respond_to(:customer=)
+      customer = Customer.gen
+      order = Order.create(Order.gen_attrs.merge(:customer => customer))
+      order.customer.should == customer
+      order.should be_valid
+
+      order = Order.create(Order.gen_attrs.except(:customer))
+      order.customer.should be_nil
+      order.should_not be_valid
+      order.errors.should include(:customer)
     end
 
-    it "should have many (1..*) line items" do
-      @order.should respond_to(:line_items)
-      #@order.should respond_to(:line_items=)
+    it "should have 1..n line_items" do
+      line_items = (1..10).of {LineItem.gen}
+      order = Order.create(Order.gen_attrs.merge(:line_items => line_items))
+      order.line_items.should == line_items
+      order.should be_valid
+
+      order = Order.create(Order.gen_attrs.except(:line_items))
+      order.line_items.should be_empty
+      order.should_not be_valid
+      order.errors.should include(:line_items)
     end
 
-    it "should have at least one line item"
+    it "should have 1..n transactions" do
+      transactions = (1..10).of {Transaction.gen}
+      order = Order.create(Order.gen_attrs.merge(:transactions => transactions))
+      order.transactions.should == transactions
+      order.should be_valid
 
-    it "should have a billing address" do
-      @order.should respond_to(:billing_address)
-      @order.should respond_to(:billing_address=)
+      order = Order.create(Order.gen_attrs.except(:transactions))
+      order.transactions.should be_empty
+      order.should be_valid
     end
 
-    it "should have a shipping address" do
-      @order.should respond_to(:shipping_address)
-      @order.should respond_to(:shipping_address=)
+    it "should have 1 shipping info" do
+      shipping_info = ShippingInfo.gen
+      order = Order.create(Order.gen_attrs.merge(:shipping_info => shipping_info))
+      order.shipping_info.should == shipping_info
+      order.should be_valid
+
+      order = Order.create(Order.gen_attrs.except(:shipping_info))
+      order.shipping_info.should be_nil
+      order.should_not be_valid
+      order.errors.should include(:shipping_info)
     end
 
-    it "may belong to a promotion" do
-      @order.should respond_to(:promotion)
-      @order.should respond_to(:promotion=)
-    end
+    it "should have 0..1 promotion" do
+      pending "many to many in DM core"
 
+      promotion = Promotion.gen
+      order = Order.create(Order.gen_attrs.merge(:promotion => promotion))
+      order.promotion.should == promotion
+      order.should be_valid
+
+      order = Order.create(Order.gen_attrs.except(:promotion))
+      order.promotion.should be_nil
+      order.should be_valid
+    end
   end
-
-  it "should be valid" do
-    @order.order_number = 23
-    @order.should be_valid
-  end
-
-  it "should have a total"
-
-  describe "class methods" do
-
-    it "should return a search result" do
-      pending
-    end
-
-    it "should generate an order number" do
-      #Mart::Order.generate_order_number
-      pending
-      Mart::Order.should respond_to(:generate_order_number)
-      
-    end
-
-    it "should get totals"
-
-    it "should get CSV for orders" do
-      order1 = Mart::Order.new
-      order2 = Mart::Order.new
-      order_list = Array.new
-      #order_list << [order1, order2]
-      order_list << Mart::Order.new
-      order_list << Mart::Order.new
-      order_list.should_not == nil
-      #@csv = Mart::Order.get_csv_for_orders(order_list)
-      pending
-    end
-
-    it "should get XML for orders" do
-      order1 = Mart::Order.new
-      order2 = Mart::Order.new
-      order_list = Array.new
-      order_list << Mart::Order.new
-      order_list << Mart::Order.new
-      order_list.should_not == nil
-      #@xml = Mart::Order.get_xml_for_orders(order_list)
-      pending
-    end
-
-    it "should get order status"
-
-  end
-
-  it "should assign line items from a hash"
-
-  it "should get the total amount of all line items associated with this order"
-
-  it "should test weight"
-
-  #it "should connect to FedEx to get shipping prices"
-
-  it "should work for a valid transaction"
-  it "should not work for an invalid transaction"
-
-  #it "should clean up"
-  #it "should not cleanup"
-
-
-  it "should have a shipping type"
-
-  it "should have a order status code"
-
-  it "should belong to a promotion"
-
-  it "should have a unique order number"
-
 end
