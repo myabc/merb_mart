@@ -1,19 +1,27 @@
 Merb eMart README
 =================
 
-Merb eMart is an *open-source e-commerce application*, developed on top of the 
-recent Ruby-language Merb MVC framework. Although Merb eMart is designed for 
-e-commerce sites of all sizes, the speed and scalability of the Merb framework 
-make it scalable even for large online vendors.
+Merb eMart is an *open-source e-commerce engine*, developed on top of the recent
+Ruby-language, Merb MVC framework. It takes advantage of the Merb's slices
+plugin, allowing you to incorporate the engine into a customized e-commerce
+solution.
 
-In addition to Merb framework, the following technologies and frameworks
-provide a foundation for Merb eMart:
+Performance
+-----------
 
- * **DataMapper** (bleeding-edge 0.9), for object relation mapping (ORM) and 
-   persistence.
- * **RSpec**, for behavio(u)r driven development (BDD).
+_Mom and Pop?.. or Big Box?_
+
+A key goal for the Merb eMart engine is performance. Although Merb eMart is 
+designed for e-commerce sites of all sizes, the speed and scalability of the 
+Merb and DataMapper frameworks make it scalable even for large online vendors.
+
+The following technologies and frameworks provide a foundation for Merb eMart:
+
+ * **Merb**, for Model-View-Controller.
+ * **DataMapper**, for object relation mapping (ORM) and persistence.
  * **ActiveMerchant**, for Credit Card, payment and shipping processing.
    as well as attachmerb\_fu, merb\_paginate.
+ * **RSpec**, for behavio(u)r driven development (BDD).
 
 See INSTALL or the project wiki for a full list of dependencies.
 
@@ -23,6 +31,41 @@ project to port Substruct to Merb, the initial 0.1 release of Merb eMart will
 instead be a its own implementation of an e-commerce engine, trying to match
 the feature sets other e-commerce applications, but taking advantages of the
 unique features of Merb and DataMapper.
+
+About Slices
+------------
+
+Merb-Slices is a Merb plugin for using and creating application 'slices' which
+help you modularize your application. Usually these are reuseable extractions
+from your main app. In effect, a Slice is just like a regular Merb MVC
+application, both in functionality as well as in structure.
+
+When you generate a Slice stub structure, a module is setup to serve as a
+namespace for your controller, models, helpers etc. This ensures maximum
+encapsulation. You could say a Slice is a mixture between a Merb plugin (a
+Gem) and a Merb application, reaping the benefits of both.
+
+A host application can 'mount' a Slice inside the router, which means you have
+full over control how it integrates. By default a Slice's routes are prefixed
+by its name (a router :namespace), but you can easily provide your own prefix
+or leave it out, mounting it at the root of your url-schema. You can even
+mount a Slice multiple times and give extra parameters to customize an
+instance's behaviour.
+
+A Slice's Application controller uses controller\_for\_slice to setup slice
+specific behaviour, which mainly affects cascaded view handling. Additionaly,
+this method is available to any kind of controller, so it can be used for
+Merb Mailer too for example.
+
+There are many ways which let you customize a Slice's functionality and
+appearance without ever touching the Gem-level code itself. It's not only easy
+to add template/layout overrides, you can also add/modify controllers, models
+and other runtime code from within the host application.
+
+Installation and Setup
+----------------------
+
+Please see the INSTALL file for details on getting up and running with Merb eMart.
 
 Developer Notes
 ---------------
@@ -51,11 +94,6 @@ The following additional mirrors are available:
 
     git://repo.or.cz/merb_mart.git
     http://repo.or.cz/r/merb_mart.git
-
-Installation and Setup
-----------------------
-
-Please see the INSTALL file for details on getting up and running with Merb eMart.
 
 Copyright and License
 ---------------------

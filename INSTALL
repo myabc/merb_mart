@@ -1,5 +1,72 @@
 Installation
 ============
+
+Instructions for installation:
+
+file: config/init.rb
+
+# add the slice as a regular dependency
+
+dependency 'merb-E-mart'
+
+# if needed, configure which slices to load and in which order
+
+Merb::Plugins.config[:merb_slices] = { :queue => ["MerbEMart", ...] }
+
+# optionally configure the plugins in a before_app_loads callback
+
+Merb::BootLoader.before_app_loads do
+  
+  Merb::Slices::config[:merb_E_mart] = { ... }
+  
+end
+
+file: config/router.rb
+
+# example: /merb-E-mart/:controller/:action/:id
+
+r.add_slice(:MerbEMart)
+
+# example: /foo/:controller/:action/:id
+
+r.add_slice(:MerbEMart, 'foo') # same as :path => 'foo'
+
+# example: /:lang/:controller/:action/:id (with :a param set)
+
+r.add_slice(:MerbEMart, :path => ':lang', :params => { :a => 'b' })
+
+# example: /:controller/:action/:id
+
+r.slice(:MerbEMart)
+
+Normally you should also run the following rake task:
+
+rake slices:merb_E_mart:install
+
+------------------------------------------------------------------------------
+
+You can put your application-level overrides in:
+
+host-app/slices/merb-E-mart/app - controllers, models, views ...
+
+Templates are located in this order:
+
+1. host-app/slices/merb-E-mart/app/views/*
+2. gems/merb-E-mart/app/views/*
+3. host-app/app/views/*
+
+You can use the host application's layout by configuring the
+merb-E-mart slice in a before_app_loads block:
+
+Merb::Slices.config[:merb_E_mart] = { :layout => :application }
+
+By default :merb_E_mart is used. If you need to override
+stylesheets or javascripts, just specify your own files in your layout
+instead/in addition to the ones supplied (if any) in 
+host-app/public/slices/merb-E-mart.
+
+In any case don't edit those files directly as they may be clobbered any time
+rake merb_E_mart:install is run.
  
 Dependencies
 ------------
@@ -48,10 +115,3 @@ To run all specs:
 You can also run individual groups of specs. To see tasks available to you:
 
     rake -T
-
-Installation
-------------
-
-Like any other Merb application, to startup the application:
-
-    merb
