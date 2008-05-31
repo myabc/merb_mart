@@ -5,7 +5,7 @@ class Address
 
   include DataMapper::Resource
 
-  property :id,           Fixnum, :serial => true
+  property :id,           Integer, :serial => true
   property :first_name,   String, :length => 50, :nullable => false
   property :last_name,    String, :length => 50, :nullable => false
   property :company,      String, :length => 100
@@ -14,7 +14,7 @@ class Address
   property :address2,     String, :length => 200
   property :city,         String, :length => 50
   property :postal_code,  String, :length => 10
-  property :state_id,     Fixnum  # foreign-key
+  property :state_id,     Integer  # foreign-key
   property :country_code, String  # foreign-key
 
   belongs_to :state

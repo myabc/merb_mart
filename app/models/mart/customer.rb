@@ -5,7 +5,7 @@ module Mart
 
     include DataMapper::Resource
 
-    property :id,            Fixnum,  :serial => true
+    property :id,            Integer,  :serial => true
     property :username,      String,  :length => 50
     property :email_address, String,  :length => 50, :nullable => false, :index => :unique
     property :password,      String,  :length => 20

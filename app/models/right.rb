@@ -2,7 +2,7 @@ class Right
 
   include DataMapper::Resource
 
-  property :id,         Fixnum, :serial => true
+  property :id,         Integer, :serial => true
   property :name,       String
   property :controller, String
   property :actions,    String
@@ -20,6 +20,6 @@ end
 #
 class RightRoles
   include DataMapper::Resource
-  property :right_id,  Fixnum, :key => true
-  property :role_id,   Fixnum, :key => true
+  property :right_id,  Integer, :key => true
+  property :role_id,   Integer, :key => true
 end

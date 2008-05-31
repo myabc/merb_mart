@@ -3,8 +3,8 @@ module Mart
 
     IMAGE_EXTENSIONS = ['gif', 'jpg', 'jpeg', 'png', 'bmp']
 
-    property :width,      Fixnum, :default => 0, :nullable => false
-    property :height,     Fixnum, :default => 0, :nullable => false
+    property :width,      Integer, :default => 0, :nullable => false
+    property :height,     Integer, :default => 0, :nullable => false
 
     has n, :product_images
     #has n, :products, :through => :product_images ## FIXME

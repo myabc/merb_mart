@@ -8,10 +8,10 @@ module Mart
       include DataMapper::Validate
       require 'ezcrypto'
 
-      property :id,           Fixnum, :serial => true
+      property :id,           Integer, :serial => true
       property :type,         Class   # single-table inheritance
-      property :order_id,     Fixnum  # foreign-key
-      property :customer_id,  Fixnum  # foreign-key
+      property :order_id,     Integer  # foreign-key
+      property :customer_id,  Integer  # foreign-key
 
       has 1, :order
       belongs_to :customer #, :accessor => :protected

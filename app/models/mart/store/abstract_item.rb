@@ -8,13 +8,13 @@ module Mart
 
       include DataMapper::Resource
 
-      property :id,             Fixnum, :serial => true
+      property :id,             Integer, :serial => true
       property :code,           String, :length => 20,                      :nullable => false
       property :name,           String, :length => 100,                     :nullable => false
       property :description,    DataMapper::Types::Text
       property :price,          BigDecimal,             :default => 0.0,    :nullable => false
       property :date_available, DateTime,                                   :nullable => false
-      property :quantity,       Fixnum,                 :default => 0,      :nullable => false
+      property :quantity,       Integer,                 :default => 0,      :nullable => false
       property :size_width,     Float,                  :default => 0.0,    :nullable => false
       property :size_height,    Float,                  :default => 0.0,    :nullable => false
       property :size_depth,     Float,                  :default => 0.0,    :nullable => false

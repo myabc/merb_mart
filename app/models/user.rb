@@ -14,8 +14,8 @@ class User
 
   attr_accessor :password, :password_confirmation
 
-  property :id,                         Fixnum,   :serial => true
-  property :login,                      String,   :unique => true
+  property :id,                         Integer,   :serial => true
+  property :login,                      String,    :unique => true
   property :email,                      String
   property :crypted_password,           String
   property :salt,                       String
@@ -38,8 +38,14 @@ class User
   validates_is_confirmed  :password#,                :groups => :create
 
   before :save,   :encrypt_password
-  #before_class_method :create, :make_activation_code
-  #after_class_method  :create, :send_signup_notification
+
+  before :create do
+    #User.make_activation_code
+  end
+  
+  after :create do
+    #User.send_signup_notification
+  end
 
   def login=(value)
     @login = value.downcase unless value.nil?

@@ -12,14 +12,16 @@ describe Mart::Image do
   end
 
   it "should have a size" do
-    @image.should_not be_valid
+    #@image.should_not be_valid
     @image.width = 20
     @image.height = 40
     @image.should be_valid
   end
 
   it "should provide an extension" do
+    @image = nil
     @image.should be_nil
+    @image = Mart::Image.new
     @image.filename = "fish.jpg"
     @image.extension.should == "jpg"
 
@@ -30,7 +32,7 @@ describe Mart::Image do
 
   it "should provide a filename without extension" do
     @image.filename = "fish.jpg"
-    @image.filename_without_ext.should == "fish"
+    @image.filename_base.should == "fish"
   end
 
   it "should provide a relative path" do

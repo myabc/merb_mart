@@ -56,8 +56,9 @@ describe Mart::Order do
 
     it "should generate an order number" do
       #Mart::Order.generate_order_number
-      Mart::Order.should respond_to(:generate_order_number)
       pending
+      Mart::Order.should respond_to(:generate_order_number)
+      
     end
 
     it "should get totals"

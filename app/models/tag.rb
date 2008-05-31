@@ -6,9 +6,9 @@ class Tag
 
   include DataMapper::Resource
 
-  property :id,         Fixnum, :serial => true
+  property :id,         Integer, :serial => true
   property :name,       String, :length => 100, :nullable => false, :key => :unique
-  property :rank,       Fixnum
+  property :rank,       Integer
 
   validates_present   :name
   validates_is_unique :rank

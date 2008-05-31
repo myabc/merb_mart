@@ -1,14 +1,16 @@
+require 'dm-validations'
+
 module Mart
   class AbstractUpload
 
     include DataMapper::Resource
 
-    property :id,           Fixnum, :serial => true
+    property :id,           Integer, :serial => true
     property :filename,     String
     property :created_on,   DateTime
     property :content_type, String
     property :thumbnail,    String
-    property :size,         Fixnum
+    property :size,         Integer
     property :type,         Class   # single-table inheritance
 
     def filename_base
