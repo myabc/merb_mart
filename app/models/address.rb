@@ -30,4 +30,3 @@ class Address
   end
 
 end
-
