@@ -3,14 +3,14 @@
   %head
     %title= @title unless @title.nil?
     %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }
-    %meta{ :generator => "Merb eMart" }
+    %meta{ :generator => "MerbMart" }
     = css_include_tag :master
     = include_required_css
     = include_required_js
   %body
     #container
       #header
-        %h1 Merb eMart
+        %h1 MerbMart
         #navigation
           %ul
             %li
@@ -18,5 +18,5 @@
       #content
         = catch_content :for_layout
       #footer
-        %p Powered by Merb eMart, Merb and DataMapper.
+        %p Powered by MerbMart, Merb and DataMapper.
         %p Copyright &copy; 2008, Alex Coles.

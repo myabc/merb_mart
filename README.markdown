@@ -65,7 +65,7 @@ and other runtime code from within the host application.
 Installation and Setup
 ----------------------
 
-Please see the INSTALL file for details on getting up and running with Merb eMart.
+Please see the INSTALL file for details on getting up and running with MerbMart.
 
 Developer Notes
 ---------------
