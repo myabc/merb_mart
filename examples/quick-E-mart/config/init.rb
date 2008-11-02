@@ -6,4 +6,4 @@ Gem.path.unshift(Merb.root / "gems")
 require 'merb-haml'
 
 require 'merb-slices'
-require "merb-E-mart"
+require "merb_mart"

@@ -1,5 +1,5 @@
 module Merb
-  module MerbEMart
+  module MerbMart
     module ApplicationHelper
 
       # @param *segments<Array[#to_s]> Path segments to append.
@@ -34,7 +34,7 @@ module Merb
       # @return <String>
       #  A path relative to the public directory, with added segments.
       def public_path_for(type, *segments)
-        File.join(::MerbEMart.public_dir_for(type), *segments)
+        ::MerbMart.public_path_for(type, *segments)
       end
 
       # Construct an app-level path.
@@ -45,7 +45,7 @@ module Merb
       # @return <String>
       #  A path within the host application, with added segments.
       def app_path_for(type, *segments)
-        File.join(::MerbEMart.app_dir_for(type), *segments)
+        ::MerbMart.app_path_for(type, *segments)
       end
 
       # Construct a slice-level path.
@@ -56,7 +56,7 @@ module Merb
       # @return <String>
       #  A path within the slice source (Gem), with added segments.
       def slice_path_for(type, *segments)
-        File.join(::MerbEMart.dir_for(type), *segments)
+        ::MerbMart.slice_path_for(type, *segments)
       end
 
     end

@@ -1,4 +1,4 @@
-class MerbEMart::Products < MerbEMart::Application
+class MerbMart::Products < MerbMart::Application
 
   def index
     @products = Product.all

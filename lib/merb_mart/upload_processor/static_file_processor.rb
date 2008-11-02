@@ -1,4 +1,4 @@
-class MerbEMart::StaticFileProcessor
+class MerbMart::StaticFileProcessor
   attr_accessor :temp_file, :raw_data
 
   def process

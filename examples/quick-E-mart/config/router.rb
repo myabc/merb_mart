@@ -21,5 +21,5 @@
 
 Merb.logger.info("Compiling routes...")
 Merb::Router.prepare do |r|
-  r.add_slice(:MerbEMart, 'admin')
+  r.add_slice(:MerbMart, 'admin')
 end

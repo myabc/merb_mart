@@ -1,14 +1,15 @@
 TODO:
 
-- Fix MerbEMart.description and MerbEMart.version
+- Fix MerbMart.description and MerbMart.version
 - Fix LICENSE with your name
 - Fix Rakefile with your name and contact info
-- Add your code to lib/merb_e_mart.rb
-- Add your Merb rake tasks to lib/merb_e_mart/merbtasks.rb
+- Add your code to lib/merb_mart.rb
+- Add your Merb rake tasks to lib/merb_mart/merbtasks.rb
 
 Remove anything that you don't need:
 
-- app/controllers/main.rb MerbEMart::Main controller
-- app/views/layout/merb_e_mart.html.erb
+- app/controllers/main.rb MerbMart::Main controller
+- app/views/layout/merb_mart.html.erb
 - spec/controllers/main_spec.rb controller specs
 - public/* any public files
+- stubs/* any stub files
